@@ -1556,75 +1556,50 @@
     </header>
 
 
- <!-- Hero Section with fade slider -->
-<!-- Hero Section with fade slider -->
-<section class="hero">
-  <div class="slider-fade">
-    <img src="SARATHY1234.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="2wh.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="KTM234.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="CHETAK20.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="T349.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="Ather0.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="QWERT123.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="Beige Minimalist Mood Photo Collage.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-  </div>
-
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <h1>WE ARE HIRING!</h1>
-    <h2>Join Our Growing Team</h2>
-    <p>Sarathy Group is expanding and seeking talented individuals to join our team. Click the WhatsApp icon to connect with our HR Chatbot at 9037833865 and explore job openings instantly!</p>
-    <a href="#jobs" class="cta-button">View Open Positions</a>
-  </div>
-
-  <div class="scroll-indicator">
-    <i class="fas fa-chevron-down"></i>
-  </div>
-</section>
-
-<style>
+ <style>
 .hero {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
   background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Fade slider container */
 .slider-fade {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: 0;
 }
 
-/* Image slides with fade + zoom effect */
 .fade-slide {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: auto;
   height: 100%;
-  max-width: 100%;
+  width: auto;
   transform: translate(-50%, -50%) scale(1);
-  object-fit: contain;
   opacity: 0;
-  animation: fadeZoom 16s ease-in-out infinite;
+  object-fit: cover;
+  animation: fadeZoom 64s ease-in-out infinite;
 }
 
-/* Delay for 2s each (8 images) */
+/* Extended animation delays (8 images, 8s each) */
 .fade-slide:nth-child(1) { animation-delay: 0s; }
-.fade-slide:nth-child(2) { animation-delay: 2s; }
-.fade-slide:nth-child(3) { animation-delay: 4s; }
-.fade-slide:nth-child(4) { animation-delay: 6s; }
-.fade-slide:nth-child(5) { animation-delay: 8s; }
-.fade-slide:nth-child(6) { animation-delay: 10s; }
-.fade-slide:nth-child(7) { animation-delay: 12s; }
-.fade-slide:nth-child(8) { animation-delay: 14s; }
+.fade-slide:nth-child(2) { animation-delay: 8s; }
+.fade-slide:nth-child(3) { animation-delay: 16s; }
+.fade-slide:nth-child(4) { animation-delay: 24s; }
+.fade-slide:nth-child(5) { animation-delay: 32s; }
+.fade-slide:nth-child(6) { animation-delay: 40s; }
+.fade-slide:nth-child(7) { animation-delay: 48s; }
+.fade-slide:nth-child(8) { animation-delay: 56s; }
 
-/* Fade + Zoom animation */
 @keyframes fadeZoom {
   0%, 12.5%, 100% {
     opacity: 0;
@@ -1632,142 +1607,138 @@
   }
   6.25% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.05);
+    transform: translate(-50%, -50%) scale(1.08);
   }
 }
 
-/* Overlay */
+/* Glass-style overlay */
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 
-/* Hero content */
+/* Hero Content */
 .hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  z-index: 2;
   color: #fff;
   text-align: center;
-  z-index: 2;
-  padding: 0 20px;
-  width: 100%;
   max-width: 800px;
-  animation: fadeInText 1.5s ease-in-out;
+  padding: 0 20px;
+  animation: slideUp 1.5s ease-out;
+  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
 }
 
-@keyframes fadeInText {
+@keyframes slideUp {
   0% {
     opacity: 0;
-    transform: translate(-50%, -60%);
+    transform: translateY(40px);
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translateY(0);
   }
 }
 
 .hero-content h1 {
-  font-size: 44px;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  font-size: 46px;
+  margin-bottom: 12px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  font-weight: 400;
+  font-size: 22px;
   color: #f1c40f;
+  font-weight: 400;
+  margin-bottom: 16px;
 }
 
 .hero-content p {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.7;
   max-width: 700px;
   margin: 0 auto;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
-/* CTA Button */
+/* CTA Button with animated gradient */
 .cta-button {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 30px;
-  background: linear-gradient(90deg, #00b894, #00cec9);
+  margin-top: 22px;
+  padding: 14px 34px;
+  background: linear-gradient(270deg, #00b894, #00cec9, #0984e3, #6c5ce7);
+  background-size: 800% 800%;
   color: #fff;
-  text-decoration: none;
   font-weight: bold;
-  border-radius: 30px;
+  text-decoration: none;
+  border-radius: 40px;
   font-size: 16px;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 184, 148, 0.4);
+  box-shadow: 0 6px 18px rgba(0, 184, 148, 0.5);
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .cta-button:hover {
-  background: linear-gradient(90deg, #00cec9, #00b894);
-  box-shadow: 0 8px 20px rgba(0, 184, 148, 0.5);
-  transform: translateY(-2px);
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 184, 148, 0.6);
 }
 
 /* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
-  bottom: 20px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
-  color: white;
-  font-size: 24px;
-  z-index: 2;
+  font-size: 26px;
+  color: #fff;
+  z-index: 3;
   animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
   0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, -8px); }
+  50% { transform: translate(-50%, -10px); }
 }
 
 /* Mobile Responsive */
 @media (max-width: 900px) {
-  .fade-slide {
-    top: 50%;
-    left: 50%;
-    width: auto;
-    height: 100%;
-    max-width: 100%;
-    transform: translate(-50%, -50%);
-    object-fit: contain;
-  }
-
   .hero-content h1 {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .hero-content h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .hero-content p {
-    font-size: 14px;
-    padding: 0 10px;
+    font-size: 15px;
   }
 
   .cta-button {
-    padding: 10px 20px;
+    padding: 10px 24px;
     font-size: 14px;
   }
 
   .scroll-indicator {
-    font-size: 20px;
+    font-size: 22px;
   }
 }
 </style>
+
 
 
     <!-- WhatsApp Floating Button -->
