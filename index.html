@@ -8,12 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #074e6e;       /* Deep professional blue */
-            --secondary: #FFA41B;     /* Vibrant orange accent */
-            --accent: #00B4D8;        /* Fresh cyan accent */
-            --light: #f8fafc;         /* Light background */
-            --dark: #0b3958;          /* Dark text color */
-            --gray: #0e3e65;          /* Secondary text */
+            --primary: #074e6e;
+            --secondary: #FFA41B;
+            --accent: #00B4D8;
+            --light: #f8fafc;
+            --dark: #0b3958;
+            --gray: #0e3e65;
             --success: #28a745;
             --warning: #ffc107;
             --info: #17a2b8;
@@ -23,7 +23,7 @@
             --gradient-accent: linear-gradient(135deg, #FFA41B, #FF8C00);
             --gradient-cyan: linear-gradient(135deg, #00B4D8, #0093b7);
             --section-spacing: 6rem 0;
-            --whatsapp: #25D366;      /* Correct WhatsApp green */
+            --whatsapp: #25D366;
         }
 
         * {
@@ -151,22 +151,48 @@
         .hero {
             position: relative;
             width: 100%;
-            height: 30vh;
-            overflow: hidden;
-        }
-
-        .slider {
-            display: flex;
-            width: calc(100vw * 12); /* 6 original + 6 duplicate */
-            height: 100%;
-            animation: scrollSlider 60s linear infinite;
-        }
-
-        .slide {
-            width: 100vw;
             height: 100vh;
-            object-fit: cover;
-            flex-shrink: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .slider-fade {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fade-slide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            transform: translate(-50%, -50%) scale(1);
+            object-fit: contain;
+            opacity: 0;
+            animation: fadeZoom 16s ease-in-out infinite;
+        }
+
+        .fade-slide:nth-child(1) { animation-delay: 0s; }
+        .fade-slide:nth-child(2) { animation-delay: 2s; }
+        .fade-slide:nth-child(3) { animation-delay: 4s; }
+        .fade-slide:nth-child(4) { animation-delay: 6s; }
+        .fade-slide:nth-child(5) { animation-delay: 8s; }
+        .fade-slide:nth-child(6) { animation-delay: 10s; }
+        .fade-slide:nth-child(7) { animation-delay: 12s; }
+        .fade-slide:nth-child(8) { animation-delay: 14s; }
+
+        @keyframes fadeZoom {
+            0%, 12.5%, 100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            6.25% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.05);
+            }
         }
 
         .hero-overlay {
@@ -175,7 +201,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.4);
             z-index: 1;
         }
 
@@ -184,15 +210,27 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
+            color: #fff;
             text-align: center;
             z-index: 2;
             padding: 0 20px;
-            width: 90%;
-            max-width: 900px;
+            width: 100%;
+            max-width: 800px;
+            animation: fadeInText 1.5s ease-in-out;
         }
 
-        .hero h1 {
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1.2rem;
             text-transform: uppercase;
@@ -202,7 +240,7 @@
             font-weight: 800;
         }
 
-        .hero h2 {
+        .hero-content h2 {
             font-size: 2.2rem;
             margin-bottom: 1.8rem;
             color: var(--secondary);
@@ -210,11 +248,14 @@
             font-weight: 600;
         }
 
-        .hero p {
+        .hero-content p {
             font-size: 1.25rem;
             margin-bottom: 2.5rem;
             opacity: 0.92;
             font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
         .cta-button {
@@ -269,6 +310,12 @@
             font-size: 1.2rem;
             animation: bounce 2s infinite;
             z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
         }
 
         /* About Section */
@@ -441,7 +488,6 @@
             line-height: 1.8;
         }
 
-        /* Logo size adjustments */
         .company-card .logo-container {
             display: flex;
             justify-content: center;
@@ -1287,11 +1333,6 @@
             75% { transform: translateX(8px); }
         }
 
-        @keyframes scrollSlider {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-600vw); }
-        }
-
         /* Mobile-Specific Styles */
         @media (max-width: 1100px) {
             .jobs-container {
@@ -1336,6 +1377,7 @@
                 justify-content: center;
                 align-items: center;
                 z-index: 999;
+                overflow-y: auto;
             }
             
             nav.show {
@@ -1346,6 +1388,7 @@
                 flex-direction: column;
                 padding: 0;
                 gap: 5px;
+                width: 100%;
             }
             
             nav li {
@@ -1367,16 +1410,20 @@
                 display: block;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero {
+                height: 85vh;
             }
             
-            .hero h2 {
-                font-size: 1.7rem;
+            .hero-content h1 {
+                font-size: 2.3rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.05rem;
             }
             
             .section-title h2 {
@@ -1398,6 +1445,7 @@
             
             .location-filter {
                 gap: 10px;
+                justify-content: center;
             }
             
             .filter-btn {
@@ -1408,6 +1456,11 @@
             
             .jobs-container {
                 grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .job-card {
+                margin: 0 10px;
             }
             
             .department-content {
@@ -1458,6 +1511,15 @@
             .whatsapp-float {
                 left: 25px;
             }
+            
+            .testimonial-card {
+                padding: 30px;
+            }
+            
+            .department-dropdown select {
+                padding: 14px 22px;
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1469,12 +1531,23 @@
                 font-size: 0.8rem;
             }
             
-            .hero h1 {
-                font-size: 2rem;
+            .hero {
+                height: 80vh;
             }
             
-            .hero h2 {
-                font-size: 1.4rem;
+            .hero-content h1 {
+                font-size: 1.8rem;
+                padding: 0 15px;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.3rem;
+                padding: 0 15px;
+            }
+            
+            .hero-content p {
+                font-size: 0.95rem;
+                padding: 0 15px;
             }
             
             .cta-button {
@@ -1510,7 +1583,7 @@
             }
             
             .testimonial-card {
-                padding: 30px;
+                padding: 25px;
             }
             
             .form-preview {
@@ -1520,6 +1593,47 @@
             .contact-item {
                 font-size: 1rem;
                 padding: 14px 20px;
+            }
+            
+            .job-header {
+                padding: 20px 15px;
+            }
+            
+            .job-body {
+                padding: 20px;
+            }
+            
+            .job-footer {
+                padding: 15px;
+            }
+            
+            .footer-content {
+                gap: 30px;
+            }
+            
+            .footer-column h3 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.1rem;
+            }
+            
+            .filter-btn {
+                min-width: 110px;
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .cta-button {
+                padding: 12px 28px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -1555,220 +1669,32 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="slider-fade">
+            <img src="SARATHY1234.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
+            <img src="2wh.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
+            <img src="KTM234.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
+            <img src="CHETAK20.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
+            <img src="T349.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
+            <img src="Ather0.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
+            <img src="QWERT123.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
+            <img src="Beige Minimalist Mood Photo Collage.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
+        </div>
 
- <!-- Hero Section with fade slider -->
-<!-- Hero Section with fade slider -->
-<section class="hero">
-  <div class="slider-fade">
-    <img src="SARATHY1234.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="2wh.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="KTM234.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="CHETAK20.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="T349.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="Ather0.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="QWERT123.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-    <img src="Beige Minimalist Mood Photo Collage.png" class="fade-slide" alt="Sarathy Group Showroom" loading="lazy">
-  </div>
+        <div class="hero-overlay"></div>
 
-  <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>WE ARE HIRING!</h1>
+            <h2>Join Our Growing Team</h2>
+            <p>Sarathy Group is expanding and seeking talented individuals to join our team. Click the WhatsApp icon to connect with our HR Chatbot at 9037833865 and explore job openings instantly!</p>
+            <a href="#jobs" class="cta-button">View Open Positions</a>
+        </div>
 
-  <div class="hero-content">
-    <h1>WE ARE HIRING!</h1>
-    <h2>Join Our Growing Team</h2>
-    <p>Sarathy Group is expanding and seeking talented individuals to join our team. Click the WhatsApp icon to connect with our HR Chatbot at 9037833865 and explore job openings instantly!</p>
-    <a href="#jobs" class="cta-button">View Open Positions</a>
-  </div>
-
-  <div class="scroll-indicator">
-    <i class="fas fa-chevron-down"></i>
-  </div>
-</section>
-
-<style>
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #000;
-}
-
-/* Fade slider container */
-.slider-fade {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-/* Image slides with fade + zoom effect */
-.fade-slide {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  height: 100%;
-  max-width: 100%;
-  transform: translate(-50%, -50%) scale(1);
-  object-fit: contain;
-  opacity: 0;
-  animation: fadeZoom 16s ease-in-out infinite;
-}
-
-/* Delay for 2s each (8 images) */
-.fade-slide:nth-child(1) { animation-delay: 0s; }
-.fade-slide:nth-child(2) { animation-delay: 2s; }
-.fade-slide:nth-child(3) { animation-delay: 4s; }
-.fade-slide:nth-child(4) { animation-delay: 6s; }
-.fade-slide:nth-child(5) { animation-delay: 8s; }
-.fade-slide:nth-child(6) { animation-delay: 10s; }
-.fade-slide:nth-child(7) { animation-delay: 12s; }
-.fade-slide:nth-child(8) { animation-delay: 14s; }
-
-/* Fade + Zoom animation */
-@keyframes fadeZoom {
-  0%, 12.5%, 100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  6.25% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.05);
-  }
-}
-
-/* Overlay */
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-
-/* Hero content */
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  text-align: center;
-  z-index: 2;
-  padding: 0 20px;
-  width: 100%;
-  max-width: 800px;
-  animation: fadeInText 1.5s ease-in-out;
-}
-
-@keyframes fadeInText {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -60%);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
-.hero-content h1 {
-  font-size: 44px;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero-content h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  font-weight: 400;
-  color: #f1c40f;
-}
-
-.hero-content p {
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto;
-  opacity: 0.9;
-}
-
-/* CTA Button */
-.cta-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 30px;
-  background: linear-gradient(90deg, #00b894, #00cec9);
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 30px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 184, 148, 0.4);
-}
-
-.cta-button:hover {
-  background: linear-gradient(90deg, #00cec9, #00b894);
-  box-shadow: 0 8px 20px rgba(0, 184, 148, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Scroll Indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-size: 24px;
-  z-index: 2;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, -8px); }
-}
-
-/* Mobile Responsive */
-@media (max-width: 900px) {
-  .fade-slide {
-    top: 50%;
-    left: 50%;
-    width: auto;
-    height: 100%;
-    max-width: 100%;
-    transform: translate(-50%, -50%);
-    object-fit: contain;
-  }
-
-  .hero-content h1 {
-    font-size: 28px;
-  }
-
-  .hero-content h2 {
-    font-size: 16px;
-  }
-
-  .hero-content p {
-    font-size: 14px;
-    padding: 0 10px;
-  }
-
-  .cta-button {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  .scroll-indicator {
-    font-size: 20px;
-  }
-}
-</style>
-
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/919037833865?text=Hi,%20I'm%20interested%20in%20job%20openings%20at%20Sarathy%20Group" class="whatsapp-float" target="_blank">
@@ -1788,8 +1714,6 @@
                     <h3>Our Journey in the Automotive Industry</h3>
                     <p>Sarathy Group is a progressive automotive company with a strong presence across South India and expanding global aspirations. Since our establishment, we have remained committed to delivering exceptional customer service and innovative mobility solutions across a wide range of automotive segments.</p>
                     <p>With a growing footprint across domestic and international markets, Sarathy Group is steadily strengthening its reputation as a trusted and forward-thinking leader in the automotive industry.</p>
-                    <p>Our unwavering dedication to excellence, customer satisfaction, and operational efficiency has positioned us among the most respected automotive enterprises in the region. We are focused on delivering exceptional value through ethical practices, advanced technology, and service excellence.</p>
-                    <p>Through continuous innovation and strategic growth, Sarathy Group is actively shaping the future of the automotive industry—driving progress with integrity, reliability, and a customer-first approach.</p>
                 </div>
                 
                 <div class="about-image" style="background-image: url('sarathy-group-building.jpg');">
@@ -1812,7 +1736,7 @@
                     </div>
                     <div class="card-content">
                         <h4><i class="fas fa-motorcycle"></i> SARATHY MOTORS</h4>
-                        <p>Established in 1987 with extensive operations across South Kerala, India. Specializes in providing comprehensive automotive solutions with a strong focus on Maruti Suzuki vehicles and multi-brand two-wheelers including KTM, Bajaj, Triumph, and Ather.</p>
+                        <p>Established in 1987 with extensive operations across South Kerala, India. Specializes in providing comprehensive automotive solutions with a strong focus on Maruti Suzuki vehicles and multi-brand two-wheelers.</p>
                         <div class="established">Established: 1987</div>
                         <div class="brands">
                             <span class="brand-tag">Bajaj</span>
@@ -1825,14 +1749,11 @@
                         <img src="KTM-logo.png" alt="Sarathy Bikes Logo">
                     </div>
                     <div class="card-content">
-                        <h4><i class="fas fa-motorcycle"></i> SARATHY BIKES PRIVATE LIMITED</h4>
-                        <p>Specializing in two wheeler sales and services under the Sarathy brand, with a focus on Bajaj, KTM, Triumph, Husqvarna, and Chetak, operating across multiple locations in Kollam and surrounding areas.</p>
-                        <div class="established">Private Limited Company</div>
+                        <h4><i class="fas fa-motorcycle"></i> SARATHY BIKES</h4>
+                        <p>Specializing in two wheeler sales and services under the Sarathy brand, with a focus on Bajaj, KTM, Triumph, Husqvarna, and Chetak, operating across multiple locations.</p>
                         <div class="brands">
                             <span class="brand-tag">KTM</span>
                             <span class="brand-tag">Triumph</span>
-                            <span class="brand-tag">Husqvarna</span>
-                            <span class="brand-tag">Chetak</span>
                         </div>
                     </div>
                 </div>
@@ -1842,67 +1763,11 @@
                         <img src="unnamed (1).jpg" alt="Sarathy Electric Bikes Logo">
                     </div>
                     <div class="card-content">
-                        <h4><i class="fas fa-motorcycle"></i> SARATHY ELECTRIC BIKES PRIVATE LIMITED</h4>
-                        <p>Established to meet the growing demand for sustainable mobility, Sarathy Electric Bikes offers premium electric two-wheelers under the Bajaj Chetak and Ather brands. Operating across key locations in South Kerala, they provide end-to-end EV solutions.</p>
-                        <div class="established">Specialized in EV Solutions</div>
+                        <h4><i class="fas fa-motorcycle"></i> SARATHY ELECTRIC BIKES</h4>
+                        <p>Established to meet the growing demand for sustainable mobility, Sarathy Electric Bikes offers premium electric two-wheelers under the Bajaj Chetak and Ather brands.</p>
                         <div class="brands">
                             <span class="brand-tag">Ather</span>
-                            <span class="brand-tag">chetak</span>
-                            <span class="brand-tag">EV Charging</span>
-                            <span class="brand-tag">Sustainable Mobility</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="company-card">
-                    <div class="logo-container">
-                        <img src="arena-logo.webp" alt="Sarathy Auto Cars Logo">
-                    </div>
-                    <div class="card-content">
-                        <h4><i class="fas fa-car-side"></i> SARATHY AUTO CARS</h4>
-                        <p>Part of the Sarathy Group network, established in 1999, Sarathy Autocars is a trusted Maruti Suzuki dealership in Kollam and Thiruvananthapuram, offering a full range of sales, service, and certified pre-owned vehicles.</p>
-                        <div class="established">Established: 1999</div>
-                        <div class="brands">
-                            <span class="brand-tag">Maruti Suzuki</span>
-                            <span class="brand-tag">Sales</span>
-                            <span class="brand-tag">Service</span>
-                            <span class="brand-tag">True Value</span>
-                            <span class="brand-tag">Pre-owned Vehicles</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="company-card">
-                    <div class="logo-container">
-                        <img src="nexa2.png" alt="Sarathy Cars Logo">
-                    </div>
-                    <div class="card-content">
-                        <h4><i class="fas fa-car-side"></i> SARATHY CARS PRIVATE LIMITED</h4>
-                        <p>Incorporated in August 2016, Sarathy Cars Pvt Ltd serves as the company behind Sarathy NEXA and Arena dealerships, operating under the Sarathy Group in Kollam and Thiruvananthapuram.</p>
-                        <div class="established">Incorporated: 2016</div>
-                        <div class="brands">
-                            <span class="brand-tag">NEXA</span>
-                            <span class="brand-tag">Arena</span>
-                            <span class="brand-tag">Premium Dealership</span>
-                            <span class="brand-tag">Kollam</span>
-                            <span class="brand-tag">Thiruvananthapuram</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="company-card">
-                    <div class="logo-container">
-                        <img src="arena-logo.webp" alt="Sarathy Autodrives Logo">
-                    </div>
-                    <div class="card-content">
-                        <h4><i class="fas fa-car-side"></i> SARATHY AUTODRIVES</h4>
-                        <p>Founded in 1999, Sarathy Autodrives is the dedicated Maruti Suzuki ARENA (and True Value pre owned) dealership under the Sarathy Group, offering a full spectrum of sales, service, and certified used car solutions.</p>
-                        <div class="established">Established: 1999</div>
-                        <div class="brands">
-                            <span class="brand-tag">Maruti Suzuki ARENA</span>
-                            <span class="brand-tag">True Value</span>
-                            <span class="brand-tag">Pre-owned Cars</span>
-                            <span class="brand-tag">Sales & Service</span>
+                            <span class="brand-tag">Chetak</span>
                         </div>
                     </div>
                 </div>
@@ -1920,8 +1785,7 @@
             <button class="filter-btn active" data-location="all">All Locations</button>
             <button class="filter-btn" data-location="kollam">Kollam</button>
             <button class="filter-btn" data-location="Kottarakkara">Kottarakkara</button>
-            <button class="filter-btn" data-location="balaramapuram">Balaramapuram</button>
-            <button class="filter-btn" data-location="varkala">Varkala</button>
+            <button class="filter-btn" data-location="varkala">varkala</button>
         </div>
         
         <div class="jobs-container">
@@ -1936,6 +1800,38 @@
                         <div class="company-name">Sarathy Motors, Sarathy Autocars</div>
                     </div>
                     <h3>Paravoor-Punalur-Kottarakkara-Bharanikkavu</h3>
+                    <div class="job-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kollam, India</span>
+                    </div>
+                </div>
+                <div class="job-body">
+                    <div class="job-position">
+                        <h4><i class="fas fa-briefcase"></i> Available Positions</h4>
+                        <ul class="job-positions-list">
+                            <li><i class="fas fa-check-circle"></i> Sales Executive</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="job-footer">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScSIJj_403mQ-cR_o30e7COExq79Ua3etjtFJwy8AvRCnQjMg/viewform?usp=dialog" class="cta-button" target="_blank">
+                        <i class="fas fa-paper-plane"></i> Apply Now
+                    </a>
+                </div>
+            </div>
+
+        
+         <!-- varkala Jobs -->
+            <div class="job-card" data-location="varkala">
+                <div class="job-header">
+                    <div class="company-info">
+                        <div class="company-logo-big">
+                            <i class="fas fa-motorcycle"></i>
+                            <i class="fas fa-car-side"></i>
+                        </div>
+                        <div class="company-name">Sarathy Cars Pvt Ltd</div>
+                    </div>
+                    <h3>Varkala</h3>
                     <div class="job-location">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>Kollam, India</span>
@@ -1976,71 +1872,7 @@
                         <h4><i class="fas fa-briefcase"></i> Available Positions</h4>
                         <ul class="job-positions-list">
                             <li><i class="fas fa-check-circle"></i> Sales Executive</li>
-                            <li><i class="fas fa-check-circle"></i> Senior Sales Executive - Experienced</li>
-                            <li><i class="fas fa-check-circle"></i> Relationship Manager</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="job-footer">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScSIJj_403mQ-cR_o30e7COExq79Ua3etjtFJwy8AvRCnQjMg/viewform?usp=dialog" class="cta-button" target="_blank">
-                        <i class="fas fa-paper-plane"></i> Apply Now
-                    </a>
-                </div>
-            </div>
-
-            <!-- Balaramapuram Jobs -->
-            <div class="job-card" data-location="balaramapuram">
-                <div class="job-header">
-                    <div class="company-info">
-                        <div class="company-logo-small">
-                            <i class="fas fa-motorcycle"></i>
-                        </div>
-                        <div class="company-name">Ather</div>
-                    </div>
-                    <h3>Balaramapuram, Neyyattinkara</h3>
-                    <div class="job-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Thiruvananthapuram, India</span>
-                    </div>
-                </div>
-                <div class="job-body">
-                    <div class="job-position">
-                        <h4><i class="fas fa-briefcase"></i> Available Positions</h4>
-                        <ul class="job-positions-list">
-                            <li><i class="fas fa-check-circle"></i> Sales Executive</li>
-                            <li><i class="fas fa-check-circle"></i> Data Analyst</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="job-footer">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScSIJj_403mQ-cR_o30e7COExq79Ua3etjtFJwy8AvRCnQjMg/viewform?usp=dialog" class="cta-button" target="_blank">
-                        <i class="fas fa-paper-plane"></i> Apply Now
-                    </a>
-                </div>
-            </div>
-
-            <!-- Varkala Jobs -->
-            <div class="job-card" data-location="varkala">
-                <div class="job-header">
-                    <div class="company-info">
-                        <div class="company-logo-small">
-                            <i class="fas fa-car-side"></i>
-                        </div>
-                        <div class="company-name">Sarathy Cars Pvt Ltd</div>
-                    </div>
-                    <h3>Varkala</h3>
-                    <div class="job-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Thiruvananthapuram, India</span>
-                    </div>
-                </div>
-                <div class="job-body">
-                    <div class="job-position">
-                        <h4><i class="fas fa-briefcase"></i> Available Positions</h4>
-                        <ul class="job-positions-list">
-                            <li><i class="fas fa-check-circle"></i> Sales Executive</li>
-                            <li><i class="fas fa-check-circle"></i> Senior Sales Manager</li>
-                            <li><i class="fas fa-check-circle"></i> Relationship Manager</li>
+                            <li><i class="fas fa-check-circle"></i> Senior Sales Executive</li>
                         </ul>
                     </div>
                 </div>
@@ -2069,18 +1901,8 @@
                     <select id="sales-roles" name="sales-roles">
                         <option value="" disabled selected>Select a position</option>
                         <option value="sales-trainee">Sales Trainee</option>
-                        <option value="sdr">Sales Development Representative (SDR)</option>
-                        <option value="sales-associate">Sales Associate</option>
                         <option value="sales-executive">Sales Executive</option>
                         <option value="senior-sales-manager">Senior Sales Manager</option>
-                        <option value="regional-sales-manager">Regional Sales Manager</option>
-                        <option value="sales-manager">Sales Manager</option>
-                        <option value="director-sales">Director of Sales</option>
-                        <option value="product-specialist">Product Specialist</option>
-                        <option value="relationship-manager">Relationship Manager</option>
-                        <option value="area-sales-manager">Area Sales Manager</option>
-                        <option value="team-leader-sales">Team Leader - Sales</option>
-                        <option value="bdm">Business Development Manager</option>
                     </select>
                     <div class="error-message" style="display:none; color:#e74c3c; margin-top:10px; font-weight:500;">
                         <i class="fas fa-exclamation-circle"></i> Please select a sales role
@@ -2092,101 +1914,6 @@
                        class="cta-button" 
                        target="_blank"
                        id="sales-apply-btn">
-                        <i class="fas fa-paper-plane"></i> Apply Now
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Service Department Section -->
-    <section class="department-section" id="service">
-        <div class="department-container">
-            <div class="section-title">
-                <h2>Service Department Opportunities</h2>
-                <p>Build your career with our expert service team and deliver excellence</p>
-            </div>
-
-            <div class="department-content">
-                <p>At Sarathy Group, our service department is committed to providing world-class vehicle care. We're on the lookout for dedicated individuals with a passion for automotive service and customer satisfaction. Select your desired role and apply today!</p>
-
-                <div class="department-dropdown">
-                    <label for="service-roles"><i class="fas fa-tools"></i> Choose a Service Role:</label>
-                    <select id="service-roles" name="service-roles">
-                        <option value="" disabled selected>Select a position</option>
-                        <option value="service-trainee">Service Trainee</option>
-                        <option value="service-advisor">Service Advisor</option>
-                        <option value="senior-service-advisor">Senior Service Advisor</option>
-                        <option value="service-executive">Service Executive</option>
-                        <option value="senior-technician">Senior Technician</option>
-                        <option value="technician">Technician</option>
-                        <option value="diagnostic-technician">Diagnostic Technician</option>
-                        <option value="mechanic">Mechanic</option>
-                        <option value="warranty-coordinator">Warranty Coordinator</option>
-                        <option value="quality-controller">Quality Controller</option>
-                        <option value="customer-service-executive">Customer Service Executive</option>
-                        <option value="relationship-manager">Relationship Manager</option>
-                        <option value="assistant-service-manager">Assistant Service Manager</option>
-                        <option value="service-manager">Service Manager</option>
-                        <option value="workshop-manager">Workshop Manager</option>
-                        <option value="floor-supervisor">Floor Supervisor</option>
-                        <option value="technical-lead">Technical Lead</option>
-                        <option value="pickup-drop-driver">Pickup & Drop Driver</option>
-                        <option value="internship-trainee">Trainee</option>
-                    </select>
-                    <div class="error-message" style="display:none; color:#e74c3c; margin-top:10px; font-weight:500;">
-                        <i class="fas fa-exclamation-circle"></i> Please select a service role
-                    </div>
-                </div>
-
-                <div class="department-cta">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScSIJj_403mQ-cR_o30e7COExq79Ua3etjtFJwy8AvRCnQjMg/viewform?usp=dialog"
-                       class="cta-button"
-                       target="_blank"
-                       id="service-apply-btn">
-                        <i class="fas fa-paper-plane"></i> Apply Now
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Spare Parts Department Section -->
-    <section class="department-section" id="spareparts">
-        <div class="department-container">
-            <div class="section-title">
-                <h2>Spare Parts Department Opportunities</h2>
-                <p>Join our Spare Parts team and ensure seamless parts operations</p>
-            </div>
-
-            <div class="department-content">
-                <p>At Sarathy Group, our Spare Parts team plays a critical role in delivering efficiency and quality. We are looking for enthusiastic and detail-oriented professionals to support our parts operations. Choose your desired role and apply today!</p>
-
-                <div class="department-dropdown">
-                    <label for="spareparts-roles"><i class="fas fa-cogs"></i> Choose a Spare Parts Role:</label>
-                    <select id="spareparts-roles" name="spareparts-roles">
-                        <option value="" disabled selected>Select a position</option>
-                        <option value="spareparts-sales-manager">Spare Parts Sales Manager</option>
-                        <option value="spareparts-operations-manager">Spare Parts Operations Manager</option>
-                        <option value="spareparts-inventory-manager">Spare Parts Inventory Manager</option>
-                        <option value="spareparts-executive">Spare Parts Executive</option>
-                        <option value="spareparts-sales-executive">Spare Parts Sales Executive</option>
-                        <option value="spareparts-coordinator">Spare Parts Coordinator</option>
-                        <option value="spareparts-trainee">Spare Parts Trainee</option>
-                        <option value="spareparts-assistant">Spare Parts Assistant</option>
-                        <option value="junior-spareparts-executive">Junior Spare Parts Executive</option>
-                        <option value="spareparts-counter-assistant">Spare Parts Counter Assistant</option>
-                    </select>
-                    <div class="error-message" style="display:none; color:#e74c3c; margin-top:10px; font-weight:500;">
-                        <i class="fas fa-exclamation-circle"></i> Please select a spare parts role
-                    </div>
-                </div>
-
-                <div class="department-cta">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScSIJj_403mQ-cR_o30e7COExq79Ua3etjtFJwy8AvRCnQjMg/viewform?usp=dialog"
-                       class="cta-button"
-                       target="_blank"
-                       id="spareparts-apply-btn">
                         <i class="fas fa-paper-plane"></i> Apply Now
                     </a>
                 </div>
@@ -2225,19 +1952,6 @@
                         <div class="author-info">
                             <h4>Midhun M.</h4>
                             <p>Sales Team Lead, 4 years at Sarathy</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "What I appreciate most is the company culture. Sarathy truly values work-life balance and employee well-being. The management is approachable and genuinely cares about the team."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img">AK</div>
-                        <div class="author-info">
-                            <h4>Anil Kumar</h4>
-                            <p>EV Technician, 2 years at Sarathy</p>
                         </div>
                     </div>
                 </div>
@@ -2284,16 +1998,8 @@
                     <span>+91 9037 2236 65</span>
                 </div>
                 <div class="contact-item">
-                    <i class="fab fa-google"></i>
-                    <span>Online Application Form</span>
-                </div>
-                <div class="contact-item">
                     <i class="fab fa-whatsapp"></i>
                     <span>HR Chatbot: 9037833865</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Sarathy Group HQ, Kollam, Kerala</span>
                 </div>
             </div>
             
@@ -2311,10 +2017,8 @@
                 <p>Sarathy Group is a leading automotive company with a strong presence in Kerala. We are committed to excellence in customer service and innovation in the automotive industry.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             
@@ -2324,11 +2028,7 @@
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
                     <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
                     <li><a href="#jobs"><i class="fas fa-chevron-right"></i> Job Openings</a></li>
-                    <li><a href="#sales"><i class="fas fa-chevron-right"></i> Sales Department</a></li>
-                    <li><a href="#service"><i class="fas fa-chevron-right"></i> Service Department</a></li>
-                    <li><a href="#spareparts"><i class="fas fa-chevron-right"></i> Spare Parts Department</a></li>
                     <li><a href="#google-form"><i class="fas fa-chevron-right"></i> Apply Now</a></li>
-                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
                 </ul>
             </div>
             
@@ -2338,9 +2038,6 @@
                     <li><a href="#"><i class="fas fa-map-marker-alt"></i> Multiple Locations in Kerala</a></li>
                     <li><a href="mailto:careers@sarathygroup.com"><i class="fas fa-envelope"></i> careers@sarathygroup.com</a></li>
                     <li><a href="tel:+919037223665"><i class="fas fa-phone"></i> +91 9037 2236 65</a></li>
-                    <li><a href="https://wa.me/919037833865?text=Hi,%20I'm%20interested%20in%20job%20openings%20at%20Sarathy%20Group" target="_blank"><i class="fab fa-whatsapp"></i> HR Chatbot: 9037833865</a></li>
-                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScSIJj_403mQ-cR_o30e7COExq79Ua3etjtFJwy8AvRCnQjMg/viewform?usp=dialog" target="_blank"><i class="fab fa-google"></i> Online Application</a></li>
-                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Sat: 9AM - 6PM</a></li>
                 </ul>
             </div>
         </div>
@@ -2373,10 +2070,23 @@
                 if (mainNav.classList.contains('show')) {
                     menuIcon.classList.remove('fa-bars');
                     menuIcon.classList.add('fa-times');
+                    document.body.style.overflow = 'hidden';
                 } else {
                     menuIcon.classList.remove('fa-times');
                     menuIcon.classList.add('fa-bars');
+                    document.body.style.overflow = '';
                 }
+            });
+            
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('show');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                    document.body.style.overflow = '';
+                });
             });
             
             // Location filtering
@@ -2416,6 +2126,7 @@
                         mainNav.classList.remove('show');
                         menuIcon.classList.remove('fa-times');
                         menuIcon.classList.add('fa-bars');
+                        document.body.style.overflow = '';
                     }
                     
                     // Skip smooth scroll for external links
@@ -2445,6 +2156,7 @@
                     mainNav.classList.remove('show');
                     menuIcon.classList.remove('fa-times');
                     menuIcon.classList.add('fa-bars');
+                    document.body.style.overflow = '';
                 }
             });
             
@@ -2516,12 +2228,20 @@
             
             // Initialize department validations
             setupDepartmentValidation('sales', 'sales-apply-btn');
-            setupDepartmentValidation('service', 'service-apply-btn');
-            setupDepartmentValidation('spareparts', 'spareparts-apply-btn');
             
             // Initialize
             window.addEventListener('scroll', animateOnScroll);
             animateOnScroll();
+            
+            // Prevent background scroll when menu is open
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && mainNav.classList.contains('show')) {
+                    mainNav.classList.remove('show');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                    document.body.style.overflow = '';
+                }
+            });
         });
     </script>
 </body>
