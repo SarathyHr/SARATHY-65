@@ -1694,108 +1694,6 @@
                 font-size: 1.2rem;
             }
         }
-        /* QR Modal Styles */
-        .qr-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(2,6,23,0.6);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            padding: 20px;
-        }
-
-        .qr-modal.show {
-            display: flex;
-        }
-
-        .qr-modal-content {
-            background: white;
-            max-width: 420px;
-            width: 100%;
-            border-radius: 12px;
-            padding: 18px;
-            box-shadow: 0 20px 50px rgba(2,6,23,0.3);
-            text-align: center;
-        }
-
-        .qr-modal-content h4 {
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-
-        .qr-grid {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 12px 0 18px;
-        }
-
-        .qr-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .qr-close {
-            position: absolute;
-            right: 18px;
-            top: 14px;
-            background: transparent;
-            border: none;
-            font-size: 1.2rem;
-            color: var(--gray);
-            cursor: pointer;
-        }
-
-        .qr-input {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-            font-size: 0.95rem;
-            margin-top: 8px;
-        }
-
-        .btn-ghost {
-            background: transparent;
-            border: 1px solid #e2e8f0;
-            color: var(--primary);
-            padding: 10px 14px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        /* Share FAB (floating action button) */
-        .floating-share-btn {
-            display: none;
-            position: fixed;
-            bottom: 30px;
-            right: 110px; /* sits near apply button */
-            background: var(--primary);
-            color: white;
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .floating-share-btn:hover {
-            transform: translateY(-6px);
-            background: #053b56;
-        }
-
         /* Accessible focus outlines */
         a:focus, button:focus, input:focus, select:focus {
             outline: 3px solid rgba(0,180,216,0.15);
@@ -2312,8 +2210,6 @@
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <!-- QR Code quick access -->
-                        <a href="#" id="openQrFooter" title="Share / QR"><i class="fas fa-qrcode"></i></a>
                     </div>
                 </div>
                 
@@ -2343,32 +2239,9 @@
         </footer>
 
         <!-- Floating Apply Button for Mobile -->
-        <a href="https://near.tl/sm/j1PMQp_fI" class="floating-apply-btn" target="_blank" aria-label="Apply">
+        <a href="https://near.tl/sm/j1PMQp_fI" class="floating-apply-btn" target="_blank">
             <i class="fas fa-paper-plane"></i>
         </a>
-        
-        <!-- Floating Share Button (mobile) -->
-        <button class="floating-share-btn" id="shareBtn" aria-label="Share this page">
-            <i class="fas fa-share-alt"></i>
-        </button>
-
-        <!-- QR Code Modal -->
-        <div class="qr-modal" id="qrModal" aria-hidden="true">
-            <div class="qr-modal-content" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
-                <button class="qr-close" id="qrClose" aria-label="Close QR dialog"><i class="fas fa-times"></i></button>
-                <h4 id="qrTitle">Share via QR Code</h4>
-                <p style="color:var(--gray); font-size:0.95rem; margin-bottom:8px;">Scan or download a QR for this page or application form</p>
-                <input class="qr-input" id="qrTextInput" placeholder="Enter text or leave blank for current page" />
-                <div class="qr-grid" id="qrContainers">
-                    <div id="qrPreview" aria-hidden="false"></div>
-                </div>
-                <div class="qr-actions">
-                    <button class="cta-button" id="generateQr">Generate</button>
-                    <button class="btn-ghost" id="downloadQr">Download PNG</button>
-                    <button class="btn-ghost" id="useAppLink">Use Application Link</button>
-                </div>
-            </div>
-        </div>
         
         <!-- Scroll to top button -->
         <div class="scroll-top" id="scrollTop">
@@ -2563,153 +2436,6 @@
             });
         });
     </script>
-    <!-- QRCode library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script>
-        (function(){
-            const qrModal = document.getElementById('qrModal');
-            const openQrFooter = document.getElementById('openQrFooter');
-            const qrClose = document.getElementById('qrClose');
-            const qrPreview = document.getElementById('qrPreview');
-            const qrInput = document.getElementById('qrTextInput');
-            const generateBtn = document.getElementById('generateQr');
-            const downloadBtn = document.getElementById('downloadQr');
-            const useAppLinkBtn = document.getElementById('useAppLink');
-            const appLink = 'https://near.tl/sm/j1PMQp_fI';
 
-            function openModal() {
-                qrModal.classList.add('show');
-                qrModal.setAttribute('aria-hidden', 'false');
-                // prefill with current page URL if empty
-                if (!qrInput.value) qrInput.value = window.location.href;
-                generateQRCode(qrInput.value);
-                document.body.style.overflow = 'hidden';
-                // focus handling for keyboard users
-                setTimeout(()=> qrInput.focus(), 40);
-                // set focus trap
-                trapFocus(qrModal);
-            }
-
-            function closeModal() {
-                qrModal.classList.remove('show');
-                qrModal.setAttribute('aria-hidden', 'true');
-                qrPreview.innerHTML = '';
-                document.body.style.overflow = '';
-                releaseFocusTrap();
-            }
-
-            function generateQRCode(text) {
-                qrPreview.innerHTML = '';
-                if (!text) return;
-                // create QR
-                try {
-                    new QRCode(qrPreview, {
-                        text: text,
-                        width: 220,
-                        height: 220,
-                        colorDark : '#0b3958',
-                        colorLight : '#ffffff',
-                        correctLevel : QRCode.CorrectLevel.H
-                    });
-                } catch (err) {
-                    qrPreview.innerText = 'Unable to generate QR';
-                    console.error(err);
-                }
-            }
-
-            openQrFooter.addEventListener('click', function(e){
-                e.preventDefault();
-                openModal();
-            });
-
-            qrClose.addEventListener('click', function(){ closeModal(); });
-
-            // Close when clicking outside content
-            qrModal.addEventListener('click', function(e){
-                if (e.target === qrModal) closeModal();
-            });
-
-            // Esc key
-            document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
-
-            generateBtn.addEventListener('click', function(){ generateQRCode(qrInput.value || window.location.href); });
-
-            useAppLinkBtn.addEventListener('click', function(){
-                qrInput.value = appLink;
-                generateQRCode(appLink);
-            });
-
-            downloadBtn.addEventListener('click', function(){
-                // find img or canvas inside qrPreview
-                const img = qrPreview.querySelector('img');
-                const canvas = qrPreview.querySelector('canvas');
-                let dataURL = null;
-                if (img) {
-                    dataURL = img.src;
-                } else if (canvas) {
-                    dataURL = canvas.toDataURL('image/png');
-                }
-
-                if (!dataURL) {
-                    alert('No QR available to download. Please generate first.');
-                    return;
-                }
-
-                const a = document.createElement('a');
-                a.href = dataURL;
-                a.download = 'sarathy-qr.png';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-            });
-
-            // Basic focus trap implementation
-            let lastFocused = null;
-            let focusableElements = [];
-            let keydownHandler = null;
-
-            function trapFocus(modal) {
-                lastFocused = document.activeElement;
-                focusableElements = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input, select');
-                if (!focusableElements.length) return;
-                focusableElements[0].focus();
-
-                keydownHandler = function(e) {
-                    if (e.key !== 'Tab') return;
-                    const first = focusableElements[0];
-                    const last = focusableElements[focusableElements.length - 1];
-
-                    if (e.shiftKey) { // shift + tab
-                        if (document.activeElement === first) {
-                            e.preventDefault();
-                            last.focus();
-                        }
-                    } else { // tab
-                        if (document.activeElement === last) {
-                            e.preventDefault();
-                            first.focus();
-                        }
-                    }
-                };
-
-                document.addEventListener('keydown', keydownHandler);
-            }
-
-            function releaseFocusTrap() {
-                if (keydownHandler) document.removeEventListener('keydown', keydownHandler);
-                if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-            }
-
-            // Allow external opening via share button
-            const shareBtn = document.getElementById('shareBtn');
-            if (shareBtn) {
-                shareBtn.addEventListener('click', function(e){
-                    e.preventDefault();
-                    // delegate to the footer QR opener
-                    if (openQrFooter) openQrFooter.click();
-                });
-            }
-        })();
-    </script>
 </body>
 </html>
