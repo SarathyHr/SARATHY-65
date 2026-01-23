@@ -53,7 +53,6 @@
             margin: 0 auto;
         }
 
-        /* Running Effect Styling */
         .logo-slider {
             display: flex;
             width: 200%;
@@ -64,7 +63,7 @@
 
         .logo-track {
             display: flex;
-            width: calc(200px * 16); /* Adjusted for double logos */
+            width: calc(200px * 16);
             animation: scroll 20s linear infinite;
         }
 
@@ -86,10 +85,9 @@
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-190px * 8)); } /* Moves by half the items to loop */
+            100% { transform: translateX(calc(-190px * 8)); }
         }
 
-        /* Pause animation on hover for desktop */
         .logo-slider:hover .logo-track {
             animation-play-state: paused;
         }
@@ -192,6 +190,15 @@
             text-align: center;
             transition: var(--transition);
             border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .venue-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
         }
 
         .venue-card i {
@@ -210,7 +217,34 @@
             color: var(--secondary);
             font-weight: 700;
             font-size: 1.1rem;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .venue-card .address {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+            min-height: 50px;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .map-btn:hover {
+            background: var(--primary);
+            color: #fff;
         }
 
         /* Roles Section */
@@ -248,17 +282,33 @@
         }
 
         .role-list li {
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px dashed #eee;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
             font-size: 0.95rem;
         }
 
+        .role-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .role-title {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .role-details {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 2px;
+        }
+
         /* CTA Section */
         .cta-section {
-            padding: 80px 20px;
+            padding: 60px 20px;
             text-align: center;
             background: var(--dark);
             color: white;
@@ -310,7 +360,13 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* Mobile Specific Tweaks */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            background: #fff;
+            border-top: 1px solid #eee;
+        }
+
         @media (max-width: 600px) {
             .hero { padding: 40px 15px; min-height: 50vh; }
             .section-title h2 { font-size: 1.6rem; }
@@ -370,83 +426,49 @@
         <div class="poster-container">
             <img src="WhatsApp Image 2026-01-22 at 6.38.11 PM.jpeg" alt="Sarathy Job Fair 2026 Poster" onerror="this.src='https://via.placeholder.com/600x800?text=Sarathy+Job+Fair+Poster+2026'">
         </div>
-    </section>
+    </section>  
 
     <section class="venues-section">
         <div class="section-title">
             <h2>Venues & Schedule</h2>
-            <p>Walk-in Interviews: 9:30 AM - 4:30 PM</p>
+            <p>Walk-in Interviews: 9:30 AM - 5:30 PM</p>
         </div>
         <div class="venues-grid">
             <div class="venue-card">
                 <i class="fas fa-university"></i>
                 <h3>ATTINGAL</h3>
                 <p class="date">04 / 01 / 2026</p>
-                <p>Gov Polytechnic College, Attingal.</p>
+                <p class="address">Gov Polytechnic College, Attingal.</p>
+                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-btn" target="_blank">
+                    <i class="fas fa-location-dot" style="font-size: 0.9rem; margin-bottom: 0;"></i> View on Map
+                </a>
             </div>
             <div class="venue-card">
                 <i class="fas fa-university"></i>
                 <h3>KAZHAKKOOTTAM</h3>
                 <p class="date">05 / 01 / 2026</p>
-                <p>DC School of Management, Kazhakoottam.</p>
+                <p class="address">DC School of Management, Kazhakoottam.</p>
+                <a href="https://share.google/2ZiuXM3dyxLcTsNoH" class="map-btn" target="_blank">
+                    <i class="fas fa-location-dot" style="font-size: 0.9rem; margin-bottom: 0;"></i> View on Map
+                </a>
             </div>
             <div class="venue-card">
                 <i class="fas fa-university"></i>
                 <h3>KATTAKKADA</h3>
                 <p class="date">06 / 01 / 2026</p>
-                <p>Christian College, Kattakkada.</p>
+                <p class="address">Christian College, Kattakkada.</p>
+                <a href="https://share.google/NvwR6yGQEAyPoiLRq" class="map-btn" target="_blank">
+                    <i class="fas fa-location-dot" style="font-size: 0.9rem; margin-bottom: 0;"></i> View on Map
+                </a>
             </div>
             <div class="venue-card">
                 <i class="fas fa-car"></i>
                 <h3>PAPPANAMCODE</h3>
                 <p class="date">07 / 01 / 2026</p>
-                <p>Maruti Suzuki ARENA (Sarathy Autodrives)</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="roles-section">
-        <div class="section-title">
-            <h2>Available Positions</h2>
-            <p>Kickstart your automotive career</p>
-        </div>
-        <div class="roles-container">
-            <div class="role-group">
-                <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
-                <ul class="role-list">
-                    <li><i class="fas fa-chevron-right"></i> Sales Executive (Cars/Bikes)</li>
-                    <li><i class="fas fa-chevron-right"></i> Senior Relationship Manager</li>
-                    <li><i class="fas fa-chevron-right"></i> Relationship Manager</li>
-                    <li><i class="fas fa-chevron-right"></i> Team Leaders</li>
-                    <li><i class="fas fa-chevron-right"></i> Customer Care Executive</li>
-                    <li><i class="fas fa-chevron-right"></i> Accounts Executive</li>
-                </ul>
-            </div>
-            <div class="role-group">
-                <h4><i class="fas fa-tools"></i> Service Roles</h4>
-                <ul class="role-list">
-                    <li><i class="fas fa-chevron-right"></i> Service Advisors</li>
-                    <li><i class="fas fa-chevron-right"></i> Expert Technicians</li>
-                    <li><i class="fas fa-chevron-right"></i> Marketing Executive</li>
-                    <li><i class="fas fa-chevron-right"></i> Customer Care Manager</li>
-                    <li><i class="fas fa-chevron-right"></i> Tele Callers</li>
-                </ul>
-            </div>
-            <div class="role-group">
-                <h4><i class="fas fa-briefcase"></i> Spare Roles</h4>
-                <ul class="role-list">
-                    <li><i class="fas fa-chevron-right"></i> Spare Executive</li>
-                    <li><i class="fas fa-chevron-right"></i> Spare Assistant</li>
-                    <li><i class="fas fa-chevron-right"></i> Spare Trainees</li>
-                </ul>
-            </div>
-            <div class="role-group">
-                <h4><i class="fas fa-briefcase"></i> Digital Marketing</h4>
-                <ul class="role-list">
-                    <li><i class="fas fa-chevron-right"></i> Content Creators</li>
-                    <li><i class="fas fa-chevron-right"></i> Graphics Designer</li>
-                    <li><i class="fas fa-chevron-right"></i> It Executive</li>
-                </ul>
+                <p class="address">Maruti Suzuki ARENA (Sarathy Autodrives), Trivandrum.</p>
+                <a href="https://share.google/RGvx8k2awxzIVHnwy" class="map-btn" target="_blank">
+                    <i class="fas fa-location-dot" style="font-size: 0.9rem; margin-bottom: 0;"></i> View on Map
+                </a>
             </div>
         </div>
     </section>
@@ -459,9 +481,157 @@
         </div>
     </section>
 
+    <section class="roles-section">
+        <div class="section-title">
+            <h2>Available Positions</h2>
+            <p>Kickstart your automotive career</p>
+        </div>
+        <div class="roles-container">
+            <div class="role-group">
+                <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
+                <ul class="role-list">
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Sales Executive (Cars/Bikes)</span>
+                            <span class="role-details">Qualification: 12th Above | Freshers & Experienced Can Apply</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Senior Relationship Manager</span>
+                            <span class="role-details">Qualification: Degree Above | Freshers & Experienced Can Apply</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Relationship Manager</span>
+                            <span class="role-details">Qualification: Degree Above | Freshers & Experienced Can Apply</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Team Leaders</span>
+                            <span class="role-details">Qualification: 12th Above | Freshers & Experienced Can Apply</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Customer Care Executive</span>
+                            <span class="role-details">Qualification: 12th Above | Freshers & Experienced Can Apply</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Accounts Executive</span>
+                            <span class="role-details">Qualification: Degree B.com With Tally Knowledge Above | Freshers & Experienced Can Apply</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="role-group">
+                <h4><i class="fas fa-tools"></i> Service Roles</h4>
+                <ul class="role-list">
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Service Advisors</span>
+                            <span class="role-details">Qualification: Degree/Diploma in Mechanical/Automobile | Freshers & Experienced Can Apply</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Expert Technicians</span>
+                            <span class="role-details">Qualification: ITI/Diploma in Automobile/Mechanical | Experienced Only</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Marketing Executive</span>
+                            <span class="role-details">Qualification: Degree Above | Freshers & Experienced Can Apply</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Customer Care Manager</span>
+                            <span class="role-details">Qualification: Degree Above | Experienced Only</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Tele Callers</span>
+                            <span class="role-details">Qualification: 12th Above | Freshers & Experienced Can Apply</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="role-group">
+                <h4><i class="fas fa-briefcase"></i> Spare Roles</h4>
+                <ul class="role-list">
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Spare Executive</span>
+                            <span class="role-details">Qualification: 12th Above | Experience Preferred</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Spare Assistant</span>
+                            <span class="role-details">Qualification: 10th/12th Above | Freshers Can Apply</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Spare Trainees</span>
+                            <span class="role-details">Qualification: 10th/12th Above | Freshers Can Apply</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="role-group">
+                <h4><i class="fas fa-laptop-code"></i> Digital & IT</h4>
+                <ul class="role-list">
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Content Creators</span>
+                            <span class="role-details">Qualification: Degree/Diploma in Relevant Field | Freshers & Experienced Can Apply</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">Graphics Designer</span>
+                            <span class="role-details">Qualification: Proficiency in Design Tools | Portfolio Required</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chevron-right"></i>
+                        <div class="role-info">
+                            <span class="role-title">IT Executive</span>
+                            <span class="role-details">Qualification: Degree/Diploma in IT/CS | Experience Preferred</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2025-26 Sarathy Group. All Rights Reserved.</p>
-        <p style="margin-top: 10px; opacity: 0.8;">Email: careers@sarathygroup.com<br>HR: +91 9037 2236 65</p>
+        <p style="margin-top: 10px; opacity: 0.8; font-size: 0.9rem;">Email: careers@sarathygroup.com<br>HR Support: +91 9037 2236 65</p>
     </footer>
 
     <!-- Floating WhatsApp -->
@@ -471,7 +641,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Smooth Scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const target = document.querySelector(this.getAttribute('href'));
