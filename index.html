@@ -5,31 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sarathy Group - Mega Job Fair 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #074e6e;
+            --primary-dark: #053a52;
             --secondary: #FFA41B;
             --accent: #00B4D8;
-            --light: #f8fafc;
+            --light: #f1f5f9;
             --dark: #0b3958;
             --gray: #64748b;
-            --success: #28a745;
-            --gold: #FFD700;
-            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.075);
-            --gradient-primary: linear-gradient(135deg, #074e6e 0%, #0b3958 100%);
+            --white: #ffffff;
             --whatsapp: #25D366;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Poppins', 'Verdana', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
@@ -37,44 +39,37 @@
             scroll-behavior: smooth;
         }
 
-        /* Header & Running Logos */
+        /* Header & Logo Slider */
         header {
-            background: #fff;
-            padding: 0.5rem 0;
+            background: var(--white);
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
+            box-shadow: var(--shadow-sm);
         }
 
         .logo-slider {
-            display: flex;
-            width: 200%;
             overflow: hidden;
-            background: white;
-            padding: 10px 0;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
         }
 
         .logo-track {
             display: flex;
-            width: calc(200px * 16);
-            animation: scroll 20s linear infinite;
+            width: fit-content;
+            animation: scroll 7s linear infinite;
         }
 
         .logo-item {
-            width: 150px;
-            height: 40px;
+            width: 140px;
+            height: 45px;
+            margin: 0 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            margin: 0 20px;
         }
 
         .logo-img {
@@ -85,29 +80,17 @@
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-190px * 8)); }
-        }
-
-        .logo-slider:hover .logo-track {
-            animation-play-state: paused;
+            100% { transform: translateX(-50%); }
         }
 
         /* Hero Section */
         .hero {
-            min-height: 60vh;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
             text-align: center;
-            color: white;
-            padding: 60px 20px;
             position: relative;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            z-index: 2;
+            clip-path: ellipse(160% 100% at 50% 0%);
         }
 
         .fair-badge {
@@ -116,267 +99,272 @@
             padding: 6px 20px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             display: inline-block;
             margin-bottom: 20px;
-            animation: pulse-orange 2s infinite;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 164, 27, 0.4);
         }
 
         .hero h1 {
-            font-size: clamp(1.8rem, 8vw, 3.5rem);
-            line-height: 1.2;
+            font-size: clamp(2.2rem, 10vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 15px;
             text-transform: uppercase;
-            font-weight: 800;
         }
 
         .hero p {
-            font-size: clamp(1rem, 4vw, 1.2rem);
-            margin-bottom: 25px;
+            font-size: clamp(1rem, 4.5vw, 1.3rem);
             opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 35px;
+            font-weight: 400;
         }
 
-        /* Poster Section */
-        .poster-section {
-            padding: 40px 15px;
-            background: #fff;
-            text-align: center;
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
-        .poster-container {
-            max-width: 600px;
-            margin: 0 auto;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 1px solid #eee;
-        }
-
-        .poster-container img {
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
             width: 100%;
-            height: auto;
-            display: block;
+            max-width: 320px;
         }
 
-        /* Venue Section */
-        .venues-section {
-            padding: 60px 15px;
-            background: var(--light);
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--primary);
+            box-shadow: var(--shadow-md);
         }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2.5px solid var(--white);
+        }
+
+        .btn:active { transform: scale(0.96); }
+
+        /* Section Styling */
+        .section-padding { padding: 70px 20px; }
+        .bg-white { background: var(--white); }
+        .bg-gray { background: #f8fafc; }
 
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
 
         .section-title h2 {
             font-size: 2rem;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
-        .venues-grid {
+        .section-title p { color: var(--gray); font-size: 1.1rem; }
+
+        /* Poster Display */
+        .poster-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .poster-box {
+            background: var(--white);
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .poster-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+        }
+
+        /* Venue Grid */
+        .venue-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .venue-card {
-            background: white;
-            padding: 30px 20px;
-            border-radius: 15px;
+            background: var(--white);
+            border-radius: 25px;
+            padding: 35px 25px;
             text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.03);
             transition: var(--transition);
-            border: 1px solid #e2e8f0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .venue-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-shadow);
         }
 
         .venue-card i {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .venue-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 8px;
             color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
         }
 
-        .venue-card .date {
+        .venue-date {
             color: var(--secondary);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 12px;
         }
 
-        .venue-card .address {
-            font-size: 0.9rem;
+        .venue-address {
             color: var(--gray);
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
             min-height: 50px;
         }
 
-        .map-btn {
-            display: inline-flex;
+        .map-link {
+            display: flex;
             align-items: center;
-            gap: 8px;
-            background: #fff;
+            justify-content: center;
+            gap: 10px;
             color: var(--primary);
-            border: 1.5px solid var(--primary);
-            padding: 8px 15px;
-            border-radius: 8px;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
+            padding: 12px;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            transition: var(--transition);
         }
 
-        .map-btn:hover {
-            background: var(--primary);
-            color: #fff;
-        }
+        .map-link:hover { background: var(--primary); color: var(--white); }
 
-        /* Roles Section */
-        .roles-section {
-            padding: 60px 15px;
-            background: #f1f5f9;
-        }
-
-        .roles-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Vacancy Styling */
+        .roles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
         .role-group {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: var(--card-shadow);
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            border-top: 5px solid var(--primary);
         }
 
         .role-group h4 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--primary);
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--secondary);
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .role-list {
-            list-style: none;
-        }
-
-        .role-list li {
-            padding: 10px 0;
-            border-bottom: 1px dashed #eee;
+            margin-bottom: 20px;
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.95rem;
+            align-items: center;
+            gap: 12px;
         }
 
-        .role-info {
+        .role-list { list-style: none; }
+
+        .role-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f5f9;
             display: flex;
-            flex-direction: column;
+            gap: 15px;
         }
+
+        .role-item:last-child { border: none; }
+
+        .role-item i { color: var(--secondary); margin-top: 5px; font-size: 0.9rem; }
+
+        .role-info { flex: 1; }
 
         .role-title {
-            font-weight: 600;
+            display: block;
+            font-weight: 700;
             color: var(--dark);
+            font-size: 1.05rem;
+            margin-bottom: 3px;
         }
 
         .role-details {
-            font-size: 0.8rem;
+            display: block;
+            font-size: 0.85rem;
             color: var(--gray);
-            margin-top: 2px;
+            line-height: 1.4;
         }
 
         /* CTA Section */
-        .cta-section {
-            padding: 60px 20px;
-            text-align: center;
+        .cta-dark {
             background: var(--dark);
-            color: white;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--secondary);
-            color: var(--primary);
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-top: 25px;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
+        .cta-dark h2 { font-size: 2.2rem; margin-bottom: 15px; }
 
-        /* WhatsApp Floating Button */
+        /* WhatsApp */
         .whatsapp-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 25px;
             background: var(--whatsapp);
             color: white;
-            width: 55px;
-            height: 55px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-size: 2.2rem;
+            box-shadow: var(--shadow-lg);
             z-index: 1000;
-            text-decoration: none;
-            animation: pulse-whatsapp 2s infinite;
+            transition: var(--transition);
         }
 
-        @keyframes pulse-orange {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 164, 27, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 164, 27, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 164, 27, 0); }
-        }
-
-        @keyframes pulse-whatsapp {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+        .whatsapp-btn:active { transform: scale(0.9); }
 
         footer {
-            padding: 40px 20px;
+            background: var(--white);
+            padding: 50px 20px;
             text-align: center;
-            background: #fff;
             border-top: 1px solid #eee;
         }
 
         @media (max-width: 600px) {
-            .hero { padding: 40px 15px; min-height: 50vh; }
-            .section-title h2 { font-size: 1.6rem; }
-            .venue-card { padding: 25px 15px; }
-            .whatsapp-btn { width: 50px; height: 50px; font-size: 1.5rem; bottom: 15px; right: 15px; }
-            .logo-item { width: 120px; margin: 0 10px; }
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-140px * 8)); }
-            }
+            .hero { padding: 60px 15px; }
+            .section-padding { padding: 50px 15px; }
+            .btn { max-width: 100%; }
+            .logo-item { width: 110px; margin: 0 12px; }
         }
     </style>
 </head>
@@ -385,7 +373,6 @@
     <header>
         <div class="logo-slider">
             <div class="logo-track">
-                <!-- Original Set of Logos -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy Group" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -394,8 +381,7 @@
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
                 <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
                 <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
-                
-                <!-- Cloned Set for Seamless Looping -->
+                <!-- Duplicate for seamless scroll -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy Group" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -409,219 +395,184 @@
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <span class="fair-badge">AUTOMOTIVE CAREER EXPO 2026</span>
-            <h1>SARATHY MEGA JOB FAIR</h1>
-            <p>Join South Kerala's largest automotive group. <br><strong>Over 100+ Vacancies!</strong></p>
-            <a href="#official-poster" class="cta-button">View Official Poster</a>
+        <span class="fair-badge">MEGA RECRUITMENT DRIVE 2026</span>
+        <h1>BUILD YOUR CAREER WITH SARATHY</h1>
+        <p>Join South Kerala's largest automotive group. Over 100+ openings across major brands.</p>
+        <div class="btn-group">
+            <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary">Apply Online Now</a>
+            <a href="#official-poster" class="btn btn-outline">View Official Poster</a>
         </div>
     </section>
 
-    <!-- Poster Image Section -->
-    <section class="poster-section" id="official-poster">
+    <!-- Poster Section -->
+    <section class="section-padding bg-white" id="official-poster">
         <div class="section-title">
-            <h2>Official Event Poster</h2>
-            <p>Scan or read the flyer for all details.</p>
+            <h2>Official Event Posters</h2>
+            <p>Details of the grand automotive job expo</p>
         </div>
         <div class="poster-container">
-            <img src="WhatsApp Image 2026-01-22 at 8.12.42 PM.jpeg" alt="Sarathy Job Fair 2026 Poster" onerror="this.src='https://via.placeholder.com/600x800?text=Sarathy+Job+Fair+Poster+2026'">
+            <div class="poster-box">
+                <img src="123.jpeg" alt="Sarathy Job Fair 2026 Main Poster" onerror="this.src='https://via.placeholder.com/600x800?text=Sarathy+Job+Fair+Poster+2026'">
+            </div>
+            <div class="poster-box">
+                <img src="WhatsApp Image 2026-01-22 at 8.12.42 PM.jpeg" alt="Additional Fair Details" onerror="this.src='https://via.placeholder.com/600x800?text=Job+Fair+Details'">
+            </div>
         </div>
-    </section>  
+    </section>
 
-    <section class="venues-section">
+    <!-- Venues Section -->
+    <section class="section-padding bg-gray">
         <div class="section-title">
             <h2>Venues & Schedule</h2>
-            <p>Walk-in Interviews: 9:30 AM - 5:30 PM</p>
+            <p>Time: 09:30 AM to 05:30 PM</p>
         </div>
-        <div class="venues-grid">
+        <div class="venue-grid">
             <div class="venue-card">
                 <i class="fas fa-university"></i>
                 <h3>ATTINGAL</h3>
-                <p class="date">04 / 01 / 2026</p>
-                <p class="address">Gov Polytechnic College, Attingal.</p>
-                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-btn" target="_blank">
-                    <i class="fas fa-location-dot" style="font-size: 0.9rem; margin-bottom: 0;"></i> View on Map
+                <span class="venue-date">JAN 04, 2026</span>
+                <p class="venue-address">Govt. Polytechnic College, Attingal</p>
+                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-link" target="_blank">
+                    <i class="fas fa-location-arrow"></i> Get Direction
                 </a>
             </div>
             <div class="venue-card">
                 <i class="fas fa-university"></i>
                 <h3>KAZHAKKOOTTAM</h3>
-                <p class="date">05 / 01 / 2026</p>
-                <p class="address">DC School of Management, Kazhakoottam.</p>
-                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-btn" target="_blank">
-                    <i class="fas fa-location-dot" style="font-size: 0.9rem; margin-bottom: 0;"></i> View on Map
+                <span class="venue-date">JAN 05, 2026</span>
+                <p class="venue-address">DC School of Management, Kazhakkoottam</p>
+                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-link" target="_blank">
+                    <i class="fas fa-location-arrow"></i> Get Direction
                 </a>
             </div>
             <div class="venue-card">
                 <i class="fas fa-university"></i>
                 <h3>KATTAKKADA</h3>
-                <p class="date">06 / 01 / 2026</p>
-                <p class="address">Christian College, Kattakkada.</p>
-                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-btn" target="_blank">
-                    <i class="fas fa-location-dot" style="font-size: 0.9rem; margin-bottom: 0;"></i> View on Map
+                <span class="venue-date">JAN 06, 2026</span>
+                <p class="venue-address">Christian College, Kattakkada</p>
+                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-link" target="_blank">
+                    <i class="fas fa-location-arrow"></i> Get Direction
                 </a>
             </div>
             <div class="venue-card">
-                <i class="fas fa-car"></i>
+                <i class="fas fa-car-side"></i>
                 <h3>PAPPANAMCODE</h3>
-                <p class="date">07 / 01 / 2026</p>
-                <p class="address">Maruti Suzuki ARENA (Sarathy Autodrives), Trivandrum.</p>
-                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-btn" target="_blank">
-                    <i class="fas fa-location-dot" style="font-size: 0.9rem; margin-bottom: 0;"></i> View on Map
+                <span class="venue-date">JAN 07, 2026</span>
+                <p class="venue-address">Maruti Suzuki ARENA (Sarathy Autodrives)</p>
+                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-link" target="_blank">
+                    <i class="fas fa-location-arrow"></i> Get Direction
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="cta-section" id="register">
-        <div style="position: relative;">
-            <h2>Apply Online Today</h2>
-            <p>Bring your updated resume and a photo to the venue.</p>
-            <a href="https://near.tl/sm/j1PMQp_fI" class="cta-button" target="_blank">Fill Online Application</a>
-        </div>
-    </section>
-
-    <section class="roles-section">
+    <!-- Positions Section -->
+    <section class="section-padding bg-white">
         <div class="section-title">
             <h2>Available Positions</h2>
-            <p>Kickstart your automotive career</p>
+            <p>Multiple vacancies for freshers and experienced candidates</p>
         </div>
-        <div class="roles-container">
+        <div class="roles-grid">
+            <!-- Sales -->
             <div class="role-group">
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
                 <ul class="role-list">
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
-                            <span class="role-title">Sales Executive (Cars/Bikes)</span>
-                            <span class="role-details">Qualification: 12th Above | Freshers & Experienced Can Apply</span>
+                            <span class="role-title">Sales Executive / RM</span>
+                            <span class="role-details">Qualification: 12th or Degree | Freshers & Experienced Can Apply</span>
                         </div>
                     </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
-                        <div class="role-info">
-                            <span class="role-title">Senior Relationship Manager</span>
-                            <span class="role-details">Qualification: Degree Above | Freshers & Experienced Can Apply</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
-                        <div class="role-info">
-                            <span class="role-title">Relationship Manager</span>
-                            <span class="role-details">Qualification: Degree Above | Freshers & Experienced Can Apply</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Team Leaders</span>
-                            <span class="role-details">Qualification: 12th Above | Freshers & Experienced Can Apply</span>
+                            <span class="role-details">Automobile sales experience preferred</span>
                         </div>
                     </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Customer Care Executive</span>
-                            <span class="role-details">Qualification: 12th Above | Freshers & Experienced Can Apply</span>
+                            <span class="role-details">Excellent communication skills required</span>
                         </div>
                     </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Accounts Executive</span>
-                            <span class="role-details">Qualification: Degree B.com With Tally Knowledge Above | Freshers & Experienced Can Apply</span>
+                            <span class="role-details">B.Com with Tally knowledge</span>
                         </div>
                     </li>
                 </ul>
             </div>
+
+            <!-- Service -->
             <div class="role-group">
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
                 <ul class="role-list">
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Service Advisors</span>
-                            <span class="role-details">Qualification: Degree/Diploma in Mechanical/Automobile | Freshers & Experienced Can Apply</span>
+                            <span class="role-details">Degree/Diploma in Mechanical or Automobile</span>
                         </div>
                     </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Expert Technicians</span>
-                            <span class="role-details">Qualification: ITI/Diploma in Automobile/Mechanical | Experienced Only</span>
+                            <span class="role-details">ITI/Diploma | Experience only</span>
                         </div>
                     </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
-                        <div class="role-info">
-                            <span class="role-title">Marketing Executive</span>
-                            <span class="role-details">Qualification: Degree Above | Freshers & Experienced Can Apply</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
-                        <div class="role-info">
-                            <span class="role-title">Customer Care Manager</span>
-                            <span class="role-details">Qualification: Degree Above | Experienced Only</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Tele Callers</span>
-                            <span class="role-details">Qualification: 12th Above | Freshers & Experienced Can Apply</span>
+                            <span class="role-details">12th pass or above | Good voice modulation</span>
                         </div>
                     </li>
                 </ul>
             </div>
+
+            <!-- Spares -->
             <div class="role-group">
                 <h4><i class="fas fa-briefcase"></i> Spare Roles</h4>
                 <ul class="role-list">
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Spare Executive</span>
-                            <span class="role-details">Qualification: 12th Above | Experience Preferred</span>
+                            <span class="role-details">12th pass | Experience preferred</span>
                         </div>
                     </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
-                        <div class="role-info">
-                            <span class="role-title">Spare Assistant</span>
-                            <span class="role-details">Qualification: 10th/12th Above | Freshers Can Apply</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Spare Trainees</span>
-                            <span class="role-details">Qualification: 10th/12th Above | Freshers Can Apply</span>
+                            <span class="role-details">12th pass | Freshers can apply</span>
                         </div>
                     </li>
                 </ul>
             </div>
+
+            <!-- Digital -->
             <div class="role-group">
-                <h4><i class="fas fa-laptop-code"></i> Digital & IT</h4>
+                <h4><i class="fas fa-laptop-code"></i> Digital & Support</h4>
                 <ul class="role-list">
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
-                            <span class="role-title">Content Creators</span>
-                            <span class="role-details">Qualification: Degree/Diploma in Relevant Field | Freshers & Experienced Can Apply</span>
+                            <span class="role-title">Content Creator / Graphics</span>
+                            <span class="role-details">Proficiency in design tools & social media</span>
                         </div>
                     </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
-                        <div class="role-info">
-                            <span class="role-title">Graphics Designer</span>
-                            <span class="role-details">Qualification: Proficiency in Design Tools | Portfolio Required</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-chevron-right"></i>
+                    <li class="role-item">
+                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">IT Executive</span>
-                            <span class="role-details">Qualification: Degree/Diploma in IT/CS | Experience Preferred</span>
+                            <span class="role-details">Degree/Diploma in IT/CS</span>
                         </div>
                     </li>
                 </ul>
@@ -629,31 +580,26 @@
         </div>
     </section>
 
+    <!-- Final CTA -->
+    <section class="cta-dark" id="register">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>Pre-register online for faster interview processing at the venue.</p>
+        <br>
+        <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary">Fill Application Form</a>
+        <p style="margin-top: 25px; font-size: 0.9rem; opacity: 0.8;">Bring 2 sets of updated resumes & photos.</p>
+    </section>
+
     <footer>
-        <p>&copy; 2025-26 Sarathy Group. All Rights Reserved.</p>
-        <p style="margin-top: 10px; opacity: 0.8; font-size: 0.9rem;">Email: careers@sarathygroup.com<br>HR Support: +91 9037 2236 65</p>
+        <p><strong>Sarathy Group</strong> - Kerala's Trusted Automotive Partner</p>
+        <p>Careers: careers@sarathygroup.com</p>
+        <p>HR Support: +91 9037 2236 65</p>
+        <div style="margin-top: 25px; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 Sarathy Group. All Rights Reserved.</div>
     </footer>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/919037833865?text=Hi,%20I'm%20interested%20in%20Sarathy%20Mega%20Job%20Fair%202026" class="whatsapp-btn" target="_blank" aria-label="Contact on WhatsApp">
+    <a href="https://wa.me/919037833865?text=Hi,%20I'm%20interested%20in%20Sarathy%20Mega%20Job%20Fair%202026" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
