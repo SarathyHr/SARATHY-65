@@ -180,6 +180,22 @@
 
         .section-title p { color: var(--gray); font-size: 1.1rem; }
 
+        /* Video Section */
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background: #000;
+            position: relative;
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
         /* Poster Display */
         .poster-container {
             display: flex;
@@ -417,12 +433,26 @@
         <p>Join South Kerala's largest automotive group. Over 100+ openings across major brands.</p>
         <div class="btn-group">
             <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary">Apply Online Now</a>
-            <a href="#official-poster" class="btn btn-outline">View Official Poster</a>
+            <a href="#video-intro" class="btn btn-outline">Watch Video Intro</a>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="section-padding bg-white" id="video-intro">
+        <div class="section-title">
+            <h2>Video Highlights</h2>
+            <p>Know more about the careers and opportunities at Sarathy Group</p>
+        </div>
+        <div class="video-container">
+            <video controls poster="https://via.placeholder.com/800x450?text=Sarathy+Job+Fair+2026">
+                <source src="lv_0_20260124225944.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
 
     <!-- Poster Section -->
-    <section class="section-padding bg-white" id="official-poster">
+    <section class="section-padding bg-gray" id="official-poster">
         <div class="section-title">
             <h2>Official Event Posters</h2>
             <p>Details of the grand automotive job expo</p>
@@ -438,7 +468,7 @@
     </section>
 
     <!-- Venues Section -->
-    <section class="section-padding bg-gray">
+    <section class="section-padding bg-white">
         <div class="section-title">
             <h2>Venues & Schedule</h2>
             <p>Time: 09:30 AM to 05:30 PM</p>
@@ -456,7 +486,7 @@
             <div class="venue-card">
                 <i class="fas fa-university"></i>
                 <h3>KAZHAKKOOTTAM</h3>
-                <span class="venue-date">FEBRUARY  05, 2026</span>
+                <span class="venue-date">FEBRUARY 05, 2026</span>
                 <p class="venue-address">DC School of Management, Kazhakkoottam</p>
                 <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-link" target="_blank">
                     <i class="fas fa-location-arrow"></i> Get Direction
@@ -472,7 +502,7 @@
                 </a>
             </div>
             <div class="venue-card">
-                <img src="sarathy-group-logo.png" alt="Sarathy Group Logo" style="width:200px; height:110px; margin-bottom:15px;">
+                <img src="sarathy-group-logo.png" alt="Sarathy Group Logo" style="width:200px; height:110px; margin-bottom:15px; object-fit: contain;">
                 <h3>PAPPANAMCODE</h3>
                 <span class="venue-date">FEBRUARY 07, 2026</span>
                 <p class="venue-address">Maruti Suzuki ARENA (Sarathy Autodrives)</p>
@@ -484,7 +514,7 @@
     </section>
 
     <!-- Positions Section -->
-    <section class="section-padding bg-white">
+    <section class="section-padding bg-gray">
         <div class="section-title">
             <h2>Available Positions</h2>
             <p>Multiple vacancies for freshers and experienced candidates</p>
@@ -498,28 +528,14 @@
                         <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Sales Executive / RM</span>
-                            <span class="role-details">Qualification: 12th or Degree | Freshers & Experienced Can Apply</span>
+                            <span class="role-details">Qualification: 12th or Degree | Freshers & Experienced</span>
                         </div>
                     </li>
                     <li class="role-item">
                         <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Team Leaders</span>
-                            <span class="role-details">Automobile sales | Freshers & Experienced Can Apply</span>
-                        </div>
-                    </li>
-                    <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div class="role-info">
-                            <span class="role-title">Customer Care Executive</span>
-                            <span class="role-details"> Freshers & Experienced Can Apply</span>
-                        </div>
-                    </li>
-                    <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div class="role-info">
-                            <span class="role-title">Accounts Executive</span>
-                            <span class="role-details">B.Com with Tally knowledge</span>
+                            <span class="role-details">Automobile sales | Minimum experience required</span>
                         </div>
                     </li>
                 </ul>
@@ -533,42 +549,14 @@
                         <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Service Advisors</span>
-                            <span class="role-details">Degree/Diploma in Mechanical or Automobile | Freshers & Experienced Can Apply</span>
+                            <span class="role-details">Degree/Diploma in Mechanical/Automobile</span>
                         </div>
                     </li>
                     <li class="role-item">
                         <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Expert Technicians</span>
-                            <span class="role-details">ITI/Diploma | Freshers & Experienced Can Apply</span>
-                        </div>
-                    </li>
-                    <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div class="role-info">
-                            <span class="role-title">Tele Callers</span>
-                            <span class="role-details">12th pass or above | Good voice modulation| Freshers & Experienced Can Apply</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Spares -->
-            <div class="role-group">
-                <h4><i class="fas fa-briefcase"></i> Spare Roles</h4>
-                <ul class="role-list">
-                    <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div class="role-info">
-                            <span class="role-title">Spare Executive</span>
-                            <span class="role-details">12th pass | Freshers & Experienced Can Apply</span>
-                        </div>
-                    </li>
-                    <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div class="role-info">
-                            <span class="role-title">Spare Trainees</span>
-                            <span class="role-details">12th pass | Freshers & Experienced Can Apply</span>
+                            <span class="role-details">ITI/Diploma | Knowledge in EV is an advantage</span>
                         </div>
                     </li>
                 </ul>
@@ -576,21 +564,20 @@
 
             <!-- Digital -->
             <div class="role-group">
-                <h4><i class="fas fa-laptop-code"></i> Digital & Support</h4>
+                <h4><i class="fas fa-laptop-code"></i> Digital & Others</h4>
                 <ul class="role-list">
                     <li class="role-item">
                         <i class="fas fa-check-circle"></i>
                         <div class="role-info">
-                            <span class="role-title">Content Creator / Graphics</span>
-                            <span class="role-details">Proficiency in design tools & social media| Freshers & Experienced Can Apply</span>
+                            <span class="role-title">Content Creator / IT</span>
+                            <span class="role-details">Skills in Social Media & Design</span>
                         </div>
                     </li>
                     <li class="role-item">
                         <i class="fas fa-check-circle"></i>
                         <div class="role-info">
-                            <span class="role-title">IT Executive</span>
-                            <span class="role-details">Degree/Diploma in IT/CS</span>
-                            <span class="role-details">Freshers & Experienced Can Apply</span>
+                            <span class="role-title">Spare Parts Executive</span>
+                            <span class="role-details">Inventory Management & Billing</span>
                         </div>
                     </li>
                 </ul>
@@ -614,8 +601,8 @@
         <div style="margin-top: 25px; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 Sarathy Group. All Rights Reserved.</div>
     </footer>
 
-    <!-- Floating WhatsApp with Twinkling Effect -->
-    <a href="https://wa.me/919037833865?text=Hi,%20I'm%20interested%20in%20Sarathy%20Mega%20Job%20Fair%202026" class="whatsapp-btn" target="_blank" title="Chat with us on WhatsApp">
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/919037833865?text=Hi,%20I'm%20interested%20in%20Sarathy%20Mega%20Job%20Fair%202026" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
