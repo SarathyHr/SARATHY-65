@@ -180,7 +180,7 @@
 
         .section-title p { color: var(--gray); font-size: 1.1rem; }
 
-        /* Video Section - Improved for Mobile */
+        /* Video Section - Optimized for Mobile */
         .video-wrapper {
             max-width: 800px;
             margin: 0 auto;
@@ -194,14 +194,15 @@
             background: #000;
             position: relative;
             width: 100%;
-            /* Fixed mobile aspect ratio issues */
-            min-height: 250px; 
+            background-color: #000;
+            /* Ensure aspect ratio for mobile */
+            min-height: 200px;
         }
 
         .video-container video {
             width: 100%;
             height: auto;
-            max-height: 550px;
+            max-height: 600px;
             display: block;
             margin: 0 auto;
             background: #000;
@@ -448,7 +449,7 @@
         </div>
     </section>
 
-    <!-- Video Section - Fixed for Mobile Playback -->
+    <!-- Video Section - Fixed for All Devices -->
     <section class="section-padding bg-white" id="video-intro">
         <div class="section-title">
             <h2>Video Highlights</h2>
@@ -461,19 +462,19 @@
                     controls 
                     playsinline 
                     webkit-playsinline 
-                    preload="metadata"
+                    muted
+                    preload="auto"
                     poster="https://via.placeholder.com/800x450?text=Sarathy+Job+Fair+2026"
                 >
                     <source src="lv_0_20260124225944.mp4" type="video/mp4">
-                    <!-- Backup source link if primary fails -->
                     Your browser does not support the video tag.
                 </video>
             </div>
             <div id="videoError" style="display:none; text-align: center; padding: 20px; color: #d9534f; background: #f9f2f2; border-radius: 10px; margin-top: 15px;">
-                <i class="fas fa-exclamation-triangle"></i> Video file not found. Please ensure 'lv_0_20260124225944.mp4' is in the same folder as this HTML file on Vercel.
+                <i class="fas fa-exclamation-triangle"></i> Video file not found. Please ensure the file is uploaded correctly.
             </div>
             <p style="text-align: center; font-size: 0.85rem; color: var(--gray); margin-top: 15px;">
-                <i class="fas fa-info-circle"></i> വീഡിയോ കാണുന്നതിനായി പ്ലേ ബട്ടൺ അമർത്തുക
+                <i class="fas fa-info-circle"></i> വീഡിയോ കാണുന്നതിനായി പ്ലേ ബട്ടൺ അമർത്തുക (ശബ്ദത്തിനായി അൺമ്യൂട്ട് ചെയ്യുക)
             </p>
         </div>
     </section>
@@ -630,17 +631,30 @@
 
     <!-- Floating WhatsApp -->
     <a href="https://wa.me/919037833865?text=Hi,%20I'm%20interested%20in%20Sarathy%20Mega%20Job%20Fair%202026" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i> 
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        // Check if video fails to load
-        const video = document.getElementById('mainVideo');
-        const errorDiv = document.getElementById('videoError');
-        
-        video.onerror = function() {
-            errorDiv.style.display = 'block';
-        };
+        // Enhanced script for mobile playback
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('mainVideo');
+            const errorDiv = document.getElementById('videoError');
+            
+            // Try to force load
+            video.load();
+
+            video.onerror = function() {
+                errorDiv.style.display = 'block';
+                console.error("Video failed to load");
+            };
+
+            // Mobile devices sometimes need a user interaction to start buffering
+            document.body.addEventListener('touchstart', function() {
+                if (video.paused && video.readyState < 2) {
+                    video.load();
+                }
+            }, { once: true });
+        });
     </script>
 
 </body>
