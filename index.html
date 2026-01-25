@@ -180,19 +180,27 @@
 
         .section-title p { color: var(--gray); font-size: 1.1rem; }
 
-        /* Video Section */
-        .video-container {
+        /* Video Section - Improved for Mobile */
+        .video-wrapper {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        .video-container {
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             background: #000;
             position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Default aspect ratio */
         }
 
         .video-container video {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
@@ -398,6 +406,7 @@
             .section-padding { padding: 50px 15px; }
             .btn { max-width: 100%; }
             .logo-item { width: 110px; margin: 0 12px; }
+            .video-container { aspect-ratio: 9 / 16; } /* Better for mobile-style videos if needed */
         }
     </style>
 </head>
@@ -437,17 +446,29 @@
         </div>
     </section>
 
-    <!-- Video Section -->
+    <!-- Video Section - Optimized for Mobile -->
     <section class="section-padding bg-white" id="video-intro">
         <div class="section-title">
             <h2>Video Highlights</h2>
             <p>Know more about the careers and opportunities at Sarathy Group</p>
         </div>
-        <div class="video-container">
-            <video controls playsinline webkit-playsinline preload="metadata" poster="https://via.placeholder.com/800x450?text=Sarathy+Job+Fair+2026">
-                <source src="lv_0_20260124225944.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        <div class="video-wrapper">
+            <div class="video-container">
+                <video 
+                    controls 
+                    playsinline 
+                    webkit-playsinline 
+                    muted 
+                    preload="auto" 
+                    poster="https://via.placeholder.com/800x450?text=Sarathy+Job+Fair+2026"
+                >
+                    <source src="lv_0_20260124225944.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p style="text-align: center; font-size: 0.85rem; color: var(--gray); margin-top: 15px;">
+                <i class="fas fa-info-circle"></i> Tap on video to unmute sound
+            </p>
         </div>
     </section>
 
