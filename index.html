@@ -31,7 +31,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'verdana', sans-serif;
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
@@ -71,11 +71,7 @@
             flex-shrink: 0;
         }
 
-        .logo-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
+        .logo-img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
         @keyframes scroll {
             0% { transform: translateX(0); }
@@ -127,7 +123,6 @@
             flex-direction: column;
             align-items: center;
             gap: 15px;
-            padding: 0 10px;
         }
 
         .btn {
@@ -160,12 +155,10 @@
             backdrop-filter: blur(5px);
         }
 
-        .video-wrapper {
-            max-width: 100%;
-            margin: -50px auto 40px;
-            padding: 0 15px;
-            position: relative;
-            z-index: 10;
+        .video-section {
+            padding: 60px 20px;
+            background-color: var(--light);
+            text-align: center;
         }
 
         .video-container {
@@ -175,9 +168,6 @@
             box-shadow: var(--shadow-lg);
             background: #000;
             border: 4px solid var(--white);
-        }
-
-        .video-container.portrait {
             max-width: 320px;
             margin: 0 auto;
             aspect-ratio: 9/16;
@@ -197,7 +187,6 @@
         .section-title {
             text-align: center;
             margin-bottom: 35px;
-            padding: 0 10px;
         }
 
         .section-title h2 {
@@ -217,13 +206,8 @@
             margin: 0 auto;
         }
 
-        @media (min-width: 768px) {
-            .venue-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (min-width: 1024px) {
-            .venue-grid { grid-template-columns: repeat(4, 1fr); }
-        }
+        @media (min-width: 768px) { .venue-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .venue-grid { grid-template-columns: repeat(4, 1fr); } }
 
         .venue-card {
             background: var(--white);
@@ -240,7 +224,7 @@
         .venue-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
         .venue-card h3 { color: var(--primary); font-size: 1.3rem; margin-bottom: 5px; }
         .venue-date { color: var(--secondary); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 10px; }
-        .venue-address { color: var(--gray); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.4; }
+        .venue-address { color: var(--gray); font-size: 0.9rem; margin-bottom: 20px; }
 
         .map-link {
             display: flex;
@@ -264,9 +248,7 @@
             margin: 0 auto;
         }
 
-        @media (min-width: 768px) {
-            .roles-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        @media (min-width: 768px) { .roles-grid { grid-template-columns: repeat(2, 1fr); } }
 
         .role-group {
             background: var(--white);
@@ -288,16 +270,8 @@
         }
 
         .role-list { list-style: none; }
-
-        .role-item {
-            padding: 15px 0;
-            border-bottom: 1px dashed #f1f5f9;
-            display: flex;
-            gap: 12px;
-        }
-
+        .role-item { padding: 15px 0; border-bottom: 1px dashed #f1f5f9; display: flex; gap: 12px; }
         .role-item:last-child { border: none; }
-        .role-item i { color: var(--secondary); margin-top: 4px; font-size: 0.85rem; }
         .role-info { flex: 1; }
         .role-title { display: block; font-weight: 700; color: var(--dark); font-size: 1.05rem; margin-bottom: 5px; }
         
@@ -340,8 +314,6 @@
             padding: 60px 20px;
         }
 
-        .cta-dark h2 { font-size: 1.8rem; margin-bottom: 10px; }
-
         .whatsapp-btn {
             position: fixed;
             bottom: 25px;
@@ -374,15 +346,11 @@
             border-top: 1px solid #eee;
         }
 
-        footer p { margin-bottom: 10px; font-size: 0.9rem; }
-        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
-
         @media (max-width: 600px) {
             .hero { padding: 50px 15px 70px; }
             .section-padding { padding: 45px 15px; }
             .btn { max-width: 100%; border-radius: 14px; }
             .logo-item { width: 100px; margin: 0 15px; }
-            .venue-card { border-radius: 20px; }
         }
     </style>
 </head>
@@ -415,25 +383,12 @@
     <section class="hero">
         <span class="fair-badge">MEGA RECRUITMENT DRIVE 2026</span>
         <h1>BUILD YOUR CAREER WITH SARATHY</h1>
-        <p>Join South Kerala's largest automotive group. Over 100+ openings across major brands.</p>
+        <p>Join South Kerala's largest automotive group. Over 50+ openings across major brands.</p>
         <div class="btn-group">
             <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary">Apply Online Now</a>
             <a href="#vacancies" class="btn btn-outline">Check Vacancies</a>
         </div>
     </section>
-
-    <!-- Video Promo Section -->
-    <div class="video-wrapper">
-        <div class="section-title" style="margin-bottom: 15px;">
-            <h2 style="font-size: 1.1rem; color: var(--white); text-shadow: 0 2px 4px rgba(0,0,0,0.5); text-transform: uppercase; letter-spacing: 1px;">Watch Promo Video</h2>
-        </div>
-        <div class="video-container portrait">
-            <video controls poster="https://via.placeholder.com/400x710?text=Sarathy+Mega+Job+Fair+2026" preload="metadata">
-                <source src="video_2026-01-25_10-52-33.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-    </div>
 
     <!-- Poster Section -->
     <section class="section-padding bg-white" id="official-poster">
@@ -443,11 +398,25 @@
         </div>
         <div class="poster-container">
             <div class="poster-box">
-                <img src="123.jpeg" alt="Sarathy Job Fair 2026 Main Poster" onerror="this.src='https://via.placeholder.com/600x800?text=Sarathy+Job+Fair+Poster+2026'">
+                <img src="123.jpeg" alt="Sarathy Job Fair 2026 Main Poster" onerror="this.src='https://via.placeholder.com/400x530?text=Sarathy+Job+Fair+Poster+2026'">
             </div>
             <div class="poster-box">
-                <img src="Sarathy Job Fair POster 08.jpg.jpeg" alt="Additional Fair Details" onerror="this.src='https://via.placeholder.com/600x800?text=Job+Fair+Details'">
+                <img src="WhatsApp Image 2026-01-22 at 8.12.42 PM.jpeg" alt="Additional Fair Details" onerror="this.src='https://via.placeholder.com/400x530?text=Job+Fair+Details'">
             </div>
+        </div>
+    </section>
+
+    <!-- Adjusted Video Promo Section -->
+    <section class="video-section">
+        <div class="section-title">
+            <h2>Watch Promo Video</h2>
+            <p>Get a glimpse of what awaits you at the Sarathy Job Fair</p>
+        </div>
+        <div class="video-container">
+            <video controls poster="https://via.placeholder.com/320x570?text=Play+Video" preload="metadata">
+                <source src="video_2026-01-25_10-52-33.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
 
@@ -462,45 +431,37 @@
                 <div>
                     <i class="fas fa-university"></i>
                     <h3>ATTINGAL</h3>
-                    <span class="venue-date">FEB 04, 2026</span>
+                    <span class="venue-date">FEBRUARY 04, 2026</span>
                     <p class="venue-address">Govt. Polytechnic College, Attingal</p>
                 </div>
-                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-link" target="_blank">
-                    <i class="fas fa-location-arrow"></i> Get Direction
-                </a>
+                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-link" target="_blank">Get Direction</a>
             </div>
             <div class="venue-card">
                 <div>
                     <i class="fas fa-university"></i>
                     <h3>KAZHAKKOOTTAM</h3>
-                    <span class="venue-date">FEB 05, 2026</span>
+                    <span class="venue-date">FEBRUARY 05, 2026</span>
                     <p class="venue-address">DC School of Management, Kazhakkoottam</p>
                 </div>
-                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-link" target="_blank">
-                    <i class="fas fa-location-arrow"></i> Get Direction
-                </a>
+                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-link" target="_blank">Get Direction</a>
             </div>
             <div class="venue-card">
                 <div>
                     <i class="fas fa-university"></i>
                     <h3>KATTAKKADA</h3>
-                    <span class="venue-date">FEB 06, 2026</span>
+                    <span class="venue-date">FEBRUARY 06, 2026</span>
                     <p class="venue-address">Christian College, Kattakkada</p>
                 </div>
-                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-link" target="_blank">
-                    <i class="fas fa-location-arrow"></i> Get Direction
-                </a>
+                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-link" target="_blank">Get Direction</a>
             </div>
             <div class="venue-card">
                 <div>
                     <img src="sarathy-group-logo.png" alt="Sarathy Group Logo" style="width:140px; margin-bottom:10px;" onerror="this.style.display='none'">
                     <h3>PAPPANAMCODE</h3>
-                    <span class="venue-date">FEB 07, 2026</span>
-                    <p class="venue-address">Maruti Suzuki ARENA (Sarathy Autodrives)</p>
+                    <span class="venue-date">FEBRUARY 07, 2026</span>
+                    <p class="venue-address">Maruti Suzuki ARENA Showroom</p>
                 </div>
-                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-link" target="_blank">
-                    <i class="fas fa-location-arrow"></i> Get Direction
-                </a>
+                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-link" target="_blank">Get Direction</a>
             </div>
         </div>
     </section>
@@ -512,15 +473,12 @@
             <p>Vacancies for Freshers & Experienced Candidates</p>
         </div>
         <div class="roles-grid">
-            
-            <!-- Sales Roles -->
             <div class="role-group">
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
                 <ul class="role-list">
                     <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
-                            <span class="role-title">Sales Executive / Relationship Manager</span>
+                            <span class="role-title">Sales Executive / RM</span>
                             <div class="role-details-box">
                                 <p><span class="role-label">Qualification:</span><span class="role-val">12th Pass or Any Degree</span></p>
                                 <p><span class="role-label">Experience:</span><span class="role-val">Automobile/Retail Sales Preferred</span></p>
@@ -529,7 +487,6 @@
                         </div>
                     </li>
                     <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Team Leaders</span>
                             <div class="role-details-box">
@@ -539,53 +496,28 @@
                             </div>
                         </div>
                     </li>
-                    <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div class="role-info">
-                            <span class="role-title">Customer Care Executive</span>
-                            <div class="role-details-box">
-                                <p><span class="role-label">Qualification:</span><span class="role-val">12th Pass or Degree</span></p>
-                                <p><span class="role-label">Experience:</span><span class="role-val">Good Communication Skills</span></p>
-                                <span class="fresher-badge">Freshers & Experienced Can Apply</span>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
 
-            <!-- Service Roles -->
             <div class="role-group">
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
                 <ul class="role-list">
                     <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Service Advisors</span>
                             <div class="role-details-box">
-                                <p><span class="role-label">Qualification:</span><span class="role-val">Degree/Diploma in Mechanical/Automobile</span></p>
+                                <p><span class="role-label">Qualification:</span><span class="role-val">Degree/Diploma (Auto/Mech)</span></p>
                                 <p><span class="role-label">Experience:</span><span class="role-val">Technical Knowledge Required</span></p>
                                 <span class="fresher-badge">Freshers & Experienced Can Apply</span>
                             </div>
                         </div>
                     </li>
                     <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Expert Technicians</span>
                             <div class="role-details-box">
-                                <p><span class="role-label">Qualification:</span><span class="role-val">ITI / Diploma holders</span></p>
-                                <p><span class="role-label">Experience:</span><span class="role-val">Multi-brand/Automobile Service</span></p>
-                                <span class="fresher-badge">Freshers & Experienced Can Apply</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div class="role-info">
-                            <span class="role-title">Tele Callers</span>
-                            <div class="role-details-box">
-                                <p><span class="role-label">Qualification:</span><span class="role-val">10th, 12th or Above</span></p>
-                                <p><span class="role-label">Experience:</span><span class="role-val">Malayalam & English fluency</span></p>
+                                <p><span class="role-label">Qualification:</span><span class="role-val">ITI / Diploma Holders</span></p>
+                                <p><span class="role-label">Experience:</span><span class="role-val">Automobile Service Experience</span></p>
                                 <span class="fresher-badge">Freshers & Experienced Can Apply</span>
                             </div>
                         </div>
@@ -593,12 +525,10 @@
                 </ul>
             </div>
 
-            <!-- Spare Parts -->
             <div class="role-group">
                 <h4><i class="fas fa-box-open"></i> Spare Parts</h4>
                 <ul class="role-list">
                     <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Spare Parts Executive / Trainee</span>
                             <div class="role-details-box">
@@ -611,52 +541,36 @@
                 </ul>
             </div>
 
-            <!-- Support & Digital -->
             <div class="role-group">
                 <h4><i class="fas fa-laptop-code"></i> Support & Digital</h4>
                 <ul class="role-list">
                     <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
-                            <span class="role-title">Content Creator / Graphics Designer</span>
+                            <span class="role-title">Content Creator / Graphics</span>
                             <div class="role-details-box">
                                 <p><span class="role-label">Qualification:</span><span class="role-val">Degree/Diploma in Visual Design</span></p>
-                                <p><span class="role-label">Experience:</span><span class="role-val">Portfolio required (Social Media)</span></p>
+                                <p><span class="role-label">Experience:</span><span class="role-val">Social Media Design Skills</span></p>
                                 <span class="fresher-badge">Freshers & Experienced Can Apply</span>
                             </div>
                         </div>
                     </li>
                     <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div class="role-info">
-                            <span class="role-title">IT Executive</span>
-                            <div class="role-details-box">
-                                <p><span class="role-label">Qualification:</span><span class="role-val">Degree/Diploma in IT/CS</span></p>
-                                <p><span class="role-label">Experience:</span><span class="role-val">Hardware & Networking knowledge</span></p>
-                                <span class="fresher-badge">Freshers & Experienced Can Apply</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="role-item">
-                        <i class="fas fa-check-circle"></i>
                         <div class="role-info">
                             <span class="role-title">Accounts Executive</span>
                             <div class="role-details-box">
                                 <p><span class="role-label">Qualification:</span><span class="role-val">B.Com / M.Com</span></p>
-                                <p><span class="role-label">Experience:</span><span class="role-val">Knowledge in Tally is mandatory</span></p>
+                                <p><span class="role-label">Experience:</span><span class="role-val">Tally Knowledge is Mandatory</span></p>
                                 <span class="fresher-badge">Freshers & Experienced Can Apply</span>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
-
         </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="cta-dark" id="register">
-        <h2>Join Our Team!</h2>
+        <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Join Our Team!</h2>
         <p>Apply online for faster processing.</p>
         <div style="margin-top: 25px;">
             <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary">Apply Online Now</a>
@@ -671,8 +585,7 @@
         <div style="margin-top: 25px; opacity: 0.5; font-size: 0.75rem;">&copy; 2026 Sarathy Group. All Rights Reserved.</div>
     </footer>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/919037833865?text=Hi,%20I'm%20interested%20in%20Sarathy%20Mega%20Job%20Fair%202026" class="whatsapp-btn" target="_blank" title="Chat with us on WhatsApp">
+    <a href="https://wa.me/919037833865?text=Hi,%20I'm%20interested%20in%20Sarathy%20Mega%20Job%20Fair%202026" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
