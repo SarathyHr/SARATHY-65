@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sarathy Group - Mega Job Fair 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #074e6e;
-            --primary-dark: #053a52;
-            --secondary: #FFA41B;
-            --accent: #00B4D8;
-            --light: #f1f5f9;
-            --dark: #0b3958;
-            --gray: #64748b;
+            --primary: #023e8a;
+            --primary-dark: #03045e;
+            --primary-light: #0077b6;
+            --secondary: #ff9f1c;
+            --secondary-dark: #f3722c;
+            --accent: #48cae4;
+            --light: #f8fbff;
+            --dark: #001219;
+            --gray: #4a5568;
             --white: #ffffff;
             --whatsapp: #25D366;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -31,7 +33,7 @@
         }
 
         body {
-            font-family: 'verdana', sans-serif;
+            font-family: 'VERDANA', sans-serif;
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
@@ -39,6 +41,7 @@
             scroll-behavior: smooth;
         }
 
+        /* --- Premium Logo Slider --- */
         header {
             background: var(--white);
             padding: 10px 0;
@@ -50,59 +53,78 @@
 
         .logo-slider {
             overflow: hidden;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
+            padding: 10px 0;
+            background: var(--white);
+            position: relative;
+            /* Premium Fade Edges */
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
 
         .logo-track {
             display: flex;
             width: fit-content;
-            animation: scroll 20s linear infinite;
+            animation: scroll 10s linear infinite; /* Slow premium scroll */
+        }
+
+        .logo-track:hover {
+            animation-play-state: paused;
         }
 
         .logo-item {
             width: 120px;
-            height: 40px;
-            margin: 0 20px;
+            height: 50px;
+            margin: 0 35px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            transition: var(--transition);
+            /* Removed grayscale for colorful look */
+            filter: none;
+            opacity: 1;
         }
 
-        .logo-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .logo-item:hover {
+            transform: scale(1.15); /* Slight zoom on hover */
+        }
+
+        .logo-img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; 
+        }
 
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
+        /* --- Hero Section --- */
         .hero {
             padding: 60px 20px 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
             color: var(--white);
             text-align: center;
             position: relative;
-            clip-path: ellipse(200% 100% at 50% 0%);
         }
 
         .fair-badge {
             background: var(--secondary);
-            color: var(--primary);
-            padding: 8px 24px;
+            color: var(--white);
+            padding: 8px 20px;
             border-radius: 50px;
             font-weight: 800;
             font-size: 0.75rem;
             display: inline-block;
             margin-bottom: 20px;
-            letter-spacing: 1.5px;
-            box-shadow: 0 4px 15px rgba(255, 164, 27, 0.4);
+            letter-spacing: 1px;
             text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .hero h1 {
-            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            font-size: clamp(2rem, 8vw, 3.2rem);
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 15px;
@@ -110,12 +132,10 @@
         }
 
         .hero p {
-            font-size: clamp(0.95rem, 4vw, 1.2rem);
+            font-size: clamp(1rem, 4.5vw, 1.2rem);
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto 30px;
-            font-weight: 400;
-            padding: 0 10px;
         }
 
         .btn-group {
@@ -129,58 +149,33 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 18px 30px;
-            border-radius: 16px;
+            gap: 10px;
+            padding: 16px 30px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
             font-size: 1rem;
             transition: var(--transition);
-            cursor: pointer;
-            border: none;
             width: 100%;
-            max-width: 340px;
+            max-width: 320px;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary {
             background: var(--secondary);
-            color: var(--primary);
-            box-shadow: 0 8px 20px rgba(255, 164, 27, 0.3);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3);
         }
 
         .btn-outline {
-            background: rgba(255,255,255,0.1);
+            background: transparent;
             color: var(--white);
-            border: 2px solid var(--white);
-            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
 
-        .video-section {
-            padding: 60px 20px;
-            background-color: var(--light);
-            text-align: center;
-        }
-
-        .video-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 24px;
-            box-shadow: var(--shadow-lg);
-            background: #000;
-            border: 4px solid var(--white);
-            max-width: 320px;
-            margin: 0 auto;
-            aspect-ratio: 9/16;
-        }
-
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .section-padding { padding: 60px 20px; }
+        /* --- Sections --- */
+        .section-padding { padding: 50px 20px; }
         .bg-white { background: var(--white); }
         .bg-gray { background: #f8fafc; }
 
@@ -191,109 +186,16 @@
 
         .section-title h2 {
             font-size: clamp(1.5rem, 6vw, 2.2rem);
-            color: var(--primary);
+            color: var(--primary-dark);
             margin-bottom: 10px;
             font-weight: 800;
         }
 
-        .section-title p { color: var(--gray); font-size: 1rem; }
-
-        .venue-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 768px) { .venue-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .venue-grid { grid-template-columns: repeat(4, 1fr); } }
-
-        .venue-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(0,0,0,0.03);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .venue-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
-        .venue-card h3 { color: var(--primary); font-size: 1.3rem; margin-bottom: 5px; }
-        .venue-date { color: var(--secondary); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 10px; }
-        .venue-address { color: var(--gray); font-size: 0.9rem; margin-bottom: 20px; }
-
-        .map-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            color: var(--primary);
-            font-weight: 700;
-            text-decoration: none;
-            padding: 14px;
-            border: 2px solid var(--primary);
-            border-radius: 14px;
-            font-size: 0.9rem;
-        }
-
-        .roles-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 768px) { .roles-grid { grid-template-columns: repeat(2, 1fr); } }
-
-        .role-group {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: var(--shadow-sm);
-            border-left: 6px solid var(--primary);
-        }
-
-        .role-group h4 {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .role-list { list-style: none; }
-        .role-item { padding: 15px 0; border-bottom: 1px dashed #f1f5f9; display: flex; gap: 12px; }
-        .role-item:last-child { border: none; }
-        .role-info { flex: 1; }
-        .role-title { display: block; font-weight: 700; color: var(--dark); font-size: 1.05rem; margin-bottom: 5px; }
-        
-        .role-details-box { display: flex; flex-direction: column; gap: 4px; }
-        .role-label { font-size: 0.8rem; font-weight: 600; color: var(--primary); text-transform: uppercase; margin-right: 5px; }
-        .role-val { font-size: 0.9rem; color: var(--gray); }
-        .fresher-badge { 
-            display: inline-block; 
-            background: #e1f7e7; 
-            color: #1b8a32; 
-            font-size: 0.75rem; 
-            padding: 2px 8px; 
-            border-radius: 4px; 
-            font-weight: 700; 
-            margin-top: 5px;
-        }
-
         .poster-container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            max-width: 500px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -302,11 +204,144 @@
             padding: 10px;
             border-radius: 20px;
             box-shadow: var(--shadow-md);
-            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .poster-box img { width: 100%; height: auto; border-radius: 12px; display: block; }
 
+        .video-container {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            max-width: 300px;
+            margin: 0 auto;
+            border: 5px solid var(--white);
+            aspect-ratio: 9/16;
+            background: #000;
+        }
+
+        .video-container video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- Venue Cards --- */
+        .venue-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) { .venue-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .venue-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .venue-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .venue-card i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
+        .venue-card h3 { font-size: 1.1rem; margin-bottom: 5px; font-weight: 800; color: var(--primary-dark); }
+        .venue-date { color: var(--secondary-dark); font-weight: 800; font-size: 0.95rem; display: block; margin-bottom: 10px; }
+        .venue-address { font-size: 0.85rem; color: var(--gray); margin-bottom: 15px; min-height: 40px; }
+
+        .map-link {
+            padding: 12px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        .map-link:hover { background: var(--primary); color: white; }
+
+        /* --- Jobs Section --- */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 900px) { .roles-grid { grid-template-columns: 1fr 1fr; } }
+
+        .role-group {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f1f5f9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .role-group h4 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #f8fafc;
+            padding-bottom: 10px;
+        }
+
+        .role-list { list-style: none; flex-grow: 1; }
+
+        .role-item { 
+            padding: 15px 0; 
+            border-bottom: 1px solid #f8fafc; 
+        }
+        .role-item:last-child { border: none; }
+        
+        .role-title { font-weight: 800; color: var(--dark); font-size: 1rem; display: block; margin-bottom: 5px; }
+        .role-label { font-size: 0.7rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; margin-right: 5px; }
+        .role-val { font-size: 0.85rem; color: var(--gray); }
+        
+        .fresher-badge { 
+            display: inline-block; 
+            background: #f0fdf4; 
+            color: #16a34a; 
+            font-size: 0.7rem; 
+            padding: 4px 12px; 
+            border-radius: 50px; 
+            font-weight: 700; 
+            margin-top: 8px;
+            border: 1px solid #dcfce7;
+        }
+
+        .btn-role-apply {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--primary-dark);
+            color: var(--white);
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(3, 4, 94, 0.2);
+        }
+
+        .btn-role-apply:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* --- Footer & CTA --- */
         .cta-dark {
             background: var(--dark);
             color: var(--white);
@@ -316,41 +351,36 @@
 
         .whatsapp-btn {
             position: fixed;
-            bottom: 25px;
+            bottom: 20px;
             right: 20px;
             background: var(--whatsapp);
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             z-index: 1000;
-            animation: whatsapp-twinkle 2s infinite;
             text-decoration: none;
-        }
-
-        @keyframes whatsapp-twinkle {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-            70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         footer {
             background: var(--white);
             padding: 40px 20px;
             text-align: center;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.9rem;
         }
 
-        @media (max-width: 600px) {
-            .hero { padding: 50px 15px 70px; }
-            .section-padding { padding: 45px 15px; }
-            .btn { max-width: 100%; border-radius: 14px; }
-            .logo-item { width: 100px; margin: 0 15px; }
+        @media (max-width: 480px) {
+            .hero { padding: 50px 15px; }
+            .section-padding { padding: 40px 15px; }
+            .btn { padding: 14px; }
+            .role-group { padding: 20px 15px; }
+            .logo-item { width: 90px; margin: 0 15px; }
         }
     </style>
 </head>
@@ -359,6 +389,7 @@
     <header>
         <div class="logo-slider">
             <div class="logo-track">
+                <!-- Set 1 -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy Group" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -367,7 +398,7 @@
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
                 <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
                 <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
-                <!-- Duplicate -->
+                <!-- Duplicate Set for Loop -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy Group" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -381,50 +412,44 @@
     </header>
 
     <section class="hero">
-        <span class="fair-badge">MEGA RECRUITMENT DRIVE 2026</span>
+        <span class="fair-badge">Mega Job Fair 2026</span>
         <h1>BUILD YOUR CAREER WITH SARATHY</h1>
-        <p>Join South Kerala's largest automotive group. Over 50+ openings across major brands.</p>
+        <p>Join South Kerala's leader in automotive excellence. 50+ openings for Freshers & Experienced professionals.</p>
         <div class="btn-group">
             <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary">Apply Online Now</a>
-            <a href="#vacancies" class="btn btn-outline">Check Vacancies</a>
+            <a href="#vacancies" class="btn btn-outline">View All Jobs</a>
         </div>
     </section>
 
-    <!-- Poster Section -->
-    <section class="section-padding bg-white" id="official-poster">
+    <section class="section-padding bg-white">
         <div class="section-title">
-            <h2>Official Event Posters</h2>
-            <p>Details of the grand automotive job expo</p>
+            <h2>Official Posters</h2>
         </div>
         <div class="poster-container">
             <div class="poster-box">
-                <img src="123.jpeg" alt="Sarathy Job Fair 2026 Main Poster" onerror="this.src='https://via.placeholder.com/400x530?text=Sarathy+Job+Fair+Poster+2026'">
+                <img src="123.jpeg" alt="Poster 1" onerror="this.src='https://via.placeholder.com/600x800?text=Sarathy+Job+Fair+2026'">
             </div>
             <div class="poster-box">
-                <img src="WhatsApp Image 2026-01-22 at 8.12.42 PM.jpeg" alt="Additional Fair Details" onerror="this.src='https://via.placeholder.com/400x530?text=Job+Fair+Details'">
+                <img src="WhatsApp Image 2026-01-22 at 8.12.42 PM.jpeg" alt="Poster 2" onerror="this.src='https://via.placeholder.com/600x800?text=Job+Fair+Details'">
             </div>
         </div>
     </section>
 
-    <!-- Adjusted Video Promo Section -->
-    <section class="video-section">
+    <section class="section-padding bg-gray">
         <div class="section-title">
-            <h2>Watch Promo Video</h2>
-            <p>Get a glimpse of what awaits you at the Sarathy Job Fair</p>
+            <h2>Watch Promo</h2>
         </div>
         <div class="video-container">
-            <video controls poster="https://via.placeholder.com/320x570?text=Play+Video" preload="metadata">
+            <video controls poster="https://via.placeholder.com/320x570?text=Promo+Video" preload="metadata">
                 <source src="video_2026-01-25_10-52-33.mp4" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
         </div>
     </section>
 
-    <!-- Venues Section -->
-    <section class="section-padding bg-gray">
+    <section class="section-padding bg-white">
         <div class="section-title">
-            <h2>Venues & Schedule</h2>
-            <p>Time: 09:30 AM to 05:30 PM</p>
+            <h2>Venues & Dates</h2>
+            <p>Time: 9:30 AM to 4:30 PM</p>
         </div>
         <div class="venue-grid">
             <div class="venue-card">
@@ -434,7 +459,7 @@
                     <span class="venue-date">FEBRUARY 04, 2026</span>
                     <p class="venue-address">Govt. Polytechnic College, Attingal</p>
                 </div>
-                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-link" target="_blank">Get Direction</a>
+                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-link" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
                 <div>
@@ -443,7 +468,7 @@
                     <span class="venue-date">FEBRUARY 05, 2026</span>
                     <p class="venue-address">DC School of Management, Kazhakkoottam</p>
                 </div>
-                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-link" target="_blank">Get Direction</a>
+                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-link" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
                 <div>
@@ -452,16 +477,16 @@
                     <span class="venue-date">FEBRUARY 06, 2026</span>
                     <p class="venue-address">Christian College, Kattakkada</p>
                 </div>
-                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-link" target="_blank">Get Direction</a>
+                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-link" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
                 <div>
-                    <img src="sarathy-group-logo.png" alt="Sarathy Group Logo" style="width:140px; margin-bottom:10px;" onerror="this.style.display='none'">
+                    <img src="sarathy-group-logo.png" alt="Sarathy Group" style="width: 145px; height: auto; margin-bottom: 15px; display: inline-block;">
                     <h3>PAPPANAMCODE</h3>
                     <span class="venue-date">FEBRUARY 07, 2026</span>
-                    <p class="venue-address">Maruti Suzuki ARENA Showroom</p>
+                    <p class="venue-address">Maruti Suzuki ARENA (Sarathy Autodrives)</p>
                 </div>
-                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-link" target="_blank">Get Direction</a>
+                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-link" target="_blank">View Map</a>
             </div>
         </div>
     </section>
@@ -473,119 +498,118 @@
             <p>Vacancies for Freshers & Experienced Candidates</p>
         </div>
         <div class="roles-grid">
+            <!-- Sales Roles -->
             <div class="role-group">
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
                 <ul class="role-list">
                     <li class="role-item">
                         <div class="role-info">
                             <span class="role-title">Sales Executive / RM</span>
-                            <div class="role-details-box">
+                            <div>
                                 <p><span class="role-label">Qualification:</span><span class="role-val">12th Pass or Any Degree</span></p>
                                 <p><span class="role-label">Experience:</span><span class="role-val">Automobile/Retail Sales Preferred</span></p>
-                                <span class="fresher-badge">Freshers & Experienced Can Apply</span>
+                                <span class="fresher-badge">Freshers & Experienced</span>
                             </div>
                         </div>
                     </li>
                     <li class="role-item">
                         <div class="role-info">
                             <span class="role-title">Team Leaders</span>
-                            <div class="role-details-box">
-                                <p><span class="role-label">Qualification:</span><span class="role-val">Graduate / Post Graduate</span></p>
-                                <p><span class="role-label">Experience:</span><span class="role-val">Min 2 Years in Sales Leadership</span></p>
-                                <span class="fresher-badge">Freshers & Experienced Can Apply</span>
+                            <div>
+                                <p><span class="role-label">Qualification:</span><span class="role-val">12th Pass or Any Degree</span></p>
+                                <p><span class="role-label">Experience:</span><span class="role-val">Min 2 Years in Leadership</span></p>
+                                <span class="fresher-badge">Experienced Preferred</span>
                             </div>
                         </div>
                     </li>
                 </ul>
+                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Sales Roles <i class="fas fa-arrow-right"></i></a>
             </div>
 
+            <!-- Service Roles -->
             <div class="role-group">
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
                 <ul class="role-list">
                     <li class="role-item">
                         <div class="role-info">
                             <span class="role-title">Service Advisors</span>
-                            <div class="role-details-box">
+                            <div>
                                 <p><span class="role-label">Qualification:</span><span class="role-val">Degree/Diploma (Auto/Mech)</span></p>
                                 <p><span class="role-label">Experience:</span><span class="role-val">Technical Knowledge Required</span></p>
-                                <span class="fresher-badge">Freshers & Experienced Can Apply</span>
+                                <span class="fresher-badge">Freshers & Experienced</span>
                             </div>
                         </div>
                     </li>
                     <li class="role-item">
                         <div class="role-info">
                             <span class="role-title">Expert Technicians</span>
-                            <div class="role-details-box">
+                            <div>
                                 <p><span class="role-label">Qualification:</span><span class="role-val">ITI / Diploma Holders</span></p>
-                                <p><span class="role-label">Experience:</span><span class="role-val">Automobile Service Experience</span></p>
-                                <span class="fresher-badge">Freshers & Experienced Can Apply</span>
+                                <p><span class="role-label">Experience:</span><span class="role-val">Automobile Service Exp.</span></p>
+                                <span class="fresher-badge">Freshers & Experienced</span>
                             </div>
                         </div>
                     </li>
                 </ul>
+                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Service Roles <i class="fas fa-arrow-right"></i></a>
             </div>
 
+            <!-- Spare Parts -->
             <div class="role-group">
                 <h4><i class="fas fa-box-open"></i> Spare Parts</h4>
                 <ul class="role-list">
                     <li class="role-item">
                         <div class="role-info">
                             <span class="role-title">Spare Parts Executive / Trainee</span>
-                            <div class="role-details-box">
+                            <div>
                                 <p><span class="role-label">Qualification:</span><span class="role-val">12th Pass / ITI</span></p>
-                                <p><span class="role-label">Experience:</span><span class="role-val">Inventory Management Knowledge</span></p>
-                                <span class="fresher-badge">Freshers & Experienced Can Apply</span>
+                                <p><span class="role-label">Experience:</span><span class="role-val">Inventory Knowledge</span></p>
+                                <span class="fresher-badge">Freshers & Experienced</span>
                             </div>
                         </div>
                     </li>
                 </ul>
+                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Spare Parts <i class="fas fa-arrow-right"></i></a>
             </div>
 
+            <!-- Support & Digital -->
             <div class="role-group">
                 <h4><i class="fas fa-laptop-code"></i> Support & Digital</h4>
                 <ul class="role-list">
                     <li class="role-item">
                         <div class="role-info">
                             <span class="role-title">Content Creator / Graphics</span>
-                            <div class="role-details-box">
-                                <p><span class="role-label">Qualification:</span><span class="role-val">Degree/Diploma in Visual Design</span></p>
+                            <div>
+                                <p><span class="role-label">Qualification:</span><span class="role-val">Degree/Diploma in Design</span></p>
                                 <p><span class="role-label">Experience:</span><span class="role-val">Social Media Design Skills</span></p>
-                                <span class="fresher-badge">Freshers & Experienced Can Apply</span>
+                                <span class="fresher-badge">Freshers & Experienced</span>
                             </div>
                         </div>
                     </li>
                     <li class="role-item">
                         <div class="role-info">
                             <span class="role-title">Accounts Executive</span>
-                            <div class="role-details-box">
+                            <div>
                                 <p><span class="role-label">Qualification:</span><span class="role-val">B.Com / M.Com</span></p>
-                                <p><span class="role-label">Experience:</span><span class="role-val">Tally Knowledge is Mandatory</span></p>
-                                <span class="fresher-badge">Freshers & Experienced Can Apply</span>
+                                <p><span class="role-label">Experience:</span><span class="role-val">Tally Knowledge Mandatory</span></p>
+                                <span class="fresher-badge">Freshers & Experienced</span>
                             </div>
                         </div>
                     </li>
                 </ul>
+                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Support Roles <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
-    <section class="cta-dark" id="register">
-        <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Join Our Team!</h2>
-        <p>Apply online for faster processing.</p>
-        <div style="margin-top: 25px;">
-            <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary">Apply Online Now</a>
-        </div>
-        <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.8;">Required: 2 sets of updated resumes & photos.</p>
-    </section>
-
     <footer>
-        <p><strong>Sarathy Group</strong> - Kerala's Trusted Automotive Partner</p>
-        <p>Careers: <a href="mailto:careers@sarathygroup.com">careers@sarathygroup.com</a></p>
-        <p>Support: <a href="tel:+919037223665">+91 9037 2236 65</a></p>
-        <div style="margin-top: 25px; opacity: 0.5; font-size: 0.75rem;">&copy; 2026 Sarathy Group. All Rights Reserved.</div>
+        <p><strong>Sarathy Group</strong> - Careers 2026</p>
+        <p style="margin: 10px 0;">Email: careers@sarathygroup.com</p>
+        <p>Support: +91 9037 2236 65</p>
+        <div style="margin-top: 25px; opacity: 0.5;">&copy; 2026 Sarathy Group. All Rights Reserved.</div>
     </footer>
 
-    <a href="https://wa.me/919037833865?text=Hi,%20I'm%20interested%20in%20Sarathy%20Mega%20Job%20Fair%202026" class="whatsapp-btn" target="_blank">
+    <a href="https://wa.me/919037833865?text=Hi, Interested in Sarathy Job Fair 2026" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
