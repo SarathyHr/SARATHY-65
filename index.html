@@ -227,21 +227,28 @@
             font-size: 0.9rem;
         }
 
+        /* HIGHLIGHTED MAP BUTTON */
         .map-btn {
             width: 100%;
             padding: 12px;
-            background: #f8fafc;
+            background: var(--primary); /* Highlighted with Primary Blue */
             border-radius: 12px;
             text-decoration: none;
-            color: var(--primary);
+            color: white; /* White text for contrast */
             font-weight: 800;
             transition: var(--transition);
-            border: 1px solid #e2e8f0;
-            font-size: 0.9rem;
+            border: 2px solid var(--primary);
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(0, 40, 85, 0.2);
         }
-        .map-btn:hover { background: var(--primary); color: white; }
+        .map-btn:hover { 
+            background: var(--accent); 
+            border-color: var(--accent); 
+            color: white; 
+            transform: scale(1.02);
+        }
 
-        /* --- Reverted Roles Interface Styles --- */
+        /* Roles Interface Styles */
         .roles-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -309,17 +316,18 @@
         }
         .btn-role-apply:hover { background: var(--accent); transform: scale(1.02); }
 
-        /* Video Wrapper */
+        /* INSTAGRAM REELS LEVEL SIZE VIDEO */
         .video-wrapper {
-            max-width: 800px;
+            max-width: 320px; /* Compact vertical width */
             margin: 0 auto;
             border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
             background: #000;
-            aspect-ratio: 16/9;
+            aspect-ratio: 9/16; /* Instagram Reels/Stories Ratio */
+            border: 6px solid white;
         }
-        .video-wrapper video { width: 100%; height: 100%; object-fit: contain; }
+        .video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
 
         /* WhatsApp Button */
         .whatsapp-float {
@@ -455,29 +463,29 @@
             <div class="venue-card">
                 <i class="fas fa-university"></i>
                 <h3>ATTINGAL</h3>
-                <span class="venue-date">FEB 04, 2026</span>
+                <span class="venue-date">FEBRUARY 04, 2026</span>
                 <p>Govt. Polytechnic College</p>
                 <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-btn" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
-                <i class="fas fa-building"></i>
+                <i class="fas fa-university"></i>
                 <h3>KAZHAKKOOTTAM</h3>
-                <span class="venue-date">FEB 05, 2026</span>
+                <span class="venue-date">FEBRUARY  05, 2026</span>
                 <p>DC School of Management</p>
                 <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-btn" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
-                <i class="fas fa-school"></i>
+                <i class="fas fa-university"></i>
                 <h3>KATTAKKADA</h3>
-                <span class="venue-date">FEB 06, 2026</span>
+                <span class="venue-date">FEBRUARY  06, 2026</span>
                 <p>Christian College</p>
                 <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-btn" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
                 <img src="sarathy-group-logo.png" alt="Sarathy" class="venue-logo">
                 <h3>PAPPANAMCODE</h3>
-                <span class="venue-date">FEB 07, 2026</span>
-                <p>Sarathy Autodrives Arena</p>
+                <span class="venue-date">FEBRUARY  07, 2026</span>
+                <p>Maruti Suzuki ARENA (Sarathy Autodrives, Trivandrum, Pappanamcode)</p>
                 <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-btn" target="_blank">View Map</a>
             </div>
         </div>
@@ -493,11 +501,11 @@
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
                 <div class="role-item">
                     <span class="role-title">Sales Executive / RM</span>
-                    <span class="fresher-badge">Freshers & Experience</span>
+                    <span class="fresher-badge">Freshers & Experienced</span>
                 </div>
                 <div class="role-item">
                     <span class="role-title">Team Leaders</span>
-                    <p style="font-size: 0.85rem; color: #64748b;">Freshers & Experience</p>
+                    <p style="font-size: 0.85rem; color: #64748b;">Min 2 Years Exp</p>
                 </div>
                 <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Sales</a>
             </div>
@@ -506,7 +514,7 @@
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
                 <div class="role-item">
                     <span class="role-title">Service Advisors</span>
-                    <span class="fresher-badge">Freshers & Experience
+                    <span class="fresher-badge">Freshers & Experienced</span>
                 </div>
                 <div class="role-item">
                     <span class="role-title">Expert Technicians</span>
