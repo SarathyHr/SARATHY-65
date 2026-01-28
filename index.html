@@ -7,20 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            /* Enhanced Color Palette for Eye Visibility */
+            --primary-bg: linear-gradient(145deg, #001d3d 0%, #003566 100%); /* Deep, rich blue */
             --primary: #023e8a;
-            --primary-dark: #03045e;
-            --primary-light: #0077b6;
-            --secondary: #ff9f1c;
-            --secondary-dark: #f3722c;
-            --accent: #48cae4;
-            --light: #f8fbff;
-            --dark: #001219;
-            --gray: #4a5568;
+            --secondary: #ff9f1c; /* Vibrant Orange for CTA */
             --white: #ffffff;
+            --light-gray: #f8fafc;
+            --dark-text: #000814;
             --whatsapp: #25D366;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s ease;
         }
 
@@ -33,27 +28,26 @@
 
         body {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--light-gray);
+            color: var(--dark-text);
             line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
             font-size: 18px;
         }
 
-        /* --- Header Slider --- */
+        /* --- Sticky Header --- */
         header {
             background: var(--white);
             padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .logo-slider {
             overflow: hidden;
-            padding: 5px 0;
             position: relative;
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -66,9 +60,9 @@
         }
 
         .logo-item {
-            width: 110px;
-            height: 50px;
-            margin: 0 25px;
+            width: 100px;
+            height: 45px;
+            margin: 0 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -82,93 +76,81 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* --- Hero Section & Banner Slider --- */
+        /* --- Hero Section --- */
         .hero {
-            padding: 40px 15px 60px;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            padding: 40px 15px 50px;
+            background: var(--primary-bg); /* Updated for visibility */
             color: var(--white);
             text-align: center;
-            overflow: hidden;
+            position: relative;
         }
 
         .fair-badge {
             background: var(--secondary);
             color: var(--white);
-            padding: 8px 20px;
+            padding: 8px 18px;
             border-radius: 50px;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             display: inline-block;
-            margin-bottom: 20px;
-            letter-spacing: 1.5px;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .hero h1 {
-            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            font-size: clamp(1.8rem, 8vw, 3.2rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 15px;
-            text-transform: uppercase;
+            letter-spacing: -0.5px;
         }
 
         .hero p {
-            font-size: clamp(1rem, 4.5vw, 1.3rem);
-            opacity: 0.95;
-            max-width: 700px;
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            opacity: 0.9;
+            max-width: 600px;
             margin: 0 auto 30px;
         }
 
+        /* Fixed Banner Slider for Mobile Visibility */
         .banner-slider-container {
             width: 100%;
-            max-width: 1100px;
-            margin: 0 auto 30px;
+            max-width: 1000px;
+            margin: 0 auto 35px;
             position: relative;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            border: 4px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+            background: #000; /* Backdrop for contain mode */
         }
 
         .banner-track {
             display: flex;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.6s ease-in-out;
         }
 
         .banner-slide {
             min-width: 100%;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .banner-slide img {
             width: 100%;
             height: auto;
-            min-height: 200px;
-            object-fit: cover;
             display: block;
+            /* Changed to ensure full visibility on all screens */
+            object-fit: contain; 
         }
 
-        .slide-overlay-btn {
-            position: absolute;
-            bottom: 10%;
-            left: 5%;
-            background: var(--secondary);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 0.8rem;
-            transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
+        /* --- Buttons --- */
         .btn-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             width: 100%;
         }
 
@@ -176,101 +158,102 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 18px 30px;
+            gap: 10px;
+            padding: 16px 30px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 800;
             font-size: 1.1rem;
             transition: var(--transition);
             width: 90%;
-            max-width: 350px;
+            max-width: 380px;
             border: none;
-            cursor: pointer;
         }
 
-        .btn-primary { background: var(--secondary); color: var(--white); box-shadow: 0 6px 15px rgba(255, 159, 28, 0.3); }
-        .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255, 255, 255, 0.6); }
+        .btn-primary { 
+            background: var(--secondary); 
+            color: var(--white); 
+            box-shadow: 0 6px 15px rgba(255, 159, 28, 0.4); 
+        }
+
+        .btn-outline { 
+            background: transparent; 
+            color: var(--white); 
+            border: 2px solid rgba(255, 255, 255, 0.4); 
+        }
+
+        .btn:active { transform: scale(0.98); }
 
         /* --- Common Sections --- */
         .section-padding { padding: 50px 15px; }
         .bg-white { background: var(--white); }
         .bg-gray { background: #f1f5f9; }
 
-        .section-title { text-align: center; margin-bottom: 35px; }
-        .section-title h2 { font-size: clamp(1.6rem, 7vw, 2.5rem); color: var(--primary-dark); margin-bottom: 10px; font-weight: 800; }
+        .section-title { text-align: center; margin-bottom: 30px; }
+        .section-title h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); color: #001d3d; font-weight: 800; }
 
+        /* Video Container */
         .video-container {
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            max-width: 300px;
+            box-shadow: var(--shadow);
+            max-width: 280px;
             margin: 0 auto;
-            border: 6px solid var(--white);
+            border: 5px solid var(--white);
             aspect-ratio: 9/16;
             background: #000;
         }
         .video-container video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- Venue Cards --- */
-        .venue-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
+        /* Venue Cards */
+        .venue-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 1200px; margin: 0 auto; }
         @media (min-width: 600px) { .venue-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1000px) { .venue-grid { grid-template-columns: repeat(4, 1fr); } }
 
         .venue-card {
             background: var(--white);
-            border-radius: 20px;
-            padding: 30px 20px;
+            border-radius: 15px;
+            padding: 25px 20px;
             text-align: center;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .venue-card i { font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; }
-        .venue-card h3 { font-size: 1.3rem; font-weight: 800; color: var(--primary-dark); }
-        .venue-date { color: var(--secondary-dark); font-weight: 800; font-size: 1rem; margin-bottom: 10px; }
-        .venue-address { font-size: 0.95rem; color: var(--gray); min-height: 40px; margin-bottom: 15px; }
+        .venue-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 5px; }
+        .venue-date { color: #d62828; font-weight: 800; font-size: 0.95rem; margin-bottom: 8px; display: block; }
+        .venue-address { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; }
 
-        .map-link { padding: 12px; border: 2px solid #e2e8f0; border-radius: 10px; text-decoration: none; color: var(--primary); font-weight: 800; font-size: 0.9rem; transition: var(--transition); }
-        .map-link:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .map-link { padding: 10px; border: 1.5px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: var(--primary); font-weight: 800; font-size: 0.85rem; }
 
-        /* --- Roles --- */
-        .roles-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
-        @media (min-width: 850px) { .roles-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1100px) { .roles-grid { grid-template-columns: repeat(3, 1fr); } }
+        /* Roles Grid */
+        .roles-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        @media (min-width: 850px) { .roles-grid { grid-template-columns: repeat(3, 1fr); } }
 
-        .role-group { background: var(--white); border-radius: 20px; padding: 25px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; display: flex; flex-direction: column; height: 100%; }
-        .role-group h4 { font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
-        .role-list { flex-grow: 1; list-style: none; }
-        .role-item { padding: 15px 0; border-bottom: 1px solid #f8fafc; }
-        .role-item:last-child { border-bottom: none; }
-        .role-title { font-weight: 800; color: var(--dark); font-size: 1.1rem; display: block; margin-bottom: 5px; }
-        .role-label { font-size: 0.8rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; margin-right: 5px; }
-        .role-val { font-size: 0.95rem; color: var(--gray); }
-        .fresher-badge { display: inline-block; background: #f0fdf4; color: #16a34a; font-size: 0.75rem; padding: 4px 12px; border-radius: 50px; font-weight: 700; margin-top: 5px; border: 1px solid #dcfce7; }
+        .role-group { background: var(--white); border-radius: 15px; padding: 20px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
+        .role-group h4 { font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; color: #001d3d; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        .role-item { padding: 12px 0; border-bottom: 1px solid #f8fafc; }
+        .role-title { font-weight: 800; font-size: 1rem; display: block; }
+        .fresher-badge { display: inline-block; background: #f0fdf4; color: #16a34a; font-size: 0.7rem; padding: 3px 10px; border-radius: 50px; font-weight: 700; margin-top: 5px; }
 
-        .btn-role-apply { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--primary-dark); color: var(--white); text-decoration: none; padding: 15px 20px; border-radius: 10px; font-size: 1rem; font-weight: 800; margin-top: auto; width: 100%; transition: var(--transition); }
-        .btn-role-apply:hover { background: var(--primary); transform: translateY(-3px); }
+        .btn-role-apply { display: inline-flex; align-items: center; justify-content: center; background: #001d3d; color: var(--white); text-decoration: none; padding: 12px; border-radius: 8px; font-size: 0.95rem; font-weight: 800; margin-top: 15px; }
 
-        /* --- Posters --- */
-        .poster-container { display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto; }
+        /* Posters */
+        .poster-container { display: flex; flex-direction: column; gap: 15px; }
         @media (min-width: 600px) { .poster-container { flex-direction: row; } }
-        .poster-box { flex: 1; background: var(--white); padding: 10px; border-radius: 15px; box-shadow: var(--shadow-sm); }
-        .poster-box img { width: 100%; border-radius: 10px; display: block; }
+        .poster-box { flex: 1; background: var(--white); padding: 8px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .poster-box img { width: 100%; border-radius: 8px; display: block; }
 
-        /* --- WhatsApp & Footer --- */
+        /* WhatsApp Button */
         .whatsapp-btn { 
-            position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; transition: var(--transition);
+            position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; 
         }
-        .whatsapp-btn:hover { transform: scale(1.1); }
 
-        footer { background: var(--white); padding: 40px 15px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 1rem; }
+        footer { background: var(--white); padding: 30px 15px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 0.9rem; }
 
         @media (min-width: 769px) {
-            .slide-overlay-btn { font-size: 1rem; padding: 12px 25px; bottom: 15%; left: 10%; }
-            .hero { padding: 80px 20px 100px; }
             .btn-group { flex-direction: row; justify-content: center; }
+            .hero { padding: 70px 20px 80px; }
         }
     </style>
 </head>
@@ -287,7 +270,7 @@
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
                 <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
                 <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
-                <!-- Duplicate for seamless scroll -->
+                <!-- Duplicate -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy Group" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -303,33 +286,28 @@
     <section class="hero">
         <span class="fair-badge">Mega Job Fair 2026</span>
         <h1>BUILD YOUR CAREER WITH SARATHY</h1>
-        <p>Join South Kerala's automotive giant. We are hiring 50+ energetic professionals across multiple brands.</p>
+        <p>Join South Kerala's automotive giant. We are hiring 50+ energetic professionals across various departments.</p>
         
+        <!-- Banner Slider (Now Mobile Optimized) -->
         <div class="banner-slider-container">
             <div class="banner-track" id="bannerTrack">
                 <div class="banner-slide">
                     <img src="https://sarathygroup.com/wp-content/uploads/2024/12/VICTORIS.png" alt="Victoris">
-                    <a href="#" class="slide-overlay-btn">EXPLORE NOW</a>
                 </div>
                 <div class="banner-slide">
                     <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-06.png" alt="Grand Vitara">
-                    <a href="#" class="slide-overlay-btn">LEARN MORE</a>
                 </div>
                 <div class="banner-slide">
                     <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-03.png" alt="Chetak">
-                    <a href="#" class="slide-overlay-btn">LEARN MORE</a>
                 </div>
                 <div class="banner-slide">
                     <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-04.png" alt="Ather">
-                    <a href="#" class="slide-overlay-btn">LEARN MORE</a>
                 </div>
                 <div class="banner-slide">
                     <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-01.png" alt="Triumph">
-                    <a href="#" class="slide-overlay-btn">LEARN MORE</a>
                 </div>
                 <div class="banner-slide">
                     <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-02.png" alt="Bikes">
-                    <a href="#" class="slide-overlay-btn">LEARN MORE</a>
                 </div>
             </div>
         </div>
@@ -359,36 +337,36 @@
         <div class="venue-grid">
             <div class="venue-card">
                 <div>
-                    <i class="fas fa-university"></i>
+                    <i class="fas fa-map-marker-alt" style="color: #023e8a; margin-bottom: 10px; font-size: 1.5rem;"></i>
                     <h3>ATTINGAL</h3>
-                    <span class="venue-date">FEBRUARY 04, 2026</span>
+                    <span class="venue-date">FEB 04, 2026</span>
                     <p class="venue-address">Govt. Polytechnic College</p>
                 </div>
                 <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-link" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
                 <div>
-                    <i class="fas fa-university"></i>
+                    <i class="fas fa-map-marker-alt" style="color: #023e8a; margin-bottom: 10px; font-size: 1.5rem;"></i>
                     <h3>KAZHAKKOOTTAM</h3>
-                    <span class="venue-date">FEBRUARY  05, 2026</span>
+                    <span class="venue-date">FEB 05, 2026</span>
                     <p class="venue-address">DC School of Management</p>
                 </div>
                 <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-link" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
                 <div>
-                    <i class="fas fa-university"></i>
+                    <i class="fas fa-map-marker-alt" style="color: #023e8a; margin-bottom: 10px; font-size: 1.5rem;"></i>
                     <h3>KATTAKKADA</h3>
-                    <span class="venue-date">FEBRUARY  06, 2026</span>
+                    <span class="venue-date">FEB 06, 2026</span>
                     <p class="venue-address">Christian College</p>
                 </div>
                 <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-link" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
                 <div>
-                    <img src="sarathy-group-logo.png" alt="Sarathy" style="width: 120px; height: auto; margin-bottom: 10px;">
+                    <img src="sarathy-group-logo.png" alt="Sarathy" style="width: 100px; height: auto; margin-bottom: 10px;">
                     <h3>PAPPANAMCODE</h3>
-                    <span class="venue-date">FEBRUARY  07, 2026</span>
+                    <span class="venue-date">FEB 07, 2026</span>
                     <p class="venue-address">Maruti Suzuki ARENA</p>
                 </div>
                 <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-link" target="_blank">View Map</a>
@@ -402,10 +380,10 @@
         </div>
         <div class="poster-container">
             <div class="poster-box">
-                <img src="123.jpeg" alt="Job Fair Poster 1" onerror="this.src='https://via.placeholder.com/600x800?text=Job+Fair+Poster+1'">
+                <img src="123.jpeg" alt="Job Poster 1" onerror="this.src='https://via.placeholder.com/600x800?text=Sarathy+Poster+1'">
             </div>
             <div class="poster-box">
-                <img src="WhatsApp Image 2026-01-22 at 8.12.42 PM.jpeg" alt="Job Fair Poster 2" onerror="this.src='https://via.placeholder.com/600x800?text=Job+Fair+Poster+2'">
+                <img src="WhatsApp Image 2026-01-22 at 8.12.42 PM.jpeg" alt="Job Poster 2" onerror="this.src='https://via.placeholder.com/600x800?text=Sarathy+Poster+2'">
             </div>
         </div>
     </section>
@@ -415,65 +393,52 @@
             <h2>Available Positions</h2>
         </div>
         <div class="roles-grid">
-            <!-- Sales Roles -->
+            <!-- Sales -->
             <div class="role-group">
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
-                <div class="role-list">
-                    <div class="role-item">
-                        <span class="role-title">Sales Executive / RM</span>
-                        <p><span class="role-label">Qual:</span><span class="role-val">12th Pass / Any Degree</span></p>
-                        <span class="fresher-badge">Freshers & Experienced</span>
-                    </div>
-                    <div class="role-item">
-                        <span class="role-title">Team Leaders</span>
-                        <p><span class="role-label">Exp:</span><span class="role-val">Min 2 Years in Leadership</span></p>
-                    </div>
+                <div class="role-item">
+                    <span class="role-title">Sales Executive / RM</span>
+                    <span class="fresher-badge">Freshers & Exp</span>
                 </div>
-                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Sales <i class="fas fa-arrow-right"></i></a>
+                <div class="role-item">
+                    <span class="role-title">Team Leaders</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">Min 2 Years Exp</p>
+                </div>
+                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Sales</a>
             </div>
-
-            <!-- Service Roles -->
+            <!-- Service -->
             <div class="role-group">
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
-                <div class="role-list">
-                    <div class="role-item">
-                        <span class="role-title">Service Advisors</span>
-                        <p><span class="role-label">Qual:</span><span class="role-val">Degree/Diploma (Auto/Mech)</span></p>
-                        <span class="fresher-badge">Freshers & Experienced</span>
-                    </div>
-                    <div class="role-item">
-                        <span class="role-title">Expert Technicians</span>
-                        <p><span class="role-label">Qual:</span><span class="role-val">ITI / Diploma</span></p>
-                        <span class="fresher-badge">Freshers Welcome</span>
-                    </div>
+                <div class="role-item">
+                    <span class="role-title">Service Advisors</span>
+                    <span class="fresher-badge">Freshers & Exp</span>
                 </div>
-                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Service <i class="fas fa-arrow-right"></i></a>
+                <div class="role-item">
+                    <span class="role-title">Expert Technicians</span>
+                    <span class="fresher-badge">ITI/Diploma</span>
+                </div>
+                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Service</a>
             </div>
-
-            <!-- Support & Digital Roles -->
+            <!-- Support -->
             <div class="role-group">
                 <h4><i class="fas fa-laptop-code"></i> Support & Digital</h4>
-                <div class="role-list">
-                    <div class="role-item">
-                        <span class="role-title">Content Creator / Graphics</span>
-                        <p><span class="role-label">Qual:</span><span class="role-val">Relevant Diploma/Degree</span></p>
-                        <span class="fresher-badge">Freshers & Experienced</span>
-                    </div>
-                    <div class="role-item">
-                        <span class="role-title">Accounts Executive</span>
-                        <p><span class="role-label">Qual:</span><span class="role-val">B.Com / M.Com (Tally Required)</span></p>
-                        <span class="fresher-badge">Freshers & Experienced</span>
-                    </div>
+                <div class="role-item">
+                    <span class="role-title">Content Creator / Graphics</span>
+                    <span class="fresher-badge">Portfolio Req.</span>
                 </div>
-                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Support <i class="fas fa-arrow-right"></i></a>
+                <div class="role-item">
+                    <span class="role-title">Accounts Executive</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">B.Com / M.Com (Tally)</p>
+                </div>
+                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Support</a>
             </div>
         </div>
     </section>
 
     <footer>
         <p><strong>Sarathy Group</strong> - Careers 2026</p>
-        <p style="margin: 10px 0;">+91 9037 2236 65 | +91 9037 8338 65</p>
-        <div style="margin-top: 20px; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 Sarathy Group. All Rights Reserved.</div>
+        <p style="margin: 8px 0; opacity: 0.8;">+91 9037 2236 65 | +91 9037 8338 65</p>
+        <div style="margin-top: 15px; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 Sarathy Group. All Rights Reserved.</div>
     </footer>
 
     <a href="https://wa.me/919037833865?text=Hi, Interested in Sarathy Job Fair 2026" class="whatsapp-btn" target="_blank">
