@@ -32,20 +32,19 @@
         }
 
         body {
-            /* Using Gill Sans for a clean, professional look */
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            font-size: 18px; /* Base font size increased */
+            font-size: 18px;
         }
 
-        /* --- Premium Logo Slider --- */
+        /* --- Header Slider --- */
         header {
             background: var(--white);
-            padding: 15px 0;
+            padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -54,8 +53,7 @@
 
         .logo-slider {
             overflow: hidden;
-            padding: 10px 0;
-            background: var(--white);
+            padding: 5px 0;
             position: relative;
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -64,72 +62,114 @@
         .logo-track {
             display: flex;
             width: fit-content;
-            animation: scroll 15s linear infinite;
+            animation: scroll 10s linear infinite;
         }
 
         .logo-item {
-            width: 130px;
-            height: 60px;
-            margin: 0 40px;
+            width: 110px;
+            height: 50px;
+            margin: 0 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
 
-        .logo-img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            object-fit: contain; 
-        }
+        .logo-img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section & Banner Slider --- */
         .hero {
-            padding: 80px 20px 100px;
+            padding: 40px 15px 60px;
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
             color: var(--white);
             text-align: center;
+            overflow: hidden;
         }
 
         .fair-badge {
             background: var(--secondary);
             color: var(--white);
-            padding: 10px 25px;
+            padding: 8px 20px;
             border-radius: 50px;
             font-weight: 800;
-            font-size: 1rem; /* Bigger badge text */
+            font-size: 0.9rem;
             display: inline-block;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 10vw, 4rem); /* Bigger heading */
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
 
         .hero p {
-            font-size: clamp(1.2rem, 5vw, 1.5rem); /* Bigger subtext */
+            font-size: clamp(1rem, 4.5vw, 1.3rem);
             opacity: 0.95;
             max-width: 700px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
+        }
+
+        .banner-slider-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto 30px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .banner-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .banner-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .banner-slide img {
+            width: 100%;
+            height: auto;
+            min-height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-overlay-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .btn-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
+            width: 100%;
         }
 
         .btn {
@@ -137,225 +177,100 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 20px 40px; /* Bigger buttons */
-            border-radius: 15px;
+            padding: 18px 30px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: var(--transition);
-            width: 100%;
+            width: 90%;
             max-width: 350px;
             border: none;
             cursor: pointer;
         }
 
-        .btn-primary {
-            background: var(--secondary);
-            color: var(--white);
-            box-shadow: 0 6px 20px rgba(255, 159, 28, 0.4);
-        }
+        .btn-primary { background: var(--secondary); color: var(--white); box-shadow: 0 6px 15px rgba(255, 159, 28, 0.3); }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255, 255, 255, 0.6); }
 
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.7);
-        }
-
-        /* --- Sections --- */
-        .section-padding { padding: 70px 20px; }
+        /* --- Common Sections --- */
+        .section-padding { padding: 50px 15px; }
         .bg-white { background: var(--white); }
-        .bg-gray { background: #f8fafc; }
+        .bg-gray { background: #f1f5f9; }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: clamp(2rem, 8vw, 2.8rem); /* Bigger section titles */
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-
-        .section-title p {
-            font-size: 1.2rem;
-            color: var(--gray);
-        }
-
-        /* --- Video & Posters --- */
-        .poster-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .poster-box {
-            background: var(--white);
-            padding: 15px;
-            border-radius: 25px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .poster-box img { width: 100%; height: auto; border-radius: 15px; display: block; }
+        .section-title { text-align: center; margin-bottom: 35px; }
+        .section-title h2 { font-size: clamp(1.6rem, 7vw, 2.5rem); color: var(--primary-dark); margin-bottom: 10px; font-weight: 800; }
 
         .video-container {
-            border-radius: 30px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-lg);
-            max-width: 350px;
+            max-width: 300px;
             margin: 0 auto;
-            border: 10px solid var(--white);
+            border: 6px solid var(--white);
             aspect-ratio: 9/16;
             background: #000;
         }
-
         .video-container video { width: 100%; height: 100%; object-fit: cover; }
 
         /* --- Venue Cards --- */
-        .venue-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 640px) { .venue-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .venue-grid { grid-template-columns: repeat(4, 1fr); } }
+        .venue-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
+        @media (min-width: 600px) { .venue-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1000px) { .venue-grid { grid-template-columns: repeat(4, 1fr); } }
 
         .venue-card {
             background: var(--white);
-            border-radius: 25px;
-            padding: 40px 25px;
+            border-radius: 20px;
+            padding: 30px 20px;
             text-align: center;
             box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: var(--transition);
         }
-        .venue-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+        .venue-card i { font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; }
+        .venue-card h3 { font-size: 1.3rem; font-weight: 800; color: var(--primary-dark); }
+        .venue-date { color: var(--secondary-dark); font-weight: 800; font-size: 1rem; margin-bottom: 10px; }
+        .venue-address { font-size: 0.95rem; color: var(--gray); min-height: 40px; margin-bottom: 15px; }
 
-        .venue-card i { font-size: 2.8rem; color: var(--primary); margin-bottom: 15px; }
-        .venue-card h3 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 800; color: var(--primary-dark); }
-        .venue-date { color: var(--secondary-dark); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 15px; }
-        .venue-address { font-size: 1rem; color: var(--gray); margin-bottom: 20px; min-height: 50px; }
-
-        .map-link {
-            padding: 14px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
+        .map-link { padding: 12px; border: 2px solid #e2e8f0; border-radius: 10px; text-decoration: none; color: var(--primary); font-weight: 800; font-size: 0.9rem; transition: var(--transition); }
         .map-link:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* --- Jobs Section --- */
-        .roles-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        /* --- Roles --- */
+        .roles-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
+        @media (min-width: 850px) { .roles-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1100px) { .roles-grid { grid-template-columns: repeat(3, 1fr); } }
 
-        @media (min-width: 900px) { .roles-grid { grid-template-columns: 1fr 1fr; } }
+        .role-group { background: var(--white); border-radius: 20px; padding: 25px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; display: flex; flex-direction: column; height: 100%; }
+        .role-group h4 { font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        .role-list { flex-grow: 1; list-style: none; }
+        .role-item { padding: 15px 0; border-bottom: 1px solid #f8fafc; }
+        .role-item:last-child { border-bottom: none; }
+        .role-title { font-weight: 800; color: var(--dark); font-size: 1.1rem; display: block; margin-bottom: 5px; }
+        .role-label { font-size: 0.8rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; margin-right: 5px; }
+        .role-val { font-size: 0.95rem; color: var(--gray); }
+        .fresher-badge { display: inline-block; background: #f0fdf4; color: #16a34a; font-size: 0.75rem; padding: 4px 12px; border-radius: 50px; font-weight: 700; margin-top: 5px; border: 1px solid #dcfce7; }
 
-        .role-group {
-            background: var(--white);
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid #f1f5f9;
-        }
+        .btn-role-apply { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--primary-dark); color: var(--white); text-decoration: none; padding: 15px 20px; border-radius: 10px; font-size: 1rem; font-weight: 800; margin-top: auto; width: 100%; transition: var(--transition); }
+        .btn-role-apply:hover { background: var(--primary); transform: translateY(-3px); }
 
-        .role-group h4 {
-            font-size: 1.6rem;
-            color: var(--primary-dark);
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border-bottom: 3px solid #f8fafc;
-            padding-bottom: 15px;
-        }
+        /* --- Posters --- */
+        .poster-container { display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto; }
+        @media (min-width: 600px) { .poster-container { flex-direction: row; } }
+        .poster-box { flex: 1; background: var(--white); padding: 10px; border-radius: 15px; box-shadow: var(--shadow-sm); }
+        .poster-box img { width: 100%; border-radius: 10px; display: block; }
 
-        .role-item { 
-            padding: 20px 0; 
-            border-bottom: 1px solid #f8fafc; 
+        /* --- WhatsApp & Footer --- */
+        .whatsapp-btn { 
+            position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; transition: var(--transition);
         }
-        
-        .role-title { font-weight: 800; color: var(--dark); font-size: 1.2rem; display: block; margin-bottom: 10px; }
-        .role-label { font-size: 0.85rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; margin-right: 8px; }
-        .role-val { font-size: 1.05rem; color: var(--gray); }
-        
-        .fresher-badge { 
-            display: inline-block; 
-            background: #f0fdf4; 
-            color: #16a34a; 
-            font-size: 0.8rem; 
-            padding: 6px 15px; 
-            border-radius: 50px; 
-            font-weight: 700; 
-            margin-top: 12px;
-            border: 1px solid #dcfce7;
-        }
+        .whatsapp-btn:hover { transform: scale(1.1); }
 
-        .btn-role-apply {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: var(--primary-dark);
-            color: var(--white);
-            text-decoration: none;
-            padding: 18px 30px;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            font-weight: 800;
-            margin-top: 30px;
-            width: 100%;
-            transition: var(--transition);
-        }
+        footer { background: var(--white); padding: 40px 15px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 1rem; }
 
-        /* --- Footer & Contact --- */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--whatsapp);
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            text-decoration: none;
-        }
-
-        footer {
-            background: var(--white);
-            padding: 60px 20px;
-            text-align: center;
-            border-top: 2px solid #f1f5f9;
-            font-size: 1.1rem;
-        }
-
-        @media (max-width: 480px) {
-            .hero { padding: 60px 15px; }
-            .section-padding { padding: 50px 15px; }
-            .btn { padding: 18px; font-size: 1.1rem; }
-            .role-group { padding: 30px 20px; }
+        @media (min-width: 769px) {
+            .slide-overlay-btn { font-size: 1rem; padding: 12px 25px; bottom: 15%; left: 10%; }
+            .hero { padding: 80px 20px 100px; }
+            .btn-group { flex-direction: row; justify-content: center; }
         }
     </style>
 </head>
@@ -372,7 +287,7 @@
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
                 <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
                 <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
-                <!-- Loop set -->
+                <!-- Duplicate for seamless scroll -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy Group" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -388,24 +303,40 @@
     <section class="hero">
         <span class="fair-badge">Mega Job Fair 2026</span>
         <h1>BUILD YOUR CAREER WITH SARATHY</h1>
-        <p>Join South Kerala's automotive giant. We are hiring 50+ energetic professionals for multiple roles.</p>
+        <p>Join South Kerala's automotive giant. We are hiring 50+ energetic professionals across multiple brands.</p>
+        
+        <div class="banner-slider-container">
+            <div class="banner-track" id="bannerTrack">
+                <div class="banner-slide">
+                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/VICTORIS.png" alt="Victoris">
+                    <a href="#" class="slide-overlay-btn">EXPLORE NOW</a>
+                </div>
+                <div class="banner-slide">
+                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-06.png" alt="Grand Vitara">
+                    <a href="#" class="slide-overlay-btn">LEARN MORE</a>
+                </div>
+                <div class="banner-slide">
+                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-03.png" alt="Chetak">
+                    <a href="#" class="slide-overlay-btn">LEARN MORE</a>
+                </div>
+                <div class="banner-slide">
+                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-04.png" alt="Ather">
+                    <a href="#" class="slide-overlay-btn">LEARN MORE</a>
+                </div>
+                <div class="banner-slide">
+                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-01.png" alt="Triumph">
+                    <a href="#" class="slide-overlay-btn">LEARN MORE</a>
+                </div>
+                <div class="banner-slide">
+                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-02.png" alt="Bikes">
+                    <a href="#" class="slide-overlay-btn">LEARN MORE</a>
+                </div>
+            </div>
+        </div>
+
         <div class="btn-group">
             <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary">Apply Online Now</a>
-            <a href="#vacancies" class="btn btn-outline">View Vacancies</a>
-        </div>
-    </section>
-
-    <section class="section-padding bg-white">
-        <div class="section-title">
-            <h2>Official Posters</h2>
-        </div>
-        <div class="poster-container">
-            <div class="poster-box">
-                <img src="123.jpeg" alt="Sarathy Job Fair Poster" onerror="this.src='https://via.placeholder.com/600x800?text=Job+Fair+2026'">
-            </div>
-            <div class="poster-box">
-                <img src="WhatsApp Image 2026-01-22 at 8.12.42 PM.jpeg" alt="Detailed Job Info" onerror="this.src='https://via.placeholder.com/600x800?text=Sarathy+Hiring'">
-            </div>
+            <a href="#vacancies" class="btn btn-outline">View Positions</a>
         </div>
     </section>
 
@@ -430,37 +361,51 @@
                 <div>
                     <i class="fas fa-university"></i>
                     <h3>ATTINGAL</h3>
-                    <span class="venue-date">FEB 04, 2026</span>
-                    <p class="venue-address">Govt. Polytechnic College, Attingal</p>
+                    <span class="venue-date">FEBRUARY 04, 2026</span>
+                    <p class="venue-address">Govt. Polytechnic College</p>
                 </div>
-                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-link" target="_blank">View Location</a>
+                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-link" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
                 <div>
                     <i class="fas fa-university"></i>
                     <h3>KAZHAKKOOTTAM</h3>
-                    <span class="venue-date">FEB 05, 2026</span>
-                    <p class="venue-address">DC School of Management, Kazhakkoottam</p>
+                    <span class="venue-date">FEBRUARY  05, 2026</span>
+                    <p class="venue-address">DC School of Management</p>
                 </div>
-                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-link" target="_blank">View Location</a>
+                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-link" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
                 <div>
                     <i class="fas fa-university"></i>
                     <h3>KATTAKKADA</h3>
-                    <span class="venue-date">FEB 06, 2026</span>
-                    <p class="venue-address">Christian College, Kattakkada</p>
+                    <span class="venue-date">FEBRUARY  06, 2026</span>
+                    <p class="venue-address">Christian College</p>
                 </div>
-                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-link" target="_blank">View Location</a>
+                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-link" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
                 <div>
-                    <img src="sarathy-group-logo.png" alt="Sarathy Group" style="width: 160px; height: auto; margin-bottom: 15px; display: inline-block;">
+                    <img src="sarathy-group-logo.png" alt="Sarathy" style="width: 120px; height: auto; margin-bottom: 10px;">
                     <h3>PAPPANAMCODE</h3>
-                    <span class="venue-date">FEB 07, 2026</span>
-                    <p class="venue-address">Maruti Suzuki ARENA (Sarathy Autodrives)</p>
+                    <span class="venue-date">FEBRUARY  07, 2026</span>
+                    <p class="venue-address">Maruti Suzuki ARENA</p>
                 </div>
-                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-link" target="_blank">View Location</a>
+                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-link" target="_blank">View Map</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-gray">
+        <div class="section-title">
+            <h2>Official Posters</h2>
+        </div>
+        <div class="poster-container">
+            <div class="poster-box">
+                <img src="123.jpeg" alt="Job Fair Poster 1" onerror="this.src='https://via.placeholder.com/600x800?text=Job+Fair+Poster+1'">
+            </div>
+            <div class="poster-box">
+                <img src="WhatsApp Image 2026-01-22 at 8.12.42 PM.jpeg" alt="Job Fair Poster 2" onerror="this.src='https://via.placeholder.com/600x800?text=Job+Fair+Poster+2'">
             </div>
         </div>
     </section>
@@ -470,47 +415,83 @@
             <h2>Available Positions</h2>
         </div>
         <div class="roles-grid">
+            <!-- Sales Roles -->
             <div class="role-group">
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
-                <div class="role-item">
-                    <span class="role-title">Sales Executive / RM</span>
-                    <p><span class="role-label">Qualification:</span><span class="role-val">12th Pass / Any Degree</span></p>
-                    <span class="fresher-badge">Freshers & Experienced</span>
-                </div>
-                <div class="role-item">
-                    <span class="role-title">Team Leaders</span>
-                    <p><span class="role-label">Exp:</span><span class="role-val">Min 2 Years in Leadership</span></p>
+                <div class="role-list">
+                    <div class="role-item">
+                        <span class="role-title">Sales Executive / RM</span>
+                        <p><span class="role-label">Qual:</span><span class="role-val">12th Pass / Any Degree</span></p>
+                        <span class="fresher-badge">Freshers & Experienced</span>
+                    </div>
+                    <div class="role-item">
+                        <span class="role-title">Team Leaders</span>
+                        <p><span class="role-label">Exp:</span><span class="role-val">Min 2 Years in Leadership</span></p>
+                    </div>
                 </div>
                 <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Sales <i class="fas fa-arrow-right"></i></a>
             </div>
 
+            <!-- Service Roles -->
             <div class="role-group">
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
-                <div class="role-item">
-                    <span class="role-title">Service Advisors</span>
-                    <p><span class="role-label">Qual:</span><span class="role-val">Degree/Diploma (Auto/Mech)</span></p>
-                    <span class="fresher-badge">Freshers & Experienced</span>
-                </div>
-                <div class="role-item">
-                    <span class="role-title">Expert Technicians</span>
-                    <p><span class="role-label">Qual:</span><span class="role-val">ITI / Diploma</span></p>
-                    <span class="fresher-badge">Freshers Welcome</span>
+                <div class="role-list">
+                    <div class="role-item">
+                        <span class="role-title">Service Advisors</span>
+                        <p><span class="role-label">Qual:</span><span class="role-val">Degree/Diploma (Auto/Mech)</span></p>
+                        <span class="fresher-badge">Freshers & Experienced</span>
+                    </div>
+                    <div class="role-item">
+                        <span class="role-title">Expert Technicians</span>
+                        <p><span class="role-label">Qual:</span><span class="role-val">ITI / Diploma</span></p>
+                        <span class="fresher-badge">Freshers Welcome</span>
+                    </div>
                 </div>
                 <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Service <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Support & Digital Roles -->
+            <div class="role-group">
+                <h4><i class="fas fa-laptop-code"></i> Support & Digital</h4>
+                <div class="role-list">
+                    <div class="role-item">
+                        <span class="role-title">Content Creator / Graphics</span>
+                        <p><span class="role-label">Qual:</span><span class="role-val">Relevant Diploma/Degree</span></p>
+                        <span class="fresher-badge">Freshers & Experienced</span>
+                    </div>
+                    <div class="role-item">
+                        <span class="role-title">Accounts Executive</span>
+                        <p><span class="role-label">Qual:</span><span class="role-val">B.Com / M.Com (Tally Required)</span></p>
+                        <span class="fresher-badge">Freshers & Experienced</span>
+                    </div>
+                </div>
+                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Support <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
     <footer>
         <p><strong>Sarathy Group</strong> - Careers 2026</p>
-        <p style="margin: 15px 0;">Email: careers@sarathygroup.com</p>
-        <p>Support: +91 9037 2236 65 | +91 9037 8338 65</p>
-        <div style="margin-top: 30px; opacity: 0.5; font-size: 0.9rem;">&copy; 2026 Sarathy Group. All Rights Reserved.</div>
+        <p style="margin: 10px 0;">+91 9037 2236 65 | +91 9037 8338 65</p>
+        <div style="margin-top: 20px; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 Sarathy Group. All Rights Reserved.</div>
     </footer>
 
     <a href="https://wa.me/919037833865?text=Hi, Interested in Sarathy Job Fair 2026" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <script>
+        const track = document.getElementById('bannerTrack');
+        const slides = document.querySelectorAll('.banner-slide');
+        let index = 0;
+
+        function nextSlide() {
+            index++;
+            if (index >= slides.length) index = 0;
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        setInterval(nextSlide, 4000);
+    </script>
 </body>
 </html>
