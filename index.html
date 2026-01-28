@@ -3,54 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarathy Group - Mega Job Fair 2026</title>
+    <title>Sarathy Group | Mega Job Fair 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Enhanced Color Palette for Eye Visibility */
-            --primary-bg: linear-gradient(145deg, #001d3d 0%, #003566 100%); /* Deep, rich blue */
-            --primary: #023e8a;
-            --secondary: #ff9f1c; /* Vibrant Orange for CTA */
+            --primary: #002855;
+            --accent: #ff9f1c;
+            --accent-hover: #e68a00;
+            --success: #25D366;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
             --white: #ffffff;
-            --light-gray: #f8fafc;
-            --dark-text: #000814;
-            --whatsapp: #25D366;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s ease;
+            --bg-gradient: linear-gradient(135deg, #001d3d 0%, #003566 100%);
+            --glass: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
-            background-color: var(--light-gray);
-            color: var(--dark-text);
+            background-color: #f8fafc;
+            color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
-            scroll-behavior: smooth;
-            font-size: 18px;
+            padding-bottom: 80px; /* Space for mobile sticky CTA */
         }
 
-        /* --- Sticky Header --- */
+        /* --- Header & Logo Slider --- */
         header {
-            background: var(--white);
-            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
         .logo-slider {
             overflow: hidden;
+            white-space: nowrap;
             position: relative;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
 
         .logo-track {
@@ -60,13 +60,14 @@
         }
 
         .logo-item {
-            width: 100px;
-            height: 45px;
-            margin: 0 20px;
+            width: 120px;
+            height: 50px;
+            margin: 0 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            transition: var(--transition);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
         }
 
         .logo-img { max-width: 100%; max-height: 100%; object-fit: contain; }
@@ -78,182 +79,306 @@
 
         /* --- Hero Section --- */
         .hero {
-            padding: 40px 15px 50px;
-            background: var(--primary-bg); /* Updated for visibility */
+            padding: 40px 15px 80px;
+            background: var(--bg-gradient);
             color: var(--white);
             text-align: center;
             position: relative;
+            clip-path: ellipse(180% 100% at 50% 0%);
         }
 
         .fair-badge {
-            background: var(--secondary);
-            color: var(--white);
+            background: var(--accent);
             padding: 8px 18px;
-            border-radius: 50px;
+            border-radius: 100px;
             font-weight: 800;
-            font-size: 0.85rem;
-            display: inline-block;
-            margin-bottom: 15px;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            letter-spacing: 1.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 159, 28, 0.4);
         }
 
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
         .hero h1 {
-            font-size: clamp(1.8rem, 8vw, 3.2rem);
+            font-size: clamp(2rem, 8vw, 4rem);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
         .hero p {
             font-size: clamp(1rem, 4vw, 1.25rem);
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 30px;
+            color: rgba(255,255,255,0.9);
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
 
-        /* Fixed Banner Slider for Mobile Visibility */
-        .banner-slider-container {
-            width: 100%;
+        /* Banner Slider */
+        .banner-container {
             max-width: 1000px;
-            margin: 0 auto 35px;
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            background: #000; /* Backdrop for contain mode */
-        }
-
-        .banner-track {
-            display: flex;
-            transition: transform 0.6s ease-in-out;
-        }
-
-        .banner-slide {
-            min-width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .banner-slide img {
-            width: 100%;
-            height: auto;
-            display: block;
-            /* Changed to ensure full visibility on all screens */
-            object-fit: contain; 
-        }
-
-        /* --- Buttons --- */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            width: 100%;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 30px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            width: 90%;
-            max-width: 380px;
-            border: none;
-        }
-
-        .btn-primary { 
-            background: var(--secondary); 
-            color: var(--white); 
-            box-shadow: 0 6px 15px rgba(255, 159, 28, 0.4); 
-        }
-
-        .btn-outline { 
-            background: transparent; 
-            color: var(--white); 
-            border: 2px solid rgba(255, 255, 255, 0.4); 
-        }
-
-        .btn:active { transform: scale(0.98); }
-
-        /* --- Common Sections --- */
-        .section-padding { padding: 50px 15px; }
-        .bg-white { background: var(--white); }
-        .bg-gray { background: #f1f5f9; }
-
-        .section-title { text-align: center; margin-bottom: 30px; }
-        .section-title h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); color: #001d3d; font-weight: 800; }
-
-        /* Video Container */
-        .video-container {
+            margin: 0 auto 40px;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            max-width: 280px;
-            margin: 0 auto;
-            border: 5px solid var(--white);
-            aspect-ratio: 9/16;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             background: #000;
+            border: 4px solid rgba(255,255,255,0.1);
         }
-        .video-container video { width: 100%; height: 100%; object-fit: cover; }
+
+        .banner-track { display: flex; transition: transform 0.8s ease-in-out; }
+        .banner-slide { min-width: 100%; position: relative; }
+        .banner-slide img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+        /* Buttons */
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary { background: var(--accent); color: var(--white); box-shadow: 0 8px 20px rgba(255, 159, 28, 0.3); }
+        .btn-secondary { background: rgba(255,255,255,0.15); color: var(--white); border: 1px solid rgba(255,255,255,0.2); }
+
+        /* --- Stats Bar --- */
+        .stats-bar {
+            background: var(--white);
+            max-width: 900px;
+            margin: -30px auto 40px;
+            padding: 25px 15px;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-item h3 { font-size: 1.8rem; color: var(--primary); font-weight: 800; }
+        .stat-item p { color: var(--text-light); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+
+        /* --- Sections --- */
+        .section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); font-weight: 800; color: var(--primary); margin-bottom: 10px; }
 
         /* Venue Cards */
-        .venue-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 1200px; margin: 0 auto; }
-        @media (min-width: 600px) { .venue-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1000px) { .venue-grid { grid-template-columns: repeat(4, 1fr); } }
+        .venue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
 
         .venue-card {
             background: var(--white);
-            border-radius: 15px;
-            padding: 25px 20px;
+            padding: 30px 20px;
+            border-radius: 25px;
+            transition: var(--transition);
+            border: 1px solid #e2e8f0;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: space-between;
         }
-        .venue-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 5px; }
-        .venue-date { color: #d62828; font-weight: 800; font-size: 0.95rem; margin-bottom: 8px; display: block; }
-        .venue-address { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; }
 
-        .map-link { padding: 10px; border: 1.5px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: var(--primary); font-weight: 800; font-size: 0.85rem; }
+        .venue-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
 
-        /* Roles Grid */
-        .roles-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        @media (min-width: 850px) { .roles-grid { grid-template-columns: repeat(3, 1fr); } }
+        .venue-card i, .venue-card .venue-logo {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .venue-logo { width: 100px; object-fit: contain; }
 
-        .role-group { background: var(--white); border-radius: 15px; padding: 20px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
-        .role-group h4 { font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; color: #001d3d; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
-        .role-item { padding: 12px 0; border-bottom: 1px solid #f8fafc; }
-        .role-title { font-weight: 800; font-size: 1rem; display: block; }
-        .fresher-badge { display: inline-block; background: #f0fdf4; color: #16a34a; font-size: 0.7rem; padding: 3px 10px; border-radius: 50px; font-weight: 700; margin-top: 5px; }
-
-        .btn-role-apply { display: inline-flex; align-items: center; justify-content: center; background: #001d3d; color: var(--white); text-decoration: none; padding: 12px; border-radius: 8px; font-size: 0.95rem; font-weight: 800; margin-top: 15px; }
-
-        /* Posters */
-        .poster-container { display: flex; flex-direction: column; gap: 15px; }
-        @media (min-width: 600px) { .poster-container { flex-direction: row; } }
-        .poster-box { flex: 1; background: var(--white); padding: 8px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .poster-box img { width: 100%; border-radius: 8px; display: block; }
-
-        /* WhatsApp Button */
-        .whatsapp-btn { 
-            position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; 
+        .venue-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+        .venue-date { 
+            color: #ef4444; 
+            font-weight: 800; 
+            margin-bottom: 12px; 
+            background: #fee2e2;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
         }
 
-        footer { background: var(--white); padding: 30px 15px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 0.9rem; }
+        .map-btn {
+            width: 100%;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 800;
+            transition: var(--transition);
+            border: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+        .map-btn:hover { background: var(--primary); color: white; }
 
-        @media (min-width: 769px) {
-            .btn-group { flex-direction: row; justify-content: center; }
-            .hero { padding: 70px 20px 80px; }
+        /* --- Reverted Roles Interface Styles --- */
+        .roles-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+            margin-top: 30px;
+        }
+
+        .role-group { 
+            background: var(--white); 
+            border-radius: 20px; 
+            padding: 30px; 
+            border: 1px solid #e2e8f0; 
+            display: flex; 
+            flex-direction: column;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+        .role-group:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+
+        .role-group h4 { 
+            font-size: 1.3rem; 
+            margin-bottom: 20px; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            color: var(--primary); 
+            border-bottom: 2px solid #f1f5f9; 
+            padding-bottom: 15px;
+            font-weight: 800;
+        }
+        .role-group h4 i { color: var(--accent); }
+
+        .role-item { 
+            padding: 15px 0; 
+            border-bottom: 1px solid #f8fafc; 
+        }
+        .role-item:last-of-type { border-bottom: none; }
+
+        .role-title { font-weight: 800; font-size: 1.1rem; display: block; color: var(--text-dark); }
+        
+        .fresher-badge { 
+            display: inline-block; 
+            background: #f0fdf4; 
+            color: #16a34a; 
+            font-size: 0.75rem; 
+            padding: 4px 12px; 
+            border-radius: 50px; 
+            font-weight: 700; 
+            margin-top: 8px; 
+        }
+
+        .btn-role-apply { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: var(--primary); 
+            color: var(--white); 
+            text-decoration: none; 
+            padding: 15px; 
+            border-radius: 12px; 
+            font-size: 1rem; 
+            font-weight: 800; 
+            margin-top: 25px; 
+            transition: var(--transition);
+        }
+        .btn-role-apply:hover { background: var(--accent); transform: scale(1.02); }
+
+        /* Video Wrapper */
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            background: #000;
+            aspect-ratio: 16/9;
+        }
+        .video-wrapper video { width: 100%; height: 100%; object-fit: contain; }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+            animation: tweak 3s ease-in-out infinite;
+        }
+
+        @keyframes tweak {
+            0% { transform: scale(1); }
+            10% { transform: scale(1.1) rotate(-10deg); }
+            20% { transform: scale(1.1) rotate(10deg); }
+            30% { transform: scale(1.1) rotate(0); }
+            100% { transform: scale(1); }
+        }
+
+        /* Mobile Sticky CTA */
+        .mobile-cta {
+            position: fixed;
+            bottom: 0; left: 0; width: 100%;
+            background: var(--white);
+            padding: 12px 20px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 999;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; display: block; }
+
+        /* Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .mobile-cta { display: flex; }
+            .stats-bar { grid-template-columns: 1fr; gap: 15px; margin: -20px 15px 30px; }
+            .btn-group { display: none; }
+            .section { padding: 40px 15px; }
+            .hero { padding-bottom: 60px; }
         }
     </style>
 </head>
@@ -262,7 +387,7 @@
     <header>
         <div class="logo-slider">
             <div class="logo-track">
-                <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy Group" class="logo-img"></div>
+                <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
                 <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
@@ -270,126 +395,96 @@
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
                 <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
                 <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
-                <!-- Duplicate -->
-                <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy Group" class="logo-img"></div>
+                <!-- Clones -->
+                <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
                 <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
-                <div class="logo-item"><img src="KTM-logo.png" alt="KTM" class="logo-img"></div>
-                <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
-                <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
-                <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
             </div>
         </div>
     </header>
 
     <section class="hero">
-        <span class="fair-badge">Mega Job Fair 2026</span>
-        <h1>BUILD YOUR CAREER WITH SARATHY</h1>
-        <p>Join South Kerala's automotive giant. We are hiring 50+ energetic professionals across various departments.</p>
+        <div class="fair-badge">
+            <div class="live-dot"></div>
+            Mega Job Fair 2026
+        </div>
+        <h1>START YOUR JOURNEY WITH SARATHY</h1>
+        <p>Join the No. 1 Automotive Group in South Kerala. Premium brands, exceptional growth.</p>
         
-        <!-- Banner Slider (Now Mobile Optimized) -->
-        <div class="banner-slider-container">
+        <div class="banner-container">
             <div class="banner-track" id="bannerTrack">
-                <div class="banner-slide">
-                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/VICTORIS.png" alt="Victoris">
-                </div>
-                <div class="banner-slide">
-                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-06.png" alt="Grand Vitara">
-                </div>
-                <div class="banner-slide">
-                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-03.png" alt="Chetak">
-                </div>
-                <div class="banner-slide">
-                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-04.png" alt="Ather">
-                </div>
-                <div class="banner-slide">
-                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-01.png" alt="Triumph">
-                </div>
-                <div class="banner-slide">
-                    <img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-02.png" alt="Bikes">
-                </div>
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/VICTORIS.png" alt="V"></div>
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-06.png" alt="B"></div>
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-03.png" alt="C"></div>
             </div>
         </div>
 
         <div class="btn-group">
-            <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary">Apply Online Now</a>
-            <a href="#vacancies" class="btn btn-outline">View Positions</a>
+            <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> Apply Online Now
+            </a>
+            <a href="#vacancies" class="btn btn-secondary">Explore Roles</a>
         </div>
     </section>
 
-    <section class="section-padding bg-gray">
-        <div class="section-title">
-            <h2>Watch Promo</h2>
+    <div class="stats-bar">
+        <div class="stat-item"><h3>50+</h3><p>Vacancies</p></div>
+        <div class="stat-item"><h3>4</h3><p>Venues</p></div>
+        <div class="stat-item"><h3>10+</h3><p>Brands</p></div>
+    </div>
+
+    <section class="section reveal">
+        <div class="section-header">
+            <h2>Experience The Future</h2>
+            <p>A dynamic work culture awaits you.</p>
         </div>
-        <div class="video-container">
+        <div class="video-wrapper">
             <video controls preload="metadata">
                 <source src="WhatsApp Video 2026-01-28 at 12.16.31 PM.mp4" type="video/mp4">
             </video>
         </div>
     </section>
 
-    <section class="section-padding bg-white">
-        <div class="section-title">
+    <section class="section reveal" id="venues">
+        <div class="section-header">
             <h2>Venues & Dates</h2>
-            <p>Timing: 09:30 AM to 04:30 PM</p>
+            <p>Walk-in Interviews | 09:30 AM - 04:30 PM</p>
         </div>
         <div class="venue-grid">
             <div class="venue-card">
-                <div>
-                    <i class="fas fa-map-marker-alt" style="color: #023e8a; margin-bottom: 10px; font-size: 1.5rem;"></i>
-                    <h3>ATTINGAL</h3>
-                    <span class="venue-date">FEBRUARY 04, 2026</span>
-                    <p class="venue-address">Govt. Polytechnic College</p>
-                </div>
-                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-link" target="_blank">View Map</a>
+                <i class="fas fa-university"></i>
+                <h3>ATTINGAL</h3>
+                <span class="venue-date">FEB 04, 2026</span>
+                <p>Govt. Polytechnic College</p>
+                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-btn" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
-                <div>
-                    <i class="fas fa-map-marker-alt" style="color: #023e8a; margin-bottom: 10px; font-size: 1.5rem;"></i>
-                    <h3>KAZHAKKOOTTAM</h3>
-                    <span class="venue-date">FEBRUARY 05, 2026</span>
-                    <p class="venue-address">DC School of Management</p>
-                </div>
-                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-link" target="_blank">View Map</a>
+                <i class="fas fa-building"></i>
+                <h3>KAZHAKKOOTTAM</h3>
+                <span class="venue-date">FEB 05, 2026</span>
+                <p>DC School of Management</p>
+                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-btn" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
-                <div>
-                    <i class="fas fa-map-marker-alt" style="color: #023e8a; margin-bottom: 10px; font-size: 1.5rem;"></i>
-                    <h3>KATTAKKADA</h3>
-                    <span class="venue-date">FEBRUARY 06, 2026</span>
-                    <p class="venue-address">Christian College</p>
-                </div>
-                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-link" target="_blank">View Map</a>
+                <i class="fas fa-school"></i>
+                <h3>KATTAKKADA</h3>
+                <span class="venue-date">FEB 06, 2026</span>
+                <p>Christian College</p>
+                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-btn" target="_blank">View Map</a>
             </div>
             <div class="venue-card">
-                <div>
-                    <img src="sarathy-group-logo.png" alt="Sarathy" style="width: 100px; height: auto; margin-bottom: 10px;">
-                    <h3>PAPPANAMCODE</h3>
-                    <span class="venue-date">FEBRUARY 07, 2026</span>
-                    <p class="venue-address">Maruti Suzuki ARENA (Sarathy Autodrives, Trivandrum, Pappanamcode)</p>
-                </div>
-                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-link" target="_blank">View Map</a>
+                <img src="sarathy-group-logo.png" alt="Sarathy" class="venue-logo">
+                <h3>PAPPANAMCODE</h3>
+                <span class="venue-date">FEB 07, 2026</span>
+                <p>Sarathy Autodrives Arena</p>
+                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-btn" target="_blank">View Map</a>
             </div>
         </div>
     </section>
 
-    <section class="section-padding bg-gray">
-        <div class="section-title">
-            <h2>Official Posters</h2>
-        </div>
-        <div class="poster-container">
-            <div class="poster-box">
-                <img src="123.jpeg" alt="Job Poster 1" onerror="this.src='https://via.placeholder.com/600x800?text=Sarathy+Poster+1'">
-            </div>
-            <div class="poster-box">
-                <img src="WhatsApp Image 2026-01-22 at 8.12.42 PM.jpeg" alt="Job Poster 2" onerror="this.src='https://via.placeholder.com/600x800?text=Sarathy+Poster+2'">
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding bg-white" id="vacancies">
-        <div class="section-title">
+    <section class="section reveal" id="vacancies">
+        <div class="section-header">
             <h2>Available Positions</h2>
         </div>
         <div class="roles-grid">
@@ -398,11 +493,11 @@
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
                 <div class="role-item">
                     <span class="role-title">Sales Executive / RM</span>
-                    <span class="fresher-badge">Freshers & Exp</span>
+                    <span class="fresher-badge">Freshers & Experience</span>
                 </div>
                 <div class="role-item">
                     <span class="role-title">Team Leaders</span>
-                    <p style="font-size: 0.85rem; color: #64748b;">Min 2 Years Exp</p>
+                    <p style="font-size: 0.85rem; color: #64748b;">Freshers & Experience</p>
                 </div>
                 <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Sales</a>
             </div>
@@ -411,7 +506,7 @@
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
                 <div class="role-item">
                     <span class="role-title">Service Advisors</span>
-                    <span class="fresher-badge">Freshers & Exp</span>
+                    <span class="fresher-badge">Freshers & Experience
                 </div>
                 <div class="role-item">
                     <span class="role-title">Expert Technicians</span>
@@ -436,27 +531,39 @@
     </section>
 
     <footer>
-        <p><strong>Sarathy Group</strong> - Careers 2026</p>
-        <p style="margin: 8px 0; opacity: 0.8;">+91 9037 2236 65 | +91 9037 8338 65</p>
-        <div style="margin-top: 15px; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 Sarathy Group. All Rights Reserved.</div>
+        <span class="footer-logo">SARATHY GROUP</span>
+        <div class="footer-contact">
+            <p><i class="fas fa-phone-alt"></i> +91 9037 2236 65</p>
+        </div>
+        <p style="opacity: 0.6; font-size: 0.8rem; margin-top: 20px;">© 2026 Sarathy Group. All rights reserved.</p>
     </footer>
 
-    <a href="https://wa.me/919037833865?text=Hi, Interested in Sarathy Job Fair 2026" class="whatsapp-btn" target="_blank">
+    <div class="mobile-cta">
+        <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-paper-plane"></i> Apply Online Now
+        </a>
+    </div>
+
+    <a href="https://wa.me/919037833865?text=Hi, Interested in Sarathy Job Fair 2026" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
         const track = document.getElementById('bannerTrack');
-        const slides = document.querySelectorAll('.banner-slide');
         let index = 0;
-
-        function nextSlide() {
-            index++;
-            if (index >= slides.length) index = 0;
+        setInterval(() => {
+            index = (index + 1) % track.children.length;
             track.style.transform = `translateX(-${index * 100}%)`;
-        }
+        }, 5000);
 
-        setInterval(nextSlide, 4000);
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            reveals.forEach(r => {
+                if (r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add("active");
+            });
+        }
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
     </script>
 </body>
 </html>
