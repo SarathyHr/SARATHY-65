@@ -38,12 +38,12 @@
         /* --- Header & Logo Slider --- */
         header {
             background: var(--white);
-            padding: 12px 0;
+            padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            height: 75px;
+            height: 70px;
             display: flex;
             align-items: center;
         }
@@ -57,7 +57,7 @@
         .logo-track {
             display: flex;
             width: max-content;
-            animation: scroll 7s linear infinite;
+            animation: scroll 20s linear infinite;
         }
 
         .logo-item {
@@ -88,7 +88,7 @@
             color: var(--white);
             text-align: center;
             position: relative;
-            clip-path: ellipse(250% 100% at 50% 0%);
+            clip-path: ellipse(280% 100% at 50% 0%);
         }
 
         .fair-badge {
@@ -96,13 +96,14 @@
             padding: 8px 16px;
             border-radius: 100px;
             font-weight: 800;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(255, 159, 28, 0.3);
         }
 
         .live-dot {
@@ -116,24 +117,24 @@
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
         .hero h1 {
-            font-size: clamp(1.8rem, 8vw, 3.2rem);
+            font-size: clamp(2rem, 9vw, 3.5rem);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-            color: rgba(255,255,255,0.85);
-            max-width: 600px;
-            margin: 0 auto 25px;
+            font-size: clamp(0.95rem, 4vw, 1.2rem);
+            color: rgba(255,255,255,0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
 
- /* --- BANNER SLIDER: Mobile Responsive & Full View --- */
+        /* --- BANNER SLIDER: Mobile Responsive & Full View --- */
         .banner-container {
-            max-width: 1500px; /* Responsive Desktop Width */
-            width: 92%;        /* Perfect for Mobile Margin */
+            max-width: 1500px;
+            width: 92%;
             margin: 0 auto 25px;
             border-radius: 20px;
             overflow: hidden;
@@ -197,43 +198,40 @@
 
         .btn:hover { transform: translateY(-3px); }
 
-
         /* --- Stats Bar --- */
         .stats-bar {
             background: var(--white);
-            max-width: 850px;
-            margin: -45px auto 40px;
-            padding: 20px;
-            border-radius: 20px;
+            max-width: 900px;
+            margin: -55px auto 40px;
+            padding: 25px 20px;
+            border-radius: 24px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             text-align: center;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             position: relative;
             z-index: 10;
             width: calc(100% - 30px);
         }
 
-        .stat-item h3 { font-size: 1.6rem; color: var(--primary); font-weight: 800; margin-bottom: 2px; }
-        .stat-item p { color: var(--text-light); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-item h3 { font-size: 1.8rem; color: var(--primary); font-weight: 800; }
+        .stat-item p { color: var(--text-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
 
         /* --- Sections --- */
-        .section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 30px; }
-        .section-header h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 800; color: var(--primary); margin-bottom: 8px; }
-        .section-header p { color: var(--text-light); font-size: 1rem; }
+        .section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); font-weight: 800; color: var(--primary); margin-bottom: 10px; }
 
-        /* Venue Cards */
         .venue-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .venue-card {
             background: var(--white);
-            padding: 25px;
-            border-radius: 20px;
+            padding: 30px 20px;
+            border-radius: 24px;
             transition: var(--transition);
             border: 1px solid #e2e8f0;
             text-align: center;
@@ -242,87 +240,74 @@
             align-items: center;
         }
 
-        .venue-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-
-        .venue-card i, .venue-card .venue-logo {
-            font-size: 2.2rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .venue-logo { width: 90px; object-fit: contain; }
-
-        .venue-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; color: var(--primary); }
+        .venue-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+        .venue-card i, .venue-card .venue-logo { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+        .venue-logo { width: 100px; object-fit: contain; }
+        .venue-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
         .venue-date { 
             color: #ef4444; 
             font-weight: 800; 
-            margin-bottom: 12px; 
+            margin-bottom: 15px; 
             background: #fee2e2;
-            padding: 5px 14px;
+            padding: 6px 16px;
             border-radius: 10px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
-        .venue-card p { margin-bottom: 20px; font-size: 0.95rem; color: var(--text-light); min-height: 45px; }
-
+        
         .map-btn {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background: var(--primary);
-            border-radius: 10px;
+            border-radius: 12px;
             text-decoration: none;
             color: white;
             font-weight: 800;
             transition: var(--transition);
-            font-size: 0.95rem;
             margin-top: auto;
         }
-        .map-btn:hover { background: var(--accent); }
 
-        /* Roles Grid */
+        /* --- Roles Grid --- */
         .roles-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 20px; 
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 25px; 
+            margin-top: 30px;
         }
 
         .role-group { 
             background: var(--white); 
-            border-radius: 20px; 
-            padding: 25px; 
+            border-radius: 24px; 
+            padding: 30px; 
             border: 1px solid #e2e8f0; 
             display: flex; 
             flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
 
         .role-group h4 { 
-            font-size: 1.2rem; 
-            margin-bottom: 15px; 
+            font-size: 1.3rem; 
+            margin-bottom: 20px; 
             display: flex; 
             align-items: center; 
-            gap: 10px; 
+            gap: 12px; 
             color: var(--primary); 
             border-bottom: 2px solid #f1f5f9; 
-            padding-bottom: 12px;
+            padding-bottom: 15px;
             font-weight: 800;
         }
 
-        .role-item { padding: 12px 0; border-bottom: 1px solid #f8fafc; }
-        .role-title { font-weight: 800; font-size: 1rem; color: var(--text-dark); }
+        .role-item { padding: 15px 0; border-bottom: 1px solid #f8fafc; }
+        .role-title { font-weight: 800; font-size: 1.1rem; display: block; color: var(--text-dark); }
         
         .fresher-badge { 
             display: inline-block; 
             background: #f0fdf4; 
             color: #16a34a; 
-            font-size: 0.7rem; 
-            padding: 2px 10px; 
+            font-size: 0.75rem; 
+            padding: 4px 12px; 
             border-radius: 50px; 
             font-weight: 700; 
-            margin-top: 6px; 
+            margin-top: 8px; 
         }
 
         .btn-role-apply { 
@@ -332,52 +317,53 @@
             background: var(--primary); 
             color: var(--white); 
             text-decoration: none; 
-            padding: 14px; 
-            border-radius: 10px; 
-            font-size: 0.95rem; 
+            padding: 15px; 
+            border-radius: 12px; 
+            font-size: 1rem; 
             font-weight: 800; 
             margin-top: 20px; 
             transition: var(--transition);
         }
+        .btn-role-apply:hover { background: var(--accent); }
 
-        /* Reel Video Style */
+        /* --- Reel Video --- */
         .video-wrapper {
-            max-width: 300px;
+            max-width: 320px;
             margin: 0 auto;
-            border-radius: 20px;
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
             background: #000;
             aspect-ratio: 9/16;
-            border: 4px solid white;
+            border: 6px solid white;
         }
         .video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Floating WhatsApp */
+        /* --- WhatsApp --- */
         .whatsapp-float {
             position: fixed;
             bottom: 100px;
             right: 20px;
             background: var(--success);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            font-size: 28px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
             z-index: 1000;
             text-decoration: none;
         }
 
-        /* Mobile Sticky Footer */
+        /* --- Sticky CTA Mobile --- */
         .mobile-cta {
             position: fixed;
             bottom: 0; left: 0; width: 100%;
             background: var(--white);
-            padding: 12px 15px;
+            padding: 12px 20px;
             box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
             display: none;
             z-index: 999;
@@ -386,25 +372,26 @@
         footer {
             background: var(--primary);
             color: white;
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
         }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s all ease-out; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 768px) {
             .mobile-cta { display: flex; }
             .btn-group { display: none; }
-            .stats-bar { grid-template-columns: 1fr; gap: 12px; margin-top: -35px; }
-            .hero { padding-top: 20px; padding-bottom: 70px; }
-            .banner-container { 
-                aspect-ratio: 16 / 9; /* Slightly taller for mobile visibility */
-                width: 100%;
-                border-radius: 14px;
-            }
-            .hero h1 { font-size: 2rem; }
-            .section { padding: 30px 15px; }
+            .stats-bar { grid-template-columns: 1fr; gap: 12px; margin-top: -45px; }
+            .hero { padding-bottom: 80px; }
+            .banner-container { width: 95%; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .roles-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 1024px) {
+            .banner-container { width: 60%; }
         }
     </style>
 </head>
@@ -422,7 +409,7 @@
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
                 <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
                 <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
-                <!-- Continuous Duplicate -->
+                <!-- Duplicate for Loop -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -524,6 +511,7 @@
             <h2>Available Positions</h2>
         </div>
         <div class="roles-grid">
+            <!-- Sales -->
             <div class="role-group">
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
                 <div class="role-item">
@@ -536,6 +524,7 @@
                 </div>
                 <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Sales</a>
             </div>
+            <!-- Service -->
             <div class="role-group">
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
                 <div class="role-item">
@@ -548,11 +537,25 @@
                 </div>
                 <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Service</a>
             </div>
+            <!-- Spare -->
+            <div class="role-group">
+                <h4><i class="fas fa-cog"></i> Spare Roles</h4>
+                <div class="role-item">
+                    <span class="role-title">Spare Parts Executive</span>
+                    <span class="fresher-badge">Spare Parts Trainee</span>
+                </div>
+                <div class="role-item">
+                    <span class="role-title">Inventory Managers</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">12th Pass or Above</p>
+                </div>
+                <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn-role-apply">Apply for Spares</a>
+            </div>
+            <!-- Support -->
             <div class="role-group">
                 <h4><i class="fas fa-laptop-code"></i> Support & Digital</h4>
                 <div class="role-item">
                     <span class="role-title">Content Creator / Graphics</span>
-                    <span class="fresher-badge">Freshers & Experienced</span>
+                    <span class="fresher-badge">Portfolio Req.</span>
                 </div>
                 <div class="role-item">
                     <span class="role-title">Accounts Executive</span>
@@ -572,7 +575,7 @@
     </footer>
 
     <div class="mobile-cta">
-        <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center; box-shadow: 0 4px 15px rgba(255, 159, 28, 0.4);">
+        <a href="https://near.tl/sm/j1PMQp_fI" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">
             <i class="fas fa-paper-plane"></i> Apply Online Now
         </a>
     </div>
@@ -587,8 +590,10 @@
         const totalSlides = track.children.length;
         
         setInterval(() => {
-            index = (index + 1) % totalSlides;
-            track.style.transform = `translateX(-${index * 100}%)`;
+            if (totalSlides > 0) {
+                index = (index + 1) % totalSlides;
+                track.style.transform = `translateX(-${index * 100}%)`;
+            }
         }, 4000);
 
         function reveal() {
