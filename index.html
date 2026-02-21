@@ -3,694 +3,606 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarathy Group - Monthly HR Portal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Sarathy Group | Mega Job Fair 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        
         :root {
-            --sarathy-blue: #0054A6;
-            --sarathy-red: #E31E24;
-            --glass-bg: rgba(255, 255, 255, 0.7);
+            --primary: #002855;
+            --accent: #ff9f1c;
+            --accent-hover: #e68a00;
+            --success: #25D366;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #001d3d 0%, #003566 100%);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fafc;
-            color: #000000;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 90px;
         }
 
-        .text-sarathy-blue { color: var(--sarathy-blue); }
-        .text-sarathy-red { color: var(--sarathy-red); }
-        .bg-sarathy-blue { background-color: var(--sarathy-blue); }
-        .bg-sarathy-red { background-color: var(--sarathy-red); }
+        /* --- Header & Logo Slider --- */
+        header {
+            background: var(--white);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
 
-        .modern-card {
-            background: #ffffff;
-            border: 1px solid rgba(226, 232, 240, 0.6);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.02), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        .logo-slider {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .logo-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 7s linear infinite;
+        }
+
+        .logo-item {
+            width: 120px;
+            height: 45px;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .logo-img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 30px 15px 100px;
+            background: var(--bg-gradient);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            clip-path: ellipse(280% 100% at 50% 0%);
+        }
+
+        .fair-badge {
+            background: var(--accent);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(255, 159, 28, 0.3);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .hero h1 {
+            font-size: clamp(2rem, 9vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: clamp(0.95rem, 4vw, 1.2rem);
+            color: rgba(255,255,255,0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* --- BANNER SLIDER --- */
+        .banner-container {
+            max-width: 1500px;
+            width: 92%;
+            margin: 0 auto 25px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            background: transparent; 
+            position: relative;
+        }
+
+        .banner-track { 
+            display: flex; 
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        
+        .banner-slide { 
+            min-width: 100%; 
+            position: relative; 
+            background: transparent;
+        }
+        
+        .banner-slide img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            object-fit: cover; 
             border-radius: 20px;
         }
 
-        .status-stamp {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 5px 14px;
-            border-radius: 6px;
+        /* --- Buttons --- */
+        .btn-group { 
+            display: flex; 
+            gap: 15px; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            margin-bottom: 20px; 
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            border: 1.5px solid currentColor;
-            transform: rotate(-1deg);
-            white-space: nowrap;
+            gap: 10px;
+            cursor: pointer;
         }
 
-        .status-rejected { color: #ef4444; background: rgba(239, 68, 68, 0.05); }
-        .status-selected { color: #10b981; background: rgba(16, 185, 129, 0.05); }
-        .status-pending { color: #f59e0b; background: rgba(245, 158, 11, 0.05); }
-
-        .btn-action {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        .btn-primary { 
+            background: var(--accent); 
+            color: var(--white); 
+            box-shadow: 0 8px 20px rgba(255, 159, 28, 0.3); 
         }
-
-        .btn-action:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-
-        .hidden-view { display: none !important; }
         
-        .animate-in {
-            animation: slideUp 0.4s ease-out forwards;
+        .btn-secondary { 
+            background: rgba(255,255,255,0.15); 
+            color: var(--white); 
+            border: 1px solid rgba(255,255,255,0.2); 
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .btn:hover { transform: translateY(-3px); }
+
+        /* --- Stats Bar --- */
+        .stats-bar {
+            background: var(--white);
+            max-width: 900px;
+            margin: -55px auto 40px;
+            padding: 25px 20px;
+            border-radius: 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+            width: calc(100% - 30px);
         }
+
+        .stat-item h3 { font-size: 1.8rem; color: var(--primary); font-weight: 800; }
+        .stat-item p { color: var(--text-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
+
+        /* --- Sections --- */
+        .section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+
+        .venue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .venue-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 24px;
+            transition: var(--transition);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .venue-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+        .venue-card i, .venue-card .venue-logo { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+        .venue-logo { width: 100px; object-fit: contain; }
+        .venue-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+        .venue-date { 
+            color: #ef4444; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            background: #fee2e2;
+            padding: 6px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .map-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 800;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        /* --- Roles Grid --- */
+        .roles-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 25px; 
+            margin-top: 30px;
+        }
+
+        .role-group { 
+            background: var(--white); 
+            border-radius: 24px; 
+            padding: 30px; 
+            border: 1px solid #e2e8f0; 
+            display: flex; 
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .role-group h4 { 
+            font-size: 1.3rem; 
+            margin-bottom: 20px; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            color: var(--primary); 
+            border-bottom: 2px solid #f1f5f9; 
+            padding-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .role-item { padding: 15px 0; border-bottom: 1px solid #f8fafc; }
+        .role-title { font-weight: 800; font-size: 1.1rem; display: block; color: var(--text-dark); }
+        
+        .fresher-badge { 
+            display: inline-block; 
+            background: #f0fdf4; 
+            color: #16a34a; 
+            font-size: 0.75rem; 
+            padding: 4px 12px; 
+            border-radius: 50px; 
+            font-weight: 700; 
+            margin-top: 8px; 
+        }
+
+        .btn-role-apply { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: var(--primary); 
+            color: var(--white); 
+            text-decoration: none; 
+            padding: 15px; 
+            border-radius: 12px; 
+            font-size: 1rem; 
+            font-weight: 800; 
+            margin-top: 20px; 
+            transition: var(--transition);
+        }
+        .btn-role-apply:hover { background: var(--accent); }
+
+        /* --- Reel Video --- */
+        .video-wrapper {
+            max-width: 320px;
+            margin: 0 auto;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            background: #000;
+            aspect-ratio: 9/16;
+            border: 6px solid white;
+        }
+        .video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- WhatsApp --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        /* --- Sticky CTA Mobile --- */
+        .mobile-cta {
+            position: fixed;
+            bottom: 0; left: 0; width: 100%;
+            background: var(--white);
+            padding: 12px 20px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 999;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 768px) {
-            .mobile-stack { flex-direction: column; }
-            .desktop-only { display: none; }
-            .mobile-grid-stats { grid-template-columns: repeat(2, 1fr); }
+            .mobile-cta { display: flex; }
+            .btn-group { display: none; }
+            .stats-bar { grid-template-columns: 1fr; gap: 12px; margin-top: -45px; }
+            .hero { padding-bottom: 80px; }
+            .banner-container { width: 95%; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .roles-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 1024px) {
+            .banner-container { width: 60%; }
         }
     </style>
 </head>
-<body class="min-h-screen">
+<body>
 
-    <!-- LOGIN PAGE -->
-    <div id="loginPage" class="min-h-screen flex items-center justify-center p-4 bg-[#f1f5f9]">
-        <div class="w-full max-w-md animate-in">
-            <div class="modern-card p-6 md:p-10 bg-white">
-                <div class="text-center mb-8">
-                    <img src="sarathy-group-logo.png" alt="Sarathy Group" class="h-20 md:h-28 mx-auto mb-4 object-contain" onerror="this.parentElement.innerHTML='<h1 class=\'text-3xl font-black text-sarathy-blue\'>SARATHY</h1><p class=\'text-[8px] text-sarathy-red font-bold tracking-[0.3em] uppercase mt-1\'>Experience the new drive</p>'">
-                    <div class="h-1 w-12 bg-slate-100 mx-auto mt-2 rounded-full"></div>
-                    <h2 class="text-lg font-bold text-black mt-4 tracking-tight">HR Monthly Portal</h2>
-                </div>
-                
-                <div id="loginError" class="hidden-view bg-red-50 text-red-600 p-4 rounded-xl text-xs font-bold mb-6 text-center border border-red-100">
-                    Access Denied. Please check your credentials.
-                </div>
-
-                <form id="loginForm" class="space-y-4">
-                    <div>
-                        <label class="text-[10px] font-black text-black uppercase tracking-widest mb-1 block">Executive ID</label>
-                        <input type="text" id="username" required class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl font-bold text-black focus:ring-2 ring-blue-100 outline-none">
-                    </div>
-                    <div>
-                        <label class="text-[10px] font-black text-black uppercase tracking-widest mb-1 block">Security Pin</label>
-                        <input type="password" id="password" required class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl font-bold text-black focus:ring-2 ring-blue-100 outline-none">
-                    </div>
-                    <button type="submit" class="w-full bg-sarathy-blue text-white font-black py-4 rounded-xl shadow-lg btn-action mt-4 uppercase tracking-wider text-sm">
-                        Enter Dashboard
-                    </button>
-                </form>
+    <header>
+        <div class="logo-slider">
+            <div class="logo-track">
+                <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
+                <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
+                <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
+                <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
+                <div class="logo-item"><img src="KTM-logo.png" alt="KTM" class="logo-img"></div>
+                <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
+                <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
+                <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
+                <!-- Duplicate -->
+                <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
+                <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
+                <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
+                <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
+                <div class="logo-item"><img src="KTM-logo.png" alt="KTM" class="logo-img"></div>
+                <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
+                <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
+                <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- MAIN DASHBOARD -->
-    <div id="dashboardPage" class="hidden-view flex flex-col min-h-screen">
-        <nav class="bg-white/80 backdrop-blur-md border-b border-slate-100 py-3 px-4 md:px-12 flex justify-between items-center sticky top-0 z-40">
-            <div class="flex items-center gap-3">
-                <img src="sarathy-group-logo.png" alt="Sarathy" class="h-8 object-contain" onerror="this.style.display='none'">
-                <div class="h-6 w-[1px] bg-slate-100 hidden sm:block"></div>
-                <h2 class="font-black text-black tracking-tight text-lg uppercase hidden sm:block">HR <span class="text-sarathy-red">Panel</span></h2>
-            </div>
-            
-            <div class="flex items-center gap-4">
-                <div class="hidden sm:flex flex-col text-right">
-                    <span class="text-[9px] font-black text-black uppercase tracking-widest">Monthly Tracking</span>
-                    <span class="text-xs font-extrabold text-sarathy-blue" id="userRoleDisplay">Administrator</span>
-                </div>
-                <button onclick="logout()" title="Back to Login" class="w-9 h-9 rounded-xl bg-slate-50 text-black hover:text-sarathy-red transition-all flex items-center justify-center hover:bg-red-50">
-                    <i class="fas fa-arrow-left text-sm mr-1 sm:hidden"></i>
-                    <i class="fas fa-sign-out-alt text-sm"></i>
-                </button>
-            </div>
-        </nav>
-
-        <main class="flex-grow p-4 md:p-10 max-w-[1600px] mx-auto w-full">
-            <!-- Header section responsive -->
-            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 gap-6">
-                <div>
-                    <h1 class="text-2xl md:text-3xl font-extrabold text-black">Personnel <span class="text-sarathy-blue">Database</span></h1>
-                    <p class="text-black text-xs md:text-sm font-medium mt-1">Showing records for <span id="currentViewMonth" class="text-sarathy-blue font-bold">...</span></p>
-                </div>
-                <div class="flex flex-wrap gap-2 w-full lg:w-auto">
-                    <input type="month" id="monthFilter" onchange="renderTable()" 
-                           class="flex-grow lg:flex-none px-4 py-3 bg-white border border-slate-200 rounded-xl shadow-sm text-sm font-bold text-black outline-none">
-                    
-                    <button onclick="openModal()" class="flex-grow lg:flex-none bg-sarathy-blue text-white px-6 py-3 rounded-xl flex items-center justify-center gap-2 font-bold shadow-xl shadow-blue-500/20 btn-action text-sm">
-                        <i class="fas fa-plus-circle"></i> New
-                    </button>
-                    <button onclick="exportToCSV()" class="flex-grow lg:flex-none bg-white border border-slate-200 text-black px-6 py-3 rounded-xl flex items-center justify-center gap-2 font-bold hover:bg-slate-50 transition-all text-sm">
-                        <i class="fas fa-file-export text-sarathy-red"></i> Export
-                    </button>
-                </div>
-            </div>
-
-            <!-- Stats Bar Responsive -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-8 mobile-grid-stats">
-                <div class="modern-card p-4 md:p-6 border-l-4 border-blue-500">
-                    <p class="text-[9px] md:text-[10px] font-black text-black uppercase tracking-widest mb-1">Records</p>
-                    <div class="flex items-end gap-1">
-                        <h3 class="text-xl md:text-3xl font-black text-black" id="statTotal">0</h3>
-                        <span class="text-[8px] md:text-[10px] text-black mb-1 font-bold">Files</span>
-                    </div>
-                </div>
-                <div class="modern-card p-4 md:p-6 border-l-4 border-emerald-500">
-                    <p class="text-[9px] md:text-[10px] font-black text-black uppercase tracking-widest mb-1">Selected</p>
-                    <h3 class="text-xl md:text-3xl font-black text-black" id="statSelected">0</h3>
-                </div>
-                <div class="modern-card p-4 md:p-6 border-l-4 border-amber-500">
-                    <p class="text-[9px] md:text-[10px] font-black text-black uppercase tracking-widest mb-1">Pending</p>
-                    <h3 class="text-xl md:text-3xl font-black text-black" id="statPending">0</h3>
-                </div>
-                <div class="modern-card p-4 md:p-6 border-l-4 border-red-500">
-                    <p class="text-[9px] md:text-[10px] font-black text-black uppercase tracking-widest mb-1">Rejected</p>
-                    <h3 class="text-xl md:text-3xl font-black text-black" id="statRejected">0</h3>
-                </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-3 mb-6">
-                <div class="relative flex-grow flex items-center gap-2">
-                    <div class="relative flex-grow">
-                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-black text-sm"></i>
-                        <input type="text" id="searchInput" onkeyup="renderTable()" placeholder="Search..." 
-                               class="w-full pl-11 pr-4 py-3 bg-white border border-slate-100 rounded-xl shadow-sm font-medium text-black focus:ring-2 ring-blue-50 outline-none transition-all">
-                    </div>
-                    <!-- Clear/Back Filters Button -->
-                    <button onclick="clearFilters()" id="clearBtn" class="hidden px-4 py-3 bg-slate-100 text-black rounded-xl font-bold text-xs flex items-center gap-2 hover:bg-slate-200 transition-all">
-                        <i class="fas fa-undo"></i> <span class="hidden sm:inline">Back</span>
-                    </button>
-                </div>
-                <select id="statusFilter" onchange="renderTable()" class="px-4 py-3 bg-white border border-slate-100 rounded-xl shadow-sm text-sm font-bold text-black outline-none cursor-pointer">
-                    <option value="All">All Status</option>
-                    <option value="SELECTED">Selected</option>
-                    <option value="PENDING">Pending</option>
-                    <option value="REJECTED">Rejected</option>
-                </select>
-            </div>
-
-            <!-- Main Container -->
-            <div id="dataContainer">
-                <!-- Desktop Table View -->
-                <div class="modern-card overflow-hidden hidden md:block">
-                    <div class="overflow-x-auto custom-scroll">
-                        <table class="w-full text-left border-collapse min-w-[1000px]">
-                            <thead>
-                                <tr class="bg-slate-50 border-b border-slate-200">
-                                    <th class="p-5 font-black text-[12px] uppercase tracking-widest text-black">Identity</th>
-                                    <th class="p-5 font-black text-[12px] uppercase tracking-widest text-black">Sarathy Entity</th>
-                                    <th class="p-5 font-black text-[12px] uppercase tracking-widest text-black">Dept & Role</th>
-                                    <th class="p-5 font-black text-[12px] uppercase tracking-widest text-black">Timeline</th>
-                                    <th class="p-5 font-black text-[12px] uppercase tracking-widest text-black text-center col-status">Status</th>
-                                    <th class="p-5 font-black text-[12px] uppercase tracking-widest text-black text-center col-manage">Manage</th>
-                                </tr>
-                            </thead>
-                            <tbody id="joineeTableBody" class="divide-y divide-slate-50 text-black">
-                                <!-- JS Injection -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Mobile Card View -->
-                <div id="mobileJoineeList" class="md:hidden flex flex-col gap-4">
-                    <!-- JS Injection -->
-                </div>
-
-                <div id="emptyState" class="p-16 md:p-32 text-center hidden bg-white rounded-3xl border border-slate-100 mt-4">
-                    <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-calendar-times text-2xl text-black/20"></i>
-                    </div>
-                    <h3 class="text-lg font-extrabold text-black">No Records Found</h3>
-                    <p class="text-black/60 text-xs mt-1">No entries for this filter/month.</p>
-                    <button onclick="clearFilters()" class="mt-4 text-sarathy-blue font-bold text-sm underline">Go Back to All Records</button>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- MODAL: ADD / EDIT -->
-    <div id="addModal" class="fixed inset-0 bg-slate-900/40 z-50 flex items-end md:items-center justify-center hidden p-0 md:p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-t-[2rem] md:rounded-[2.5rem] w-full max-w-2xl overflow-hidden shadow-2xl transform transition-all translate-y-full md:translate-y-0 md:scale-95 opacity-0 duration-300 max-h-[90vh] flex flex-col" id="modalContent">
-            <div class="p-6 md:p-10 pb-4 flex justify-between items-start sticky top-0 bg-white z-10 border-b md:border-none border-slate-100">
-                <div>
-                    <h2 class="text-xl md:text-2xl font-black text-black" id="modalTitle">Add New Personnel</h2>
-                    <p class="text-black/60 text-[10px] font-bold uppercase tracking-widest mt-1">Official Database Entry</p>
-                </div>
-                <button onclick="closeModal()" class="w-10 h-10 md:w-12 md:h-12 bg-slate-50 rounded-xl md:rounded-2xl flex items-center justify-center hover:bg-red-50 hover:text-red-500 transition-all">
-                    <i class="fas fa-times text-black"></i>
-                </button>
-            </div>
-            
-            <div class="overflow-y-auto p-6 md:p-10 pt-2 flex-grow custom-scroll">
-                <form id="joineeForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                    <input type="hidden" id="editId">
-                    <div class="md:col-span-2">
-                        <label class="text-[9px] font-black text-black uppercase tracking-widest mb-1 block">Company Entity</label>
-                        <select id="company" required class="w-full p-3 md:p-4 bg-slate-50 border-none rounded-xl md:rounded-2xl font-bold text-black focus:ring-2 ring-blue-100 outline-none">
-                            <option value="">Select Entity</option>
-                            <option value="Sarathy Motors">Sarathy Motors</option>
-                            <option value="Sarathy Bikes Pvt Ltd">Sarathy Bikes Pvt Ltd</option>
-                            <option value="Sarathy Electric">Sarathy Electric Pvt Ltd</option>
-                            <option value="Sarathy Autocars">Sarathy Autocars</option>
-                            <option value="Sarathy Cars Pvt Ltd">Sarathy Cars Pvt Ltd</option>
-                            <option value="Sarathy AutoDrives Pvt Ltd">Sarathy AutoDrives Pvt Ltd</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-[9px] font-black text-black uppercase tracking-widest mb-1 block">Emp ID</label>
-                        <input type="text" id="empId" required class="w-full p-3 md:p-4 bg-slate-50 border-none rounded-xl md:rounded-2xl font-bold text-sarathy-blue focus:ring-2 ring-blue-100 outline-none">
-                    </div>
-                    <div>
-                        <label class="text-[9px] font-black text-black uppercase tracking-widest mb-1 block">Full Name</label>
-                        <input type="text" id="empName" required class="w-full p-3 md:p-4 bg-slate-50 border-none rounded-xl md:rounded-2xl font-bold text-black focus:ring-2 ring-blue-100 outline-none">
-                    </div>
-                    <div>
-                        <label class="text-[9px] font-black text-black uppercase tracking-widest mb-1 block">Contact Number</label>
-                        <input type="tel" id="empPhone" required class="w-full p-3 md:p-4 bg-slate-50 border-none rounded-xl md:rounded-2xl font-bold text-black focus:ring-2 ring-blue-100 outline-none">
-                    </div>
-                    <div>
-                        <label class="text-[9px] font-black text-black uppercase tracking-widest mb-1 block">Department</label>
-                        <select id="dept" required class="w-full p-3 md:p-4 bg-slate-50 border-none rounded-xl md:rounded-2xl font-bold text-black focus:ring-2 ring-blue-100 outline-none">
-                            <option value="Sales">Sales</option>
-                            <option value="Service">Service</option>
-                            <option value="Spare">Spare</option>
-                            <option value="Accounts">Accounts</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-[9px] font-black text-black uppercase tracking-widest mb-1 block">Status</label>
-                        <select id="status" required class="w-full p-3 md:p-4 bg-slate-50 border-none rounded-xl md:rounded-2xl font-black text-sarathy-blue focus:ring-2 ring-blue-100 outline-none">
-                            <option value="PENDING">PENDING</option>
-                            <option value="SELECTED">SELECTED</option>
-                            <option value="REJECTED">REJECTED</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-[9px] font-black text-black uppercase tracking-widest mb-1 block">Location</label>
-                        <input type="text" id="location" required class="w-full p-3 md:p-4 bg-slate-50 border-none rounded-xl md:rounded-2xl font-bold text-black focus:ring-2 ring-blue-100 outline-none">
-                    </div>
-                    <div>
-                        <label class="text-[9px] font-black text-black uppercase tracking-widest mb-1 block">Timeline Date (DOJ)</label>
-                        <input type="date" id="doj" required class="w-full p-3 md:p-4 bg-slate-50 border-none rounded-xl md:rounded-2xl font-bold text-black focus:ring-2 ring-blue-100 outline-none">
-                    </div>
-                    <div class="md:col-span-2">
-                        <label class="text-[9px] font-black text-black uppercase tracking-widest mb-1 block">Manager / Remarks</label>
-                        <input type="text" id="manager" placeholder="Assigned Manager or Quick Note" class="w-full p-3 md:p-4 bg-slate-50 border-none rounded-xl md:rounded-2xl font-bold text-black focus:ring-2 ring-blue-100 outline-none">
-                    </div>
-
-                    <div class="md:col-span-2 flex flex-col sm:flex-row gap-3 mt-4 pb-6">
-                        <button type="submit" class="flex-[2] bg-sarathy-blue text-white font-black py-4 rounded-xl md:rounded-2xl shadow-xl shadow-blue-500/20 btn-action uppercase tracking-widest text-sm">
-                            <span id="submitBtnText">Confirm Registration</span>
-                        </button>
-                        <button type="button" onclick="closeModal()" class="flex-1 bg-slate-100 text-black font-black py-4 rounded-xl md:rounded-2xl uppercase tracking-widest text-sm hover:bg-slate-200 transition-all">
-                            Back
-                        </button>
-                    </div>
-                </form>
+    <section class="hero">
+        <div class="fair-badge">
+            <div class="live-dot"></div>
+            Mega Job Fair 2026
+        </div>
+        <h1>START YOUR JOURNEY WITH SARATHY</h1>
+        <p>Join the No. 1 Automotive Group in South Kerala. Premium brands, exceptional growth.</p>
+        
+        <div class="banner-container">
+            <div class="banner-track" id="bannerTrack">
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/VICTORIS.png" alt="Victor"></div>
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-06.png" alt="Banner 6"></div>
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-03.png" alt="Banner 3"></div>
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-04.png" alt="Banner 4"></div>
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-01.png" alt="Banner 1"></div>
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-02.png" alt="Banner 2"></div>
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2022/05/sarathy-awards-3.jpg" alt="Awards 3"></div>
+                <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2022/05/sarathy-awards-2.jpg" alt="Awards 2"></div>
             </div>
         </div>
+
+        <div class="btn-group">
+            <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> Apply Online Now
+            </a>
+            <a href="#vacancies" class="btn btn-secondary">Explore Roles</a>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stat-item"><h3>50+</h3><p>Vacancies</p></div>
+        <div class="stat-item"><h3>4</h3><p>Venues</p></div>
+        <div class="stat-item"><h3>7+</h3><p>Brands</p></div>
     </div>
 
-    <!-- TOAST -->
-    <div id="toast" class="fixed bottom-6 right-6 left-6 md:left-auto md:bottom-10 md:right-10 translate-y-20 opacity-0 bg-black text-white px-6 py-4 rounded-xl md:rounded-2xl shadow-2xl transition-all duration-300 z-50 flex items-center gap-3">
-        <div id="toastIcon" class="w-8 h-8 rounded-full flex items-center justify-center bg-emerald-500 shadow-lg">
-            <i class="fas fa-check text-[10px]"></i>
+    <section class="section reveal">
+        <div class="section-header">
+            <h2>Experience The Future</h2>
+            <p>A dynamic work culture awaits you.</p>
         </div>
-        <div>
-            <p id="toastMessage" class="font-black text-[10px] md:text-xs tracking-wider uppercase">Action Successful</p>
+        <div class="video-wrapper">
+            <video controls preload="metadata" playsinline>
+                <source src="WhatsApp Video 2026-01-28 at 12.16.31 PM.mp4" type="video/mp4">
+            </video>
         </div>
+    </section>
+
+    <section class="section reveal" id="venues">
+        <div class="section-header">
+            <h2>Venues & Dates</h2>
+            <p>Walk-in Interviews | 09:30 AM - 04:30 PM</p>
+        </div>
+        <div class="venue-grid">
+            <div class="venue-card">
+                <i class="fas fa-university"></i>
+                <h3>ATTINGAL</h3>
+                <span class="venue-date">FEBRUARY 04, 2026</span>
+                <p>Govt. Polytechnic College</p>
+                <a href="https://share.google/CAW2Eh0PkXP15rwZ7" class="map-btn" target="_blank">View Map</a>
+            </div>
+            <div class="venue-card">
+                <i class="fas fa-university"></i>
+                <h3>KAZHAKKOOTTAM</h3>
+                <span class="venue-date">FEBRUARY 05, 2026</span>
+                <p>DC School of Management</p>
+                <a href="https://share.google/x6kfScv7P1UnI3PtK" class="map-btn" target="_blank">View Map</a>
+            </div>
+            <div class="venue-card">
+                <i class="fas fa-university"></i>
+                <h3>KATTAKKADA</h3>
+                <span class="venue-date">FEBRUARY 06, 2026</span>
+                <p>Christian College</p>
+                <a href="https://share.google/lSdkNPH7BChN1O2A9" class="map-btn" target="_blank">View Map</a>
+            </div>
+            <div class="venue-card">
+                <img src="sarathy-group-logo.png" alt="Sarathy" class="venue-logo">
+                <h3>PAPPANAMCODE</h3>
+                <span class="venue-date">FEBRUARY 07, 2026</span>
+                <p>Maruti Suzuki ARENA (Sarathy Autodrives)</p>
+                <a href="https://share.google/L6NLvwOsFwlP2owpv" class="map-btn" target="_blank">View Map</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reveal" id="vacancies">
+        <div class="section-header">
+            <h2>Available Positions</h2>
+        </div>
+        <div class="roles-grid">
+            <!-- Sales -->
+            <div class="role-group">
+                <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
+                <div class="role-item">
+                    <span class="role-title">Sales Executive / RM</span>
+                    <span class="fresher-badge">Freshers & Experienced</span>
+                </div>
+                <div class="role-item">
+                    <span class="role-title">Team Leaders</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">Automotive Exp. Preferred</p>
+                </div>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Sales</a>
+            </div>
+            <!-- Service -->
+            <div class="role-group">
+                <h4><i class="fas fa-tools"></i> Service Roles</h4>
+                <div class="role-item">
+                    <span class="role-title">Service Advisors</span>
+                    <span class="fresher-badge">Freshers & Experienced</span>
+                </div>
+                <div class="role-item">
+                    <span class="role-title">Expert Technicians</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">ITI / Diploma holders</p>
+                </div>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Service</a>
+            </div>
+            <!-- Spare -->
+            <div class="role-group">
+                <h4><i class="fas fa-cog"></i> Spare Roles</h4>
+                <div class="role-item">
+                    <span class="role-title">Spare Parts Executive</span>
+                    <span class="fresher-badge">Spare Parts Trainee</span>
+                </div>
+                <div class="role-item">
+                    <span class="role-title">Inventory Managers</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">12th Pass or Above</p>
+                </div>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Spares</a>
+            </div>
+            <!-- Support -->
+            <div class="role-group">
+                <h4><i class="fas fa-laptop-code"></i> Support & Digital</h4>
+                <div class="role-item">
+                    <span class="role-title">Content Creator / Graphics</span>
+                    <span class="fresher-badge">Portfolio Req.</span>
+                </div>
+                <div class="role-item">
+                    <span class="role-title">Accounts Executive</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">B.Com / M.Com (Tally)</p>
+                </div>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Support</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-logo">SARATHY GROUP</span>
+        <div class="footer-contact">
+            <p><i class="fas fa-phone-alt"></i> +91 9037 2236 65</p>
+        </div>
+        <p style="opacity: 0.6; font-size: 0.8rem; margin-top: 15px;">© 2026 Sarathy Group. All rights reserved.</p>
+    </footer>
+
+    <div class="mobile-cta">
+        <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-paper-plane"></i> Apply Online Now
+        </a>
     </div>
+
+    <a href="https://wa.me/919037833865?text=Hi, Interested in Sarathy Job Fair 2026" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
-        const USERS = [
-            { user: 'admin', pass: 'admin123', role: 'System Admin' },
-            { user: 'hr', pass: 'sarathyhr', role: 'HR Executive' }
-        ];
-
-        let currentUser = null;
-        let joinees = JSON.parse(localStorage.getItem('sarathy_db_v4')) || [];
-
-        window.onload = () => {
-            const now = new Date();
-            const yearMonth = now.toISOString().slice(0, 7);
-            document.getElementById('monthFilter').value = yearMonth;
-
-            const session = sessionStorage.getItem('sarathy_session');
-            if(session) {
-                currentUser = JSON.parse(session);
-                showDashboard();
+        const track = document.getElementById('bannerTrack');
+        let index = 0;
+        const totalSlides = track.children.length;
+        
+        setInterval(() => {
+            if (totalSlides > 0) {
+                index = (index + 1) % totalSlides;
+                track.style.transform = `translateX(-${index * 100}%)`;
             }
-        };
+        }, 4000);
 
-        function getNextEmpId() {
-            if (joinees.length === 0) return "SG-001";
-            const ids = joinees.map(j => {
-                const match = j.empId.match(/\d+/);
-                return match ? parseInt(match[0]) : 0;
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            reveals.forEach(r => {
+                if (r.getBoundingClientRect().top < window.innerHeight - 80) r.classList.add("active");
             });
-            const maxId = Math.max(...ids);
-            return "SG-" + (maxId + 1).toString().padStart(3, '0');
         }
-
-        document.getElementById('loginForm').onsubmit = (e) => {
-            e.preventDefault();
-            const u = document.getElementById('username').value;
-            const p = document.getElementById('password').value;
-            const found = USERS.find(x => x.user === u && x.pass === p);
-            
-            if(found) {
-                currentUser = found;
-                sessionStorage.setItem('sarathy_session', JSON.stringify(found));
-                showDashboard();
-                document.getElementById('loginError').classList.add('hidden-view');
-                document.getElementById('loginForm').reset();
-            } else {
-                document.getElementById('loginError').classList.remove('hidden-view');
-            }
-        };
-
-        function logout() {
-            sessionStorage.removeItem('sarathy_session');
-            currentUser = null;
-            document.getElementById('dashboardPage').classList.add('hidden-view');
-            document.getElementById('loginPage').classList.remove('hidden-view');
-        }
-
-        function showDashboard() {
-            document.getElementById('loginPage').classList.add('hidden-view');
-            document.getElementById('dashboardPage').classList.remove('hidden-view');
-            document.getElementById('userRoleDisplay').textContent = currentUser.role;
-            renderTable();
-        }
-
-        function clearFilters() {
-            document.getElementById('searchInput').value = "";
-            document.getElementById('statusFilter').value = "All";
-            renderTable();
-        }
-
-        function openModal() {
-            document.getElementById('editId').value = "";
-            document.getElementById('modalTitle').innerText = "Add New Personnel";
-            document.getElementById('submitBtnText').innerText = "Confirm Registration";
-            document.getElementById('joineeForm').reset();
-            document.getElementById('empId').value = getNextEmpId();
-            
-            const modal = document.getElementById('addModal');
-            const content = document.getElementById('modalContent');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                content.classList.remove('translate-y-full', 'scale-95', 'opacity-0');
-                content.classList.add('translate-y-0', 'scale-100', 'opacity-100');
-            }, 10);
-        }
-
-        function closeModal() {
-            const content = document.getElementById('modalContent');
-            content.classList.add('translate-y-full', 'md:scale-95', 'opacity-0');
-            content.classList.remove('translate-y-0', 'md:scale-100', 'opacity-100');
-            setTimeout(() => document.getElementById('addModal').classList.add('hidden'), 300);
-        }
-
-        function showToast(msg, type = 'success') {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastMessage').innerText = msg;
-            const icon = document.getElementById('toastIcon');
-            icon.className = `w-8 h-8 rounded-full flex items-center justify-center shadow-lg ${type === 'success' ? 'bg-emerald-500 shadow-emerald-500/20' : 'bg-red-500 shadow-red-500/20'}`;
-            toast.classList.remove('opacity-0', 'translate-y-20');
-            setTimeout(() => toast.classList.add('opacity-0', 'translate-y-20'), 3000);
-        }
-
-        document.getElementById('joineeForm').onsubmit = (e) => {
-            e.preventDefault();
-            const editId = document.getElementById('editId').value;
-            
-            const data = {
-                id: editId ? parseInt(editId) : Date.now(),
-                empId: document.getElementById('empId').value.trim(),
-                name: document.getElementById('empName').value.trim(),
-                phone: document.getElementById('empPhone').value.trim(),
-                company: document.getElementById('company').value,
-                dept: document.getElementById('dept').value,
-                status: document.getElementById('status').value,
-                doj: document.getElementById('doj').value,
-                location: document.getElementById('location').value.trim(),
-                manager: document.getElementById('manager').value.trim()
-            };
-
-            if (editId) {
-                const index = joinees.findIndex(x => x.id === data.id);
-                if (index !== -1) joinees[index] = data;
-                showToast("Record Updated");
-            } else {
-                joinees.push(data);
-                showToast("Record Synchronized");
-            }
-
-            saveData();
-            closeModal();
-            renderTable();
-            document.getElementById('joineeForm').reset();
-        };
-
-        function editRecord(id) {
-            if(currentUser.user !== 'admin') {
-                showToast("Unauthorized", "error");
-                return;
-            }
-
-            const record = joinees.find(x => x.id === id);
-            if (!record) return;
-
-            document.getElementById('editId').value = record.id;
-            document.getElementById('modalTitle').innerText = "Update Details";
-            document.getElementById('submitBtnText').innerText = "Update Record";
-
-            document.getElementById('company').value = record.company;
-            document.getElementById('empId').value = record.empId;
-            document.getElementById('empName').value = record.name;
-            document.getElementById('empPhone').value = record.phone || '';
-            document.getElementById('dept').value = record.dept;
-            document.getElementById('status').value = record.status;
-            document.getElementById('location').value = record.location;
-            document.getElementById('doj').value = record.doj;
-            document.getElementById('manager').value = record.manager;
-
-            const modal = document.getElementById('addModal');
-            const content = document.getElementById('modalContent');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                content.classList.remove('translate-y-full', 'scale-95', 'opacity-0');
-                content.classList.add('translate-y-0', 'scale-100', 'opacity-100');
-            }, 10);
-        }
-
-        function deleteRecord(id) {
-            if(currentUser.user !== 'admin') {
-                showToast("Unauthorized", "error");
-                return;
-            }
-
-            if(confirm('Confirm permanent deletion?')) {
-                joinees = joinees.filter(x => x.id !== id);
-                saveData();
-                renderTable();
-                showToast("Record Purged", "error");
-            }
-        }
-
-        function saveData() {
-            localStorage.setItem('sarathy_db_v4', JSON.stringify(joinees));
-        }
-
-        function renderTable() {
-            const selectedMonth = document.getElementById('monthFilter').value;
-            const term = document.getElementById('searchInput').value.toLowerCase();
-            const filterStatus = document.getElementById('statusFilter').value;
-            
-            const tableBody = document.getElementById('joineeTableBody');
-            const mobileList = document.getElementById('mobileJoineeList');
-            const clearBtn = document.getElementById('clearBtn');
-            
-            const isAdmin = currentUser && currentUser.user === 'admin';
-
-            // Show/Hide Clear button based on filter activity
-            if (term !== "" || filterStatus !== "All") {
-                clearBtn.classList.remove('hidden');
-            } else {
-                clearBtn.classList.add('hidden');
-            }
-
-            if (selectedMonth) {
-                const [year, month] = selectedMonth.split('-');
-                const monthName = new Date(year, month - 1).toLocaleString('default', { month: 'long', year: 'numeric' });
-                document.getElementById('currentViewMonth').innerText = monthName;
-            }
-
-            const filtered = joinees.filter(x => {
-                const itemMonth = x.doj.substring(0, 7);
-                const matchMonth = itemMonth === selectedMonth;
-                const matchSearch = x.name.toLowerCase().includes(term) || x.empId.toLowerCase().includes(term) || x.location.toLowerCase().includes(term) || (x.phone && x.phone.includes(term));
-                const matchStatus = filterStatus === 'All' || x.status === filterStatus;
-                return matchMonth && matchSearch && matchStatus;
-            });
-
-            tableBody.innerHTML = '';
-            mobileList.innerHTML = '';
-            
-            if (filtered.length === 0) {
-                document.getElementById('emptyState').classList.remove('hidden');
-            } else {
-                document.getElementById('emptyState').classList.add('hidden');
-                filtered.forEach(x => {
-                    const statusClass = `status-${x.status.toLowerCase()}`;
-                    const isRejected = x.status === 'REJECTED';
-                    const textColor = isRejected ? 'text-red-600' : 'text-black';
-                    const subColor = isRejected ? 'text-red-400' : 'text-black';
-                    
-                    const manageActions = isAdmin ? `
-                        <div class="flex justify-center items-center gap-2">
-                            <button onclick="editRecord(${x.id})" class="w-10 h-10 rounded-xl hover:bg-blue-50 ${isRejected ? 'text-red-400 hover:text-red-600' : 'text-black'} transition-all flex items-center justify-center">
-                                <i class="fas fa-pen text-xs"></i>
-                            </button>
-                            <button onclick="deleteRecord(${x.id})" class="w-10 h-10 rounded-xl hover:bg-red-50 ${isRejected ? 'text-red-400 hover:text-red-600' : 'text-black'} transition-all flex items-center justify-center">
-                                <i class="fas fa-trash-alt text-xs"></i>
-                            </button>
-                        </div>
-                    ` : `
-                        <div class="flex justify-center items-center">
-                            <span class="text-[10px] ${isRejected ? 'text-red-400' : 'text-black'} font-bold italic">Admin Only</span>
-                        </div>
-                    `;
-
-                    // Table Row (Desktop)
-                    const row = `
-                        <tr class="hover:bg-slate-50/50 transition-colors animate-in">
-                            <td class="p-5 align-middle">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 rounded-2xl ${isRejected ? 'bg-red-50 text-red-600 border-red-100' : 'bg-slate-100 text-sarathy-blue border-slate-200'} flex items-center justify-center font-black text-xs border uppercase flex-shrink-0">
-                                        ${x.name.substring(0,2)}
-                                    </div>
-                                    <div class="min-w-0">
-                                        <div class="font-bold ${textColor} text-sm truncate uppercase">${x.name}</div>
-                                        <div class="flex items-center gap-2 mt-0.5">
-                                            <span class="text-[9px] ${subColor} font-bold uppercase tracking-[0.2em]">${x.empId}</span>
-                                            <span class="text-[9px] ${subColor} font-bold"><i class="fas fa-phone-alt text-[8px] mr-1"></i>${x.phone || 'N/A'}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="p-5 align-middle">
-                                <div class="text-xs font-bold ${textColor}">${x.company}</div>
-                                <div class="text-[10px] ${subColor} font-medium flex items-center gap-1">
-                                    <i class="fas fa-map-marker-alt ${isRejected ? 'text-red-400' : 'text-sarathy-red'}"></i> ${x.location}
-                                </div>
-                            </td>
-                            <td class="p-5 align-middle">
-                                <div class="text-xs font-bold ${textColor}">${x.dept}</div>
-                                <span class="${isRejected ? 'bg-red-50 text-red-400' : 'bg-slate-100 text-black'} px-2 py-0.5 rounded-[4px] text-[8px] font-black uppercase tracking-widest">Active</span>
-                            </td>
-                            <td class="p-5 align-middle">
-                                <div class="text-xs font-bold ${textColor}">${new Date(x.doj).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
-                                <div class="text-[9px] ${subColor} font-medium uppercase mt-0.5 truncate max-w-[120px]">${x.manager || 'No Remarks'}</div>
-                            </td>
-                            <td class="p-5 align-middle text-center">
-                                <div class="flex justify-center"><span class="status-stamp ${statusClass}">${x.status}</span></div>
-                            </td>
-                            <td class="p-5 align-middle text-center">${manageActions}</td>
-                        </tr>
-                    `;
-                    tableBody.innerHTML += row;
-
-                    // Mobile Card
-                    const card = `
-                        <div class="modern-card p-4 animate-in relative overflow-hidden">
-                            ${isRejected ? '<div class="absolute top-0 right-0 w-16 h-16 bg-red-50 -mr-8 -mt-8 rotate-45"></div>' : ''}
-                            <div class="flex items-start justify-between mb-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-xl ${isRejected ? 'bg-red-50 text-red-600' : 'bg-slate-100 text-sarathy-blue'} flex items-center justify-center font-black text-xs border border-slate-100 uppercase">
-                                        ${x.name.substring(0,2)}
-                                    </div>
-                                    <div>
-                                        <div class="font-bold ${textColor} text-sm uppercase">${x.name}</div>
-                                        <div class="text-[9px] ${subColor} font-bold">${x.empId} • ${x.phone || 'N/A'}</div>
-                                    </div>
-                                </div>
-                                <span class="status-stamp ${statusClass} text-[9px] px-2 py-1">${x.status}</span>
-                            </div>
-                            <div class="grid grid-cols-2 gap-y-3 mb-4">
-                                <div>
-                                    <p class="text-[8px] font-black text-black/40 uppercase tracking-widest">Company</p>
-                                    <p class="text-[10px] font-bold ${textColor}">${x.company}</p>
-                                </div>
-                                <div>
-                                    <p class="text-[8px] font-black text-black/40 uppercase tracking-widest">Department</p>
-                                    <p class="text-[10px] font-bold ${textColor}">${x.dept}</p>
-                                </div>
-                                <div>
-                                    <p class="text-[8px] font-black text-black/40 uppercase tracking-widest">Location</p>
-                                    <p class="text-[10px] font-bold ${textColor}">${x.location}</p>
-                                </div>
-                                <div>
-                                    <p class="text-[8px] font-black text-black/40 uppercase tracking-widest">Joining Date</p>
-                                    <p class="text-[10px] font-bold ${textColor}">${new Date(x.doj).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between pt-3 border-t border-slate-50">
-                                <span class="text-[9px] font-bold ${subColor} italic">TL: ${x.manager || '-'}</span>
-                                <div class="flex gap-2">
-                                    ${isAdmin ? `
-                                        <button onclick="editRecord(${x.id})" class="p-2 rounded-lg bg-slate-50 ${isRejected ? 'text-red-500' : 'text-black'}"><i class="fas fa-pen text-[10px]"></i></button>
-                                        <button onclick="deleteRecord(${x.id})" class="p-2 rounded-lg bg-slate-50 ${isRejected ? 'text-red-500' : 'text-black'}"><i class="fas fa-trash text-[10px]"></i></button>
-                                    ` : '<span class="text-[8px] font-black text-black/20 italic">Admin Only</span>'}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    mobileList.innerHTML += card;
-                });
-            }
-            updateStats(filtered);
-        }
-
-        function updateStats(filteredData) {
-            document.getElementById('statTotal').innerText = filteredData.length;
-            document.getElementById('statSelected').innerText = filteredData.filter(x => x.status === 'SELECTED').length;
-            document.getElementById('statPending').innerText = filteredData.filter(x => x.status === 'PENDING').length;
-            document.getElementById('statRejected').innerText = filteredData.filter(x => x.status === 'REJECTED').length;
-        }
-
-        function exportToCSV() {
-            const selectedMonth = document.getElementById('monthFilter').value;
-            const monthRecords = joinees.filter(x => x.doj.substring(0, 7) === selectedMonth);
-            if (monthRecords.length === 0) {
-                showToast("No data to export", "error");
-                return;
-            }
-            let csv = "EmpID,Name,Phone,Entity,Location,Dept,Status,DOJ,Remarks\n";
-            monthRecords.forEach(x => {
-                csv += `"${x.empId}","${x.name}","${x.phone || 'N/A'}","${x.company}","${x.location}","${x.dept}","${x.status}","${x.doj}","${x.manager}"\n`;
-            });
-            const blob = new Blob([csv], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Sarathy_Personnel_${selectedMonth}.csv`;
-            a.click();
-            showToast("Export Ready");
-        }
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
     </script>
 </body>
 </html>
