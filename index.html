@@ -162,14 +162,14 @@
         .banner-slide img { 
             width: 100%; 
             height: auto; 
-            aspect-ratio: 4 / 1; /* Slim banner for mobile */
+            aspect-ratio: 3.6 / 1; /* Adjusted to roughly 45% for mobile */
             display: block; 
             object-fit: cover;
         }
 
         @media (min-width: 769px) {
             .banner-slide img {
-                aspect-ratio: 5 / 1; /* Slim professional banner for desktop */
+                aspect-ratio: 4.6 / 1; /* Adjusted to roughly 45% for desktop */
             }
         }
 
@@ -237,7 +237,7 @@
         .stat-item p { color: var(--text-light); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* --- Sections --- */
-        .section { padding: 50px 166px; max-width: 1400px; margin: 0 auto; }
+        .section { padding: 50px 16px; max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 35px; }
         .section-header h2 { font-size: clamp(1.6rem, 7vw, 2.4rem); font-weight: 800; color: var(--primary); margin-bottom: 8px; line-height: 1.2; }
         .section-header p { color: var(--text-light); font-size: 0.95rem; }
@@ -451,7 +451,7 @@
             .hero { padding-bottom: 90px; }
             .banner-container { width: 95%; } 
             .venue-grid { grid-template-columns: 1fr; }
-            .venue-img-container { height: 200px; } /* Restored Height for Mobile */
+            .venue-img-container { height: 180px; } /* Improved height for college photos */
         }
 
         @media (min-width: 1024px) {
