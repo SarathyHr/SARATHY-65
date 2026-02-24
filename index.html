@@ -61,13 +61,13 @@
         .logo-track {
             display: flex;
             width: max-content;
-            animation: scroll 8s linear infinite;
+            animation: scroll 12s linear infinite;
         }
 
         .logo-item {
-            width: 100px;
-            height: 40px;
-            margin: 0 20px;
+            width: 110px;
+            height: 45px;
+            margin: 0 25px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -79,6 +79,11 @@
             max-height: 100%; 
             object-fit: contain;
             filter: grayscale(10%);
+        }
+
+        /* Target specifically enlarged logos */
+        .logo-enlarge {
+            transform: scale(1.35);
         }
 
         @keyframes scroll {
@@ -443,6 +448,7 @@
         @media (min-width: 1024px) {
             .mobile-cta { display: none; }
             .btn-group { display: flex; }
+            .section { padding: 60px 40px; }
             body { padding-bottom: 0; }
             footer { padding-bottom: 40px; }
         }
@@ -453,18 +459,24 @@
     <header>
         <div class="logo-slider">
             <div class="logo-track">
+                <!-- Original Set -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
+                <div class="logo-item"><img src="OIP (1).webp" alt="True Value" class="logo-img logo-enlarge"></div>
+                <div class="logo-item"><img src="OIP.webp" alt="Commercial" class="logo-img"></div>
                 <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
                 <div class="logo-item"><img src="KTM-logo.png" alt="KTM" class="logo-img"></div>
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
                 <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
                 <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
-                <!-- Duplicate -->
+                
+                <!-- Duplicate for Loop -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
+                <div class="logo-item"><img src="OIP (1).webp" alt="True Value" class="logo-img logo-enlarge"></div>
+                <div class="logo-item"><img src="OIP.webp" alt="Commercial" class="logo-img"></div>
                 <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
                 <div class="logo-item"><img src="KTM-logo.png" alt="KTM" class="logo-img"></div>
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
@@ -496,15 +508,14 @@
         <div class="stat-item"><h3>7+</h3><p>Brands</p></div>
     </div>
 
-    <!-- ========== VIDEO SECTION REFACTORED ========== -->
+    <!-- EXPERIENCE SECTION -->
     <section class="section reveal">
         <div class="section-header">
             <h2>Experience Our Culture</h2>
-            <p>Watch how we grow together.</p>
+            <p>Watch how we grow together in the automotive industry.</p>
         </div>
         <div class="video-container">
             <div class="video-wrapper">
-                <!-- Using the March Job Fair video as requested -->
                 <video controls autoplay muted loop preload="auto" playsinline poster="sarathy-group-logo.png" id="mainVideo">
                     <source src="video_2026-02-24_10-26-24.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -514,6 +525,7 @@
         </div>
     </section>
 
+    <!-- VENUES SECTION -->
     <section class="section reveal" id="venues">
         <div class="section-header">
             <h2>Venues & Dates</h2>
@@ -521,7 +533,7 @@
         </div>
         <div class="venue-grid">
             <div class="venue-card">
-                <div class="venue-img-container"><img src="sn college kollam.jpeg" alt="SN College Kollam" loading="lazy"></div>
+                <div class="venue-img-container"><img src="sn college kollam.jpeg" alt="SN College Kollam" onerror="this.src='https://placehold.co/600x400?text=Kollam+Venue'"></div>
                 <div class="venue-info">
                     <h3>KOLLAM</h3>
                     <span class="venue-date">MARCH 04, 2026</span>
@@ -531,7 +543,7 @@
             </div>
             
             <div class="venue-card">
-                <div class="venue-img-container"><img src="Baby_John_Memorial_Govt_Clg_BANNER._2.jpg" alt="Baby John Memorial College" loading="lazy"></div>
+                <div class="venue-img-container"><img src="Baby_John_Memorial_Govt_Clg_BANNER._2.jpg" alt="Baby John Memorial College" onerror="this.src='https://placehold.co/600x400?text=Chavara+Venue'"></div>
                 <div class="venue-info">
                     <h3>CHAVARA</h3>
                     <span class="venue-date">MARCH 05, 2026</span>
@@ -541,7 +553,7 @@
             </div>
 
             <div class="venue-card">
-                <div class="venue-img-container"><img src="devaswom-board-college-kollam-ho-kollam-mechanical-engineering-colleges-9dn4vcnch6.jpeg" alt="DB College Sasthamcotta" loading="lazy"></div>
+                <div class="venue-img-container"><img src="devaswom-board-college-kollam-ho-kollam-mechanical-engineering-colleges-9dn4vcnch6.jpeg" alt="DB College Sasthamcotta" onerror="this.src='https://placehold.co/600x400?text=Sasthamcotta+Venue'"></div>
                 <div class="venue-info">
                     <h3>SASTHAMCOTTA</h3>
                     <span class="venue-date">MARCH 06, 2026</span>
@@ -551,7 +563,7 @@
             </div>
 
             <div class="venue-card">
-                <div class="venue-img-container"><img src="St._Gregorios_Clg_ KTR.JPG" alt="St. Gregorios College" loading="lazy"></div>
+                <div class="venue-img-container"><img src="St._Gregorios_Clg_ KTR.JPG" alt="St. Gregorios College" onerror="this.src='https://placehold.co/600x400?text=Kottarakkara+Venue'"></div>
                 <div class="venue-info">
                     <h3>KOTTARAKKARA</h3>
                     <span class="venue-date">MARCH 07, 2026</span>
@@ -561,7 +573,7 @@
             </div>
 
             <div class="venue-card">
-                <div class="venue-img-container"><img src="IHRD COLLEGE KALANJOOR.jpg" alt="IHRD College Kalanjoor" loading="lazy"></div>
+                <div class="venue-img-container"><img src="IHRD COLLEGE KALANJOOR.jpg" alt="IHRD College Kalanjoor" onerror="this.src='https://placehold.co/600x400?text=Kalanjoor+Venue'"></div>
                 <div class="venue-info">
                     <h3>KALANJOOR</h3>
                     <span class="venue-date">MARCH 09, 2026</span>
@@ -571,7 +583,7 @@
             </div>
 
             <div class="venue-card">
-                <div class="venue-img-container"><img src="SN_Clg_Punalur_1.jpg" alt="SN College Punalur" loading="lazy"></div>
+                <div class="venue-img-container"><img src="SN_Clg_Punalur_1.jpg" alt="SN College Punalur" onerror="this.src='https://placehold.co/600x400?text=Punalur+Venue'"></div>
                 <div class="venue-info">
                     <h3>PUNALUR</h3>
                     <span class="venue-date">MARCH 10, 2026</span>
@@ -582,9 +594,11 @@
         </div>
     </section>
 
+    <!-- VACANCIES SECTION -->
     <section class="section reveal" id="vacancies">
         <div class="section-header">
             <h2>Available Positions</h2>
+            <p>We are looking for passionate individuals to join our team.</p>
         </div>
         <div class="roles-grid">
             <div class="role-group">
@@ -634,12 +648,14 @@
         <p style="opacity: 0.5; font-size: 0.75rem;">© 2026 Sarathy Group. All rights reserved.</p>
     </footer>
 
+    <!-- MOBILE CTA -->
     <div class="mobile-cta">
         <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-primary" style="width: 100%;">
             <i class="fas fa-paper-plane"></i> Apply Online Now
         </a>
     </div>
 
+    <!-- WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919037833865?text=Hi, Interested in Sarathy Job Fair 2026" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -665,11 +681,12 @@
         const v = document.getElementById('mainVideo');
         if (v) {
             v.addEventListener('error', function() {
-                console.error("Video failed to load. Current path: video_2026-02-24_10-26-24.mp4");
+                console.error("Video failed to load.");
             });
             
+            // Attempt autoplay
             v.play().catch(error => {
-                console.log("Autoplay blocked, user interaction needed or muted required.");
+                console.log("Autoplay blocked, user interaction needed.");
             });
         }
     </script>
