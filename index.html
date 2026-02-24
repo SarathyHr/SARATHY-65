@@ -419,6 +419,8 @@
             padding: 12px 16px;
             box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
             display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 999;
             backdrop-filter: blur(10px);
             border-top: 1px solid #f1f5f9;
@@ -435,14 +437,16 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 768px) {
-            .btn-group { display: none; }
             .section { padding: 40px 15px; }
             .stats-bar { grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: -50px; padding: 15px 10px; }
             .stat-item h3 { font-size: 1.3rem; }
             .stat-item p { font-size: 0.6rem; }
             .hero { padding-bottom: 90px; }
+            .hero h1 { font-size: 1.8rem; }
             .venue-grid { grid-template-columns: 1fr; }
-            .venue-img-container { height: 180px; } 
+            .venue-img-container { height: 180px; }
+            .btn-group { gap: 10px; margin-top: 20px; }
+            .btn { width: 100%; max-width: 280px; }
         }
 
         @media (min-width: 1024px) {
@@ -463,8 +467,8 @@
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
-                <div class="logo-item"><img src="OIP (1).webp" alt="True Value" class="logo-img logo-enlarge"></div>
-                <div class="logo-item"><img src="OIP.webp" alt="Commercial" class="logo-img"></div>
+                <div class="logo-item"><img src="WhatsApp_Image_2026-02-24_at_12.26.38_PM-removebg-preview.png" alt="True Value" class="logo-img logo-enlarge"></div>
+                <div class="logo-item"><img src="WhatsApp_Image_2026-02-24_at_12.26.39_PM-removebg-preview.png" alt="Commercial" class="logo-img"></div>
                 <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
                 <div class="logo-item"><img src="KTM-logo.png" alt="KTM" class="logo-img"></div>
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
@@ -475,8 +479,8 @@
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
-                <div class="logo-item"><img src="OIP (1).webp" alt="True Value" class="logo-img logo-enlarge"></div>
-                <div class="logo-item"><img src="OIP.webp" alt="Commercial" class="logo-img"></div>
+                <div class="logo-item"><img src="WhatsApp_Image_2026-02-24_at_12.26.38_PM-removebg-preview.png" alt="True Value" class="logo-img logo-enlarge"></div>
+                <div class="logo-item"><img src="WhatsApp_Image_2026-02-24_at_12.26.39_PM-removebg-preview.png" alt="Commercial" class="logo-img"></div>
                 <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
                 <div class="logo-item"><img src="KTM-logo.png" alt="KTM" class="logo-img"></div>
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
@@ -650,7 +654,7 @@
 
     <!-- MOBILE CTA -->
     <div class="mobile-cta">
-        <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-primary" style="width: 100%;">
+        <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-primary" style="width: 100%; max-width: 400px;">
             <i class="fas fa-paper-plane"></i> Apply Online Now
         </a>
     </div>
