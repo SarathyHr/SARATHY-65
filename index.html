@@ -61,7 +61,7 @@
         .logo-track {
             display: flex;
             width: max-content;
-            animation: scroll 5s linear infinite;
+            animation: scroll 8s linear infinite;
         }
 
         .logo-item {
@@ -496,7 +496,7 @@
         <div class="stat-item"><h3>7+</h3><p>Brands</p></div>
     </div>
 
-    <!-- ========== VIDEO SECTION ========== -->
+    <!-- ========== VIDEO SECTION REFACTORED ========== -->
     <section class="section reveal">
         <div class="section-header">
             <h2>Experience Our Culture</h2>
@@ -504,7 +504,8 @@
         </div>
         <div class="video-container">
             <div class="video-wrapper">
-                <video controls preload="metadata" playsinline poster="sarathy-group-logo.png" id="mainVideo">
+                <!-- Using the March Job Fair video as requested -->
+                <video controls autoplay muted loop preload="auto" playsinline poster="sarathy-group-logo.png" id="mainVideo">
                     <source src="video_2026-02-24_10-26-24.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -563,7 +564,7 @@
                 <div class="venue-img-container"><img src="IHRD COLLEGE KALANJOOR.jpg" alt="IHRD College Kalanjoor" loading="lazy"></div>
                 <div class="venue-info">
                     <h3>KALANJOOR</h3>
-                    <span class="venue-date">MARCH 08, 2026</span>
+                    <span class="venue-date">MARCH 09, 2026</span>
                     <p class="venue-loc">IHRD College, Kalanjoor</p>
                     <a href="https://share.google/LbBZ8F0KSeD6wjxDq" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
@@ -573,7 +574,7 @@
                 <div class="venue-img-container"><img src="SN_Clg_Punalur_1.jpg" alt="SN College Punalur" loading="lazy"></div>
                 <div class="venue-info">
                     <h3>PUNALUR</h3>
-                    <span class="venue-date">MARCH 09, 2026</span>
+                    <span class="venue-date">MARCH 10, 2026</span>
                     <p class="venue-loc">SN College, Punalur</p>
                     <a href="https://share.google/r9pkBzg7Rfpb6kFHX" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
@@ -660,11 +661,15 @@
         window.addEventListener("scroll", reveal);
         window.addEventListener("load", reveal);
 
-        // Video Error Handling
+        // Video Handling
         const v = document.getElementById('mainVideo');
         if (v) {
             v.addEventListener('error', function() {
-                console.error("Video failed to load. Check file path: video_2026-02-24_10-26-24.mp4");
+                console.error("Video failed to load. Current path: video_2026-02-24_10-26-24.mp4");
+            });
+            
+            v.play().catch(error => {
+                console.log("Autoplay blocked, user interaction needed or muted required.");
             });
         }
     </script>
