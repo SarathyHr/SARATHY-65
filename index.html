@@ -140,13 +140,19 @@
         /* --- BANNER SLIDER --- */
         .banner-container {
             max-width: 1220px;
-            width: 84%; 
-            margin: 0 auto 25px;
-            border-radius: 18px;
+            width: 92%; /* Improved mobile visibility */
+            margin: 0 auto 30px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
             position: relative;
             background: #eee;
+        }
+
+        @media (min-width: 1024px) {
+            .banner-container {
+                width: 84%; /* Desktop width as previously requested */
+            }
         }
 
         .banner-track { 
@@ -162,14 +168,15 @@
         .banner-slide img { 
             width: 100%; 
             height: auto; 
-            aspect-ratio: 3.6 / 1; /* Adjusted to roughly 45% for mobile */
+            aspect-ratio: 2.2 / 1; /* Approx 45% height to width - very visible on mobile */
             display: block; 
             object-fit: cover;
+            object-position: center;
         }
 
         @media (min-width: 769px) {
             .banner-slide img {
-                aspect-ratio: 4.6 / 1; /* Adjusted to roughly 45% for desktop */
+                aspect-ratio: 4.5 / 1; /* Slimmer for desktop */
             }
         }
 
@@ -237,7 +244,7 @@
         .stat-item p { color: var(--text-light); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* --- Sections --- */
-        .section { padding: 50px 16px; max-width: 1400px; margin: 0 auto; }
+        .section { padding: 50px 20px; max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 35px; }
         .section-header h2 { font-size: clamp(1.6rem, 7vw, 2.4rem); font-weight: 800; color: var(--primary); margin-bottom: 8px; line-height: 1.2; }
         .section-header p { color: var(--text-light); font-size: 0.95rem; }
@@ -264,16 +271,10 @@
         
         .venue-img-container {
             width: 100%;
-            height: 180px; /* Restored previous settings */
+            height: 180px; /* Restored previous settings for better visibility */
             overflow: hidden;
             position: relative;
             background: #f1f5f9;
-        }
-
-        @media (min-width: 769px) {
-            .venue-img-container {
-                height: 180px; 
-            }
         }
 
         .venue-img-container img {
@@ -449,13 +450,12 @@
             .stat-item h3 { font-size: 1.3rem; }
             .stat-item p { font-size: 0.6rem; }
             .hero { padding-bottom: 90px; }
-            .banner-container { width: 95%; } 
+            .banner-container { width: 92%; } 
             .venue-grid { grid-template-columns: 1fr; }
-            .venue-img-container { height: 180px; } /* Improved height for college photos */
+            .venue-img-container { height: 180px; } 
         }
 
         @media (min-width: 1024px) {
-            .banner-container { width: 84%; }
             .mobile-cta { display: none; }
             .btn-group { display: flex; }
             body { padding-bottom: 0; }
@@ -495,7 +495,7 @@
             Mega Job Fair 2026
         </div>
         <h1>START YOUR JOURNEY WITH SARATHY</h1>
-        <p>Join the No. 1 Automotive Group in South Kerala. Premium brands, exceptional growth.</p>
+        <p>Join South Kerala's No. 1 Automotive Group. Explore careers with India's most loved brands.</p>
         
         <div class="banner-container">
             <div class="banner-track" id="bannerTrack">
@@ -517,7 +517,7 @@
     </section>
 
     <div class="stats-bar">
-        <div class="stat-item"><h3>50+</h3><p>Vacancies</p></div>
+        <div class="stat-item"><h3>50+</h3><p>Openings</p></div>
         <div class="stat-item"><h3>6</h3><p>Venues</p></div>
         <div class="stat-item"><h3>7+</h3><p>Brands</p></div>
     </div>
@@ -529,7 +529,7 @@
         </div>
         <div class="video-wrapper">
             <video controls preload="metadata" playsinline poster="sarathy-group-logo.png">
-                <source src="WhatsApp Video 2026-01-28 at 12.16.31 PM.mp4" type="video/mp4">
+                <source src="video_2026-02-24_10-26-24.mp4" type="video/mp4">
             </video>
         </div>
     </section>
