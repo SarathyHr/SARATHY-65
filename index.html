@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sarathy Group | Mega Job Fair 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
@@ -27,33 +27,22 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             background-color: #f8fafc;
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-bottom: 85px; 
+            padding-bottom: 90px;
         }
 
-        /* --- Custom Scrollbar --- */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
-
-        /* --- Header --- */
+        /* --- Header & Logo Slider --- */
         header {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 12px 0;
+            background: var(--white);
+            padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             height: 70px;
             display: flex;
             align-items: center;
@@ -62,25 +51,23 @@
         .logo-slider {
             overflow: hidden;
             width: 100%;
+            position: relative;
         }
 
         .logo-track {
             display: flex;
             width: max-content;
-            animation: scroll 25s linear infinite;
+            animation: scroll 7s linear infinite;
         }
 
         .logo-item {
-            width: 90px;
-            height: 35px;
-            margin: 0 15px;
+            width: 120px;
+            height: 45px;
+            margin: 0 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 0.8rem;
         }
 
         .logo-img { 
@@ -96,120 +83,83 @@
 
         /* --- Hero Section --- */
         .hero {
-            padding: 50px 20px 140px;
+            padding: 30px 15px 100px;
             background: var(--bg-gradient);
             color: var(--white);
             text-align: center;
             position: relative;
-            clip-path: ellipse(220% 100% at 50% 0%);
+            clip-path: ellipse(280% 100% at 50% 0%);
         }
 
         .fair-badge {
-            background: rgba(255, 159, 28, 0.2);
-            border: 1px solid var(--accent);
-            padding: 8px 18px;
+            background: var(--accent);
+            padding: 8px 16px;
             border-radius: 100px;
             font-weight: 800;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
-            color: var(--accent);
+            gap: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(255, 159, 28, 0.3);
         }
 
         .live-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--accent);
+            width: 8px;
+            height: 8px;
+            background: white;
             border-radius: 50%;
-            animation: pulse-ring 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+            animation: blink 1s infinite;
         }
 
-        @keyframes pulse-ring {
-            0% { transform: scale(0.8); opacity: 1; }
-            100% { transform: scale(2.5); opacity: 0; }
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
         .hero h1 {
-            font-size: clamp(2rem, 9vw, 3.8rem);
+            font-size: clamp(2rem, 9vw, 3.5rem);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: clamp(0.95rem, 4.5vw, 1.25rem);
-            color: rgba(255,255,255,0.85);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.4;
+            font-size: clamp(0.95rem, 4vw, 1.2rem);
+            color: rgba(255,255,255,0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
 
-        /* --- MOBILE ENHANCED BANNER --- */
+        /* --- BANNER SLIDER --- */
         .banner-container {
-            max-width: 1000px;
-            width: 100%;
-            margin: 0 auto 10px;
-            border-radius: 24px;
+            max-width: 1500px;
+            width: 92%;
+            margin: 0 auto 25px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            background: transparent; 
             position: relative;
-            touch-action: pan-y;
-            border: 2px solid rgba(255,255,255,0.1);
-            background: #000;
         }
 
         .banner-track { 
             display: flex; 
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         
         .banner-slide { 
             min-width: 100%; 
+            position: relative; 
+            background: transparent;
         }
         
         .banner-slide img { 
             width: 100%; 
             height: auto; 
-            aspect-ratio: 16/9; /* Adjusted from 3.5/4.5 to 16/9 to match image content better */
             display: block; 
-            object-fit: cover;
-        }
-
-        @media (max-width: 768px) {
-            .banner-container {
-                width: 95%; /* Better padding on mobile as per screenshot */
-                border-radius: 20px;
-                margin-bottom: 15px;
-            }
-            .banner-slide img {
-                aspect-ratio: 16/10; /* Slightly taller for mobile but not vertical */
-            }
-        }
-
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 5px;
-            padding-bottom: 10px;
-        }
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .dot.active {
-            background: var(--accent);
-            width: 25px;
-            border-radius: 10px;
+            object-fit: cover; 
+            border-radius: 20px;
         }
 
         /* --- Buttons --- */
@@ -218,125 +168,120 @@
             gap: 15px; 
             justify-content: center; 
             flex-wrap: wrap; 
-            margin-top: 30px;
+            margin-bottom: 20px; 
         }
 
         .btn {
-            padding: 16px 35px;
-            border-radius: 16px;
-            font-weight: 800;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 700;
             font-size: 1.05rem;
             text-decoration: none;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            cursor: pointer;
         }
 
         .btn-primary { 
             background: var(--accent); 
             color: var(--white); 
-            box-shadow: 0 10px 25px rgba(255, 159, 28, 0.4); 
+            box-shadow: 0 8px 20px rgba(255, 159, 28, 0.3); 
         }
         
         .btn-secondary { 
-            background: rgba(255,255,255,0.08); 
+            background: rgba(255,255,255,0.15); 
             color: var(--white); 
-            border: 1px solid rgba(255,255,255,0.15); 
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2); 
         }
+
+        .btn:hover { transform: translateY(-3px); }
 
         /* --- Stats Bar --- */
         .stats-bar {
             background: var(--white);
-            max-width: 850px;
-            margin: -65px auto 40px;
-            padding: 25px;
-            border-radius: 25px;
+            max-width: 900px;
+            margin: -55px auto 40px;
+            padding: 25px 20px;
+            border-radius: 24px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             position: relative;
             z-index: 10;
             width: calc(100% - 30px);
         }
 
-        .stat-item h3 { font-size: 1.6rem; color: var(--primary); font-weight: 800; }
-        .stat-item p { color: var(--text-light); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-item h3 { font-size: 1.8rem; color: var(--primary); font-weight: 800; }
+        .stat-item p { color: var(--text-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
 
         /* --- Sections --- */
         .section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 40px; }
-        .section-header h2 { font-size: clamp(1.8rem, 7vw, 2.5rem); font-weight: 800; color: var(--primary); margin-bottom: 10px; }
-        .section-header p { color: var(--text-light); font-weight: 500; }
+        .section-header h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); font-weight: 800; color: var(--primary); margin-bottom: 10px; }
 
         .venue-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .venue-card {
             background: var(--white);
-            padding: 30px 25px;
+            padding: 30px 20px;
             border-radius: 24px;
             transition: var(--transition);
-            border: 1px solid #f1f5f9;
+            border: 1px solid #e2e8f0;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .venue-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .venue-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
-        .venue-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
-        
+        .venue-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+        .venue-card i, .venue-card .venue-logo { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+        .venue-logo { width: 100px; object-fit: contain; }
+        .venue-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
         .venue-date { 
             color: #ef4444; 
             font-weight: 800; 
-            margin-bottom: 18px; 
+            margin-bottom: 15px; 
             background: #fee2e2;
             padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 0.85rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
         }
         
-        .venue-loc { color: var(--text-light); font-size: 0.95rem; margin-bottom: 25px; font-weight: 500; }
-
         .map-btn {
             width: 100%;
-            padding: 15px;
-            background: #f8fafc;
-            border-radius: 14px;
+            padding: 14px;
+            background: var(--primary);
+            border-radius: 12px;
             text-decoration: none;
-            color: var(--primary);
+            color: white;
             font-weight: 800;
             transition: var(--transition);
             margin-top: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            border: 1px solid #e2e8f0;
         }
-        .map-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* --- Roles --- */
+        /* --- Roles Grid --- */
         .roles-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
             gap: 25px; 
+            margin-top: 30px;
         }
 
         .role-group { 
             background: var(--white); 
             border-radius: 24px; 
             padding: 30px; 
-            border: 1px solid #f1f5f9; 
+            border: 1px solid #e2e8f0; 
             display: flex; 
             flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
 
         .role-group h4 { 
@@ -346,7 +291,7 @@
             align-items: center; 
             gap: 12px; 
             color: var(--primary); 
-            border-bottom: 2px solid #f8fafc; 
+            border-bottom: 2px solid #f1f5f9; 
             padding-bottom: 15px;
             font-weight: 800;
         }
@@ -356,10 +301,10 @@
         
         .fresher-badge { 
             display: inline-block; 
-            background: #ecfdf5; 
-            color: #10b981; 
+            background: #f0fdf4; 
+            color: #16a34a; 
             font-size: 0.75rem; 
-            padding: 5px 12px; 
+            padding: 4px 12px; 
             border-radius: 50px; 
             font-weight: 700; 
             margin-top: 8px; 
@@ -372,28 +317,29 @@
             background: var(--primary); 
             color: var(--white); 
             text-decoration: none; 
-            padding: 16px; 
-            border-radius: 14px; 
+            padding: 15px; 
+            border-radius: 12px; 
             font-size: 1rem; 
             font-weight: 800; 
-            margin-top: 25px; 
+            margin-top: 20px; 
             transition: var(--transition);
         }
+        .btn-role-apply:hover { background: var(--accent); }
 
-        /* --- Video --- */
+        /* --- Reel Video --- */
         .video-wrapper {
-            max-width: 300px;
+            max-width: 320px;
             margin: 0 auto;
-            border-radius: 30px;
+            border-radius: 25px;
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0,0,0,0.2);
             background: #000;
             aspect-ratio: 9/16;
-            border: 8px solid white;
+            border: 6px solid white;
         }
         .video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- Floating Icons --- */
+        /* --- WhatsApp --- */
         .whatsapp-float {
             position: fixed;
             bottom: 100px;
@@ -406,84 +352,46 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
+            font-size: 28px;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 998;
+            z-index: 1000;
             text-decoration: none;
-            animation: float-pulse 2s infinite;
         }
 
-        @keyframes float-pulse {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-10px) scale(1.05); }
-            100% { transform: translateY(0) scale(1); }
-        }
-
-        /* --- Sticky Mobile CTA --- */
+        /* --- Sticky CTA Mobile --- */
         .mobile-cta {
             position: fixed;
             bottom: 0; left: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 15px 20px 25px;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
-            display: flex;
-            gap: 12px;
+            background: var(--white);
+            padding: 12px 20px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            display: none;
             z-index: 999;
-            border-top: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .btn-pulse {
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            padding: 16px;
-            border-radius: 16px;
-            font-weight: 800;
-            flex: 1;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            animation: cta-pulse 2s infinite;
-        }
-
-        @keyframes cta-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 159, 28, 0.6); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 159, 28, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 159, 28, 0); }
         }
 
         footer {
             background: var(--primary);
             color: white;
-            padding: 50px 20px 120px;
+            padding: 50px 20px;
             text-align: center;
         }
-        .footer-logo { font-size: 1.4rem; font-weight: 800; display: block; margin-bottom: 12px; }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- Tablet & Mobile Tweaks --- */
         @media (max-width: 768px) {
-            .btn-group { display: none; } 
-            .stats-bar { 
-                grid-template-columns: repeat(3, 1fr); 
-                padding: 15px 10px;
-                margin-top: -55px;
-            }
-            .stat-item h3 { font-size: 1.3rem; }
-            .stat-item p { font-size: 0.6rem; letter-spacing: 0.5px; }
-            .hero { padding-bottom: 120px; }
-            .venue-grid { grid-template-columns: 1fr; }
-            .whatsapp-float { bottom: 105px; width: 50px; height: 50px; font-size: 26px; }
+            .mobile-cta { display: flex; }
+            .btn-group { display: none; }
+            .stats-bar { grid-template-columns: 1fr; gap: 12px; margin-top: -45px; }
+            .hero { padding-bottom: 80px; }
+            .banner-container { width: 95%; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .roles-grid { grid-template-columns: 1fr; }
         }
 
-        @media (min-width: 769px) {
-            .mobile-cta { display: none; }
+        @media (min-width: 1024px) {
+            .banner-container { width: 60%; }
         }
     </style>
 </head>
@@ -492,24 +400,23 @@
     <header>
         <div class="logo-slider">
             <div class="logo-track">
-                <!-- Brands (Fallback text if images not found) -->
-                <div class="logo-item">Sarathy</div>
-                <div class="logo-item">Maruti</div>
-                <div class="logo-item">Arena</div>
-                <div class="logo-item">Nexa</div>
-                <div class="logo-item">Bajaj</div>
-                <div class="logo-item">KTM</div>
-                <div class="logo-item">Triumph</div>
-                <div class="logo-item">Ather</div>
-                <!-- Duplicate for Loop -->
-                <div class="logo-item">Sarathy</div>
-                <div class="logo-item">Maruti</div>
-                <div class="logo-item">Arena</div>
-                <div class="logo-item">Nexa</div>
-                <div class="logo-item">Bajaj</div>
-                <div class="logo-item">KTM</div>
-                <div class="logo-item">Triumph</div>
-                <div class="logo-item">Ather</div>
+                <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
+                <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
+                <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
+                <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
+                <div class="logo-item"><img src="KTM-logo.png" alt="KTM" class="logo-img"></div>
+                <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
+                <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
+                <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
+                <!-- Duplicate -->
+                <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
+                <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
+                <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
+                <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
+                <div class="logo-item"><img src="KTM-logo.png" alt="KTM" class="logo-img"></div>
+                <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
+                <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
+                <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
             </div>
         </div>
     </header>
@@ -520,10 +427,9 @@
             Mega Job Fair 2026
         </div>
         <h1>START YOUR JOURNEY WITH SARATHY</h1>
-        <p>Join the leader in automotive excellence. Premium brands, exceptional growth, and a world-class career.</p>
+        <p>Join the No. 1 Automotive Group in South Kerala. Premium brands, exceptional growth.</p>
         
-        <!-- ADJUSTED BANNER CONTAINER -->
-        <div class="banner-container" id="sliderContainer">
+        <div class="banner-container">
             <div class="banner-track" id="bannerTrack">
                 <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/VICTORIS.png" alt="Victor"></div>
                 <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2024/12/BANNERS-06.png" alt="Banner 6"></div>
@@ -535,26 +441,25 @@
                 <div class="banner-slide"><img src="https://sarathygroup.com/wp-content/uploads/2022/05/sarathy-awards-2.jpg" alt="Awards 2"></div>
             </div>
         </div>
-        <div class="slider-dots" id="sliderDots"></div>
 
         <div class="btn-group">
             <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-primary">
                 <i class="fas fa-paper-plane"></i> Apply Online Now
             </a>
-            <a href="#vacancies" class="btn btn-secondary">Explore Positions</a>
+            <a href="#vacancies" class="btn btn-secondary">Explore Roles</a>
         </div>
     </section>
 
     <div class="stats-bar">
-        <div class="stat-item"><h3>50+</h3><p>Openings</p></div>
-        <div class="stat-item"><h3>6</h3><p>Locations</p></div>
+        <div class="stat-item"><h3>50+</h3><p>Vacancies</p></div>
+        <div class="stat-item"><h3>4</h3><p>Venues</p></div>
         <div class="stat-item"><h3>7+</h3><p>Brands</p></div>
     </div>
 
     <section class="section reveal">
         <div class="section-header">
-            <h2>Experience Our Culture</h2>
-            <p>We don't just sell cars; we drive careers.</p>
+            <h2>Experience The Future</h2>
+            <p>A dynamic work culture awaits you.</p>
         </div>
         <div class="video-wrapper">
             <video controls preload="metadata" playsinline>
@@ -563,53 +468,60 @@
         </div>
     </section>
 
+    <!-- ========== UPDATED VENUES SECTION (YOUR NEW LOCATIONS) ========== -->
     <section class="section reveal" id="venues">
         <div class="section-header">
             <h2>Venues & Dates</h2>
             <p>Walk-in Interviews | 09:30 AM - 04:30 PM</p>
         </div>
         <div class="venue-grid">
+            <!-- 1. Kollam -->
             <div class="venue-card">
                 <i class="fas fa-building-columns"></i>
                 <h3>KOLLAM</h3>
                 <span class="venue-date">MARCH 04, 2026</span>
-                <p class="venue-loc">SN College, Kollam</p>
-                <a href="https://share.google/5hroGRiugavuW76tC" target="_blank" class="map-btn"><i class="fas fa-location-dot"></i> Get Directions</a>
+                <p>SN College, Kollam</p>
+                <a href="https://share.google/5hroGRiugavuW76tC" class="map-btn" target="_blank">View Map</a>
             </div>
+            <!-- 2. Chavara -->
             <div class="venue-card">
                 <i class="fas fa-university"></i>
                 <h3>CHAVARA</h3>
                 <span class="venue-date">MARCH 05, 2026</span>
-                <p class="venue-loc">Baby John Memorial Gov College</p>
-                <a href="https://share.google/Zc91Bi8l6in8girk7" target="_blank" class="map-btn"><i class="fas fa-location-dot"></i> Get Directions</a>
+                <p>Baby John Memorial Gov College</p>
+                <a href="https://share.google/Zc91Bi8l6in8girk7" class="map-btn" target="_blank">View Map</a>
             </div>
+            <!-- 3. Sasthamcotta -->
             <div class="venue-card">
                 <i class="fas fa-graduation-cap"></i>
                 <h3>SASTHAMCOTTA</h3>
                 <span class="venue-date">MARCH 06, 2026</span>
-                <p class="venue-loc">DB College, Sasthamcotta</p>
-                <a href="https://share.google/HPGYCj5g3lHVp7ooM" target="_blank" class="map-btn"><i class="fas fa-location-dot"></i> Get Directions</a>
+                <p>DB College, Sasthamcotta</p>
+                <a href="https://share.google/HPGYCj5g3lHVp7ooM" class="map-btn" target="_blank">View Map</a>
             </div>
+            <!-- 4. Kottarakkara -->
             <div class="venue-card">
                 <i class="fas fa-school"></i>
                 <h3>KOTTARAKKARA</h3>
                 <span class="venue-date">MARCH 07, 2026</span>
-                <p class="venue-loc">St.Gregorios College</p>
-                <a href="https://share.google/4VZdTDU9pYUKcZSci" target="_blank" class="map-btn"><i class="fas fa-location-dot"></i> Get Directions</a>
+                <p>St.Gregorios College</p>
+                <a href="https://share.google/4VZdTDU9pYUKcZSci" class="map-btn" target="_blank">View Map</a>
             </div>
+            <!-- 5. Kalanjoor -->
             <div class="venue-card">
                 <i class="fas fa-landmark"></i>
                 <h3>KALANJOOR</h3>
                 <span class="venue-date">MARCH 08, 2026</span>
-                <p class="venue-loc">IHRD College, Kalanjoor</p>
-                <a href="https://share.google/LbBZ8F0KSeD6wjxDq" target="_blank" class="map-btn"><i class="fas fa-location-dot"></i> Get Directions</a>
+                <p>IHRD College, Kalanjoor</p>
+                <a href="https://share.google/LbBZ8F0KSeD6wjxDq" class="map-btn" target="_blank">View Map</a>
             </div>
+            <!-- 6. Punalur -->
             <div class="venue-card">
                 <i class="fas fa-building"></i>
                 <h3>PUNALUR</h3>
                 <span class="venue-date">MARCH 09, 2026</span>
-                <p class="venue-loc">SN College, Punalur</p>
-                <a href="https://share.google/r9pkBzg7Rfpb6kFHX" target="_blank" class="map-btn"><i class="fas fa-location-dot"></i> Get Directions</a>
+                <p>SN College, Punalur</p>
+                <a href="https://share.google/r9pkBzg7Rfpb6kFHX" class="map-btn" target="_blank">View Map</a>
             </div>
         </div>
     </section>
@@ -617,32 +529,59 @@
     <section class="section reveal" id="vacancies">
         <div class="section-header">
             <h2>Available Positions</h2>
-            <p>Join our 1000+ member family.</p>
         </div>
         <div class="roles-grid">
+            <!-- Sales -->
             <div class="role-group">
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
                 <div class="role-item">
                     <span class="role-title">Sales Executive / RM</span>
-                    <span class="fresher-badge">Freshers Welcome</span>
+                    <span class="fresher-badge">Freshers & Experienced</span>
                 </div>
-                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply Online</a>
+                <div class="role-item">
+                    <span class="role-title">Team Leaders</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">Automotive Exp. Preferred</p>
+                </div>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Sales</a>
             </div>
+            <!-- Service -->
             <div class="role-group">
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
                 <div class="role-item">
-                    <span class="role-title">Technicians / Advisors</span>
-                    <span class="fresher-badge">Technical Background</span>
+                    <span class="role-title">Service Advisors</span>
+                    <span class="fresher-badge">Freshers & Experienced</span>
                 </div>
-                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply Online</a>
-            </div>
-            <div class="role-group">
-                <h4><i class="fas fa-laptop-code"></i> Support Roles</h4>
                 <div class="role-item">
-                    <span class="role-title">Accounts / Digital Marketing</span>
-                    <span class="fresher-badge">Creative Minds</span>
+                    <span class="role-title">Expert Technicians</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">ITI / Diploma holders</p>
                 </div>
-                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply Online</a>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Service</a>
+            </div>
+            <!-- Spare -->
+            <div class="role-group">
+                <h4><i class="fas fa-cog"></i> Spare Roles</h4>
+                <div class="role-item">
+                    <span class="role-title">Spare Parts Executive</span>
+                    <span class="fresher-badge">Spare Parts Trainee</span>
+                </div>
+                <div class="role-item">
+                    <span class="role-title">Inventory Managers</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">12th Pass or Above</p>
+                </div>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Spares</a>
+            </div>
+            <!-- Support -->
+            <div class="role-group">
+                <h4><i class="fas fa-laptop-code"></i> Support & Digital</h4>
+                <div class="role-item">
+                    <span class="role-title">Content Creator / Graphics</span>
+                    <span class="fresher-badge">Portfolio Req.</span>
+                </div>
+                <div class="role-item">
+                    <span class="role-title">Accounts Executive</span>
+                    <p style="font-size: 0.85rem; color: #64748b;">B.Com / M.Com (Tally)</p>
+                </div>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Support</a>
             </div>
         </div>
     </section>
@@ -652,91 +591,35 @@
         <div class="footer-contact">
             <p><i class="fas fa-phone-alt"></i> +91 9037 2236 65</p>
         </div>
-        <p style="opacity: 0.5; font-size: 0.75rem; margin-top: 20px;">© 2026 Sarathy Group. Driving Excellence.</p>
+        <p style="opacity: 0.6; font-size: 0.8rem; margin-top: 15px;">© 2026 Sarathy Group. All rights reserved.</p>
     </footer>
 
-    <!-- Mobile Sticky CTA -->
     <div class="mobile-cta">
-        <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-pulse">
-            <i class="fas fa-paper-plane"></i> APPLY ONLINE NOW
+        <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-paper-plane"></i> Apply Online Now
         </a>
     </div>
 
-    <!-- WhatsApp -->
     <a href="https://wa.me/919037833865?text=Hi, Interested in Sarathy Job Fair 2026" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        // Banner Slider Logic
         const track = document.getElementById('bannerTrack');
-        const dotsContainer = document.getElementById('sliderDots');
-        const container = document.getElementById('sliderContainer');
         let index = 0;
-        const totalSlides = track ? track.children.length : 0;
-        let startX = 0;
-        let isDragging = false;
-        let autoPlayTimer;
-
-        if (totalSlides > 0) {
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'dot' + (i === 0 ? ' active' : '');
-                dot.addEventListener('click', () => goToSlide(i));
-                dotsContainer.appendChild(dot);
+        const totalSlides = track.children.length;
+        
+        setInterval(() => {
+            if (totalSlides > 0) {
+                index = (index + 1) % totalSlides;
+                track.style.transform = `translateX(-${index * 100}%)`;
             }
-        }
-
-        function updateSlider() {
-            track.style.transform = `translateX(-${index * 100}%)`;
-            const dots = document.querySelectorAll('.dot');
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-        }
-
-        function goToSlide(n) {
-            index = n;
-            updateSlider();
-            resetTimer();
-        }
-
-        function nextSlide() {
-            index = (index + 1) % totalSlides;
-            updateSlider();
-        }
-
-        function resetTimer() {
-            clearInterval(autoPlayTimer);
-            autoPlayTimer = setInterval(nextSlide, 4500);
-        }
-
-        container.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-            clearInterval(autoPlayTimer);
-        }, {passive: true});
-
-        container.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) index = (index + 1) % totalSlides;
-                else index = (index - 1 + totalSlides) % totalSlides;
-            }
-            updateSlider();
-            isDragging = false;
-            resetTimer();
-        }, {passive: true});
-
-        resetTimer();
+        }, 4000);
 
         function reveal() {
             const reveals = document.querySelectorAll(".reveal");
             reveals.forEach(r => {
-                const windowHeight = window.innerHeight;
-                const elementTop = r.getBoundingClientRect().top;
-                const elementVisible = 120;
-                if (elementTop < windowHeight - elementVisible) r.classList.add("active");
+                if (r.getBoundingClientRect().top < window.innerHeight - 80) r.classList.add("active");
             });
         }
         window.addEventListener("scroll", reveal);
