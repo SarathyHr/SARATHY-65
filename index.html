@@ -61,7 +61,7 @@
         .logo-track {
             display: flex;
             width: max-content;
-            animation: scroll 5s linear infinite;
+            animation: scroll 15s linear infinite;
         }
 
         .logo-item {
@@ -140,7 +140,7 @@
         /* --- BANNER SLIDER --- */
         .banner-container {
             max-width: 1220px;
-            width: 84%; /* Desktop width as requested */
+            width: 84%; 
             margin: 0 auto 25px;
             border-radius: 18px;
             overflow: hidden;
@@ -162,14 +162,14 @@
         .banner-slide img { 
             width: 100%; 
             height: auto; 
-            aspect-ratio: 3 / 1.2; /* Decreased height for mobile friendliness (Panoramic view) */
+            aspect-ratio: 4 / 1; /* Slim banner for mobile */
             display: block; 
             object-fit: cover;
         }
 
         @media (min-width: 769px) {
             .banner-slide img {
-                aspect-ratio: 16 / 5; /* Professional shorter ratio for desktop */
+                aspect-ratio: 5 / 1; /* Slim professional banner for desktop */
             }
         }
 
@@ -237,7 +237,7 @@
         .stat-item p { color: var(--text-light); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* --- Sections --- */
-        .section { padding: 50px 16px; max-width: 1200px; margin: 0 auto; }
+        .section { padding: 50px 166px; max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 35px; }
         .section-header h2 { font-size: clamp(1.6rem, 7vw, 2.4rem); font-weight: 800; color: var(--primary); margin-bottom: 8px; line-height: 1.2; }
         .section-header p { color: var(--text-light); font-size: 0.95rem; }
@@ -264,7 +264,7 @@
         
         .venue-img-container {
             width: 100%;
-            height: 100px; /* Decreased image height to roughly 50% */
+            height: 180px; /* Restored previous settings */
             overflow: hidden;
             position: relative;
             background: #f1f5f9;
@@ -272,7 +272,7 @@
 
         @media (min-width: 769px) {
             .venue-img-container {
-                height: 90px; /* Reduced desktop height */
+                height: 180px; 
             }
         }
 
@@ -444,13 +444,14 @@
 
         @media (max-width: 768px) {
             .btn-group { display: none; }
+            .section { padding: 40px 15px; }
             .stats-bar { grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: -50px; padding: 15px 10px; }
             .stat-item h3 { font-size: 1.3rem; }
             .stat-item p { font-size: 0.6rem; }
             .hero { padding-bottom: 90px; }
-            .banner-container { width: 95%; } /* Full width on mobile for better look */
+            .banner-container { width: 95%; } 
             .venue-grid { grid-template-columns: 1fr; }
-            .venue-img-container { height: 110px; } /* Reduced height on mobile */
+            .venue-img-container { height: 200px; } /* Restored Height for Mobile */
         }
 
         @media (min-width: 1024px) {
