@@ -61,7 +61,7 @@
         .logo-track {
             display: flex;
             width: max-content;
-            animation: scroll 5s linear infinite;
+            animation: scroll 15s linear infinite;
         }
 
         .logo-item {
@@ -78,7 +78,7 @@
             max-width: 100%; 
             max-height: 100%; 
             object-fit: contain;
-            filter: grayscale(20%);
+            filter: grayscale(10%);
         }
 
         @keyframes scroll {
@@ -139,8 +139,8 @@
 
         /* --- BANNER SLIDER --- */
         .banner-container {
-            max-width: 1200px;
-            width: 94%;
+            max-width: 1220px;
+            width: 84%; /* Desktop width as requested */
             margin: 0 auto 25px;
             border-radius: 18px;
             overflow: hidden;
@@ -162,9 +162,15 @@
         .banner-slide img { 
             width: 100%; 
             height: auto; 
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 3 / 2; /* Mobile friendly ratio */
             display: block; 
             object-fit: cover;
+        }
+
+        @media (min-width: 769px) {
+            .banner-slide img {
+                aspect-ratio: 16 / 9; /* Professional ratio for desktop */
+            }
         }
 
         /* --- Buttons --- */
@@ -258,10 +264,16 @@
         
         .venue-img-container {
             width: 100%;
-            height: 160px;
+            height: 200px; /* Increased height for mobile friendliness */
             overflow: hidden;
             position: relative;
             background: #f1f5f9;
+        }
+
+        @media (min-width: 769px) {
+            .venue-img-container {
+                height: 180px; /* Standard desktop height */
+            }
         }
 
         .venue-img-container img {
@@ -436,13 +448,13 @@
             .stat-item h3 { font-size: 1.3rem; }
             .stat-item p { font-size: 0.6rem; }
             .hero { padding-bottom: 90px; }
-            .banner-container { width: 92%; }
+            .banner-container { width: 95%; } /* Full width on mobile for better look */
             .venue-grid { grid-template-columns: 1fr; }
-            .venue-img-container { height: 180px; }
+            .venue-img-container { height: 210px; }
         }
 
         @media (min-width: 1024px) {
-            .banner-container { width: 65%; }
+            .banner-container { width: 84%; }
             .mobile-cta { display: none; }
             .btn-group { display: flex; }
             body { padding-bottom: 0; }
@@ -455,7 +467,6 @@
     <header>
         <div class="logo-slider">
             <div class="logo-track">
-                <!-- Group 1 -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -464,7 +475,7 @@
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
                 <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
                 <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
-                <!-- Duplicate for Seamless Loop -->
+                <!-- Duplicate for Loop -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -522,7 +533,7 @@
         </div>
     </section>
 
-    <!-- ========== VENUES SECTION WITH IMAGES ========== -->
+    <!-- ========== VENUES SECTION WITH ENHANCED IMAGES ========== -->
     <section class="section reveal" id="venues">
         <div class="section-header">
             <h2>Venues & Dates</h2>
@@ -626,7 +637,6 @@
             <h2>Available Positions</h2>
         </div>
         <div class="roles-grid">
-            <!-- Sales -->
             <div class="role-group">
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
                 <div class="role-item">
@@ -639,7 +649,6 @@
                 </div>
                 <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Sales</a>
             </div>
-            <!-- Service -->
             <div class="role-group">
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
                 <div class="role-item">
@@ -652,7 +661,6 @@
                 </div>
                 <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Service</a>
             </div>
-            <!-- Support -->
             <div class="role-group">
                 <h4><i class="fas fa-headset"></i> Support & Admin</h4>
                 <div class="role-item">
@@ -687,7 +695,6 @@
     </a>
 
     <script>
-        // Banner Slider Logic
         const track = document.getElementById('bannerTrack');
         let index = 0;
         const slides = track.querySelectorAll('.banner-slide');
@@ -702,7 +709,6 @@
         
         let bannerTimer = setInterval(rotateBanner, 4000);
 
-        // Reset timer on visibility change for performance
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 clearInterval(bannerTimer);
@@ -711,7 +717,6 @@
             }
         });
 
-        // Scroll Reveal Logic
         function reveal() {
             const reveals = document.querySelectorAll(".reveal");
             reveals.forEach(r => {
@@ -725,7 +730,6 @@
         }
         
         window.addEventListener("scroll", reveal);
-        // Initial check
         window.addEventListener("load", reveal);
     </script>
 </body>
