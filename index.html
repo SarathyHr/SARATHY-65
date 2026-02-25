@@ -5,18 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Sarathy Group | Mega Job Fair 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #002855;
+            --primary-light: #004080;
             --accent: #08b608;
             --accent-hover: #42e619;
             --success: #25D366;
             --text-dark: #0f172a;
             --text-light: #64748b;
             --white: #ffffff;
+            --bg-light: #f0f4f8;
             --bg-gradient: linear-gradient(135deg, #001d3d 0%, #003566 100%);
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 25px rgba(0,0,0,0.08);
+            --shadow-lg: 0 25px 50px rgba(0,0,0,0.15);
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.4);
         }
 
         * {
@@ -27,467 +34,481 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: #f8fafc;
+            background-color: var(--bg-light);
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(210, 100%, 95%, 1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(120, 100%, 95%, 1) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, hsla(210, 100%, 95%, 1) 0, transparent 50%), 
+                radial-gradient(at 0% 100%, hsla(120, 100%, 95%, 1) 0, transparent 50%);
+            background-attachment: fixed;
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
             padding-bottom: 80px;
         }
 
+        /* --- Notification Ticker --- */
+        .top-ticker {
+            background: var(--accent);
+            color: white;
+            padding: 8px 30px 8px 15px;
+            overflow: hidden;
+            position: relative;
+            z-index: 10002;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        .ticker-text-wrapper {
+            flex-grow: 1;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+        }
+        .ticker-text:hover { animation-play-state: paused; }
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+        .close-ticker {
+            position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.1); border: none; color: white;
+            width: 24px; height: 24px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .close-ticker:hover { background: rgba(0,0,0,0.3); transform: translateY(-50%) scale(1.1); }
+
+        /* --- Scroll Progress Bar --- */
+        .scroll-progress-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: transparent;
+            z-index: 10001;
+        }
+        .scroll-progress-bar {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 0 0 10px var(--accent);
+            transition: width 0.1s ease-out;
+        }
+
+        /* --- Glassmorphism Utility Class --- */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+
+        /* --- Preloader --- */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--white);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(0,40,85,0.1);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
         /* --- Header & Logo Slider --- */
         header {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             padding: 8px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             height: 65px;
             display: flex;
             align-items: center;
         }
 
-        .logo-slider {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        .logo-track {
-            display: flex;
-            width: max-content;
-            animation: scroll 15s linear infinite;
-        }
-
+        .logo-slider { overflow: hidden; width: 100%; position: relative; }
+        .logo-track { display: flex; width: max-content; animation: scroll 20s linear infinite; }
+        .logo-track:hover { animation-play-state: paused; }
+        
         .logo-item {
-            width: 110px;
-            height: 45px;
-            margin: 0 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            width: 110px; height: 45px; margin: 0 25px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            transition: var(--transition);
         }
+        .logo-item:hover { transform: scale(1.15) translateY(-3px); filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); }
+        .logo-img { max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(20%); transition: var(--transition); }
+        .logo-item:hover .logo-img { filter: grayscale(0%); }
+        .logo-enlarge { transform: scale(1.35); }
 
-        .logo-img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            object-fit: contain;
-            filter: grayscale(10%);
-        }
-
-        .logo-enlarge {
-            transform: scale(1.35);
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* --- Hero Section --- */
         .hero {
-            padding: 60px 15px 140px;
+            padding: 80px 15px 180px;
             background: var(--bg-gradient);
             color: var(--white);
             text-align: center;
             position: relative;
-            clip-path: ellipse(300% 100% at 50% 0%);
+            clip-path: ellipse(200% 100% at 50% 0%);
+            overflow: hidden;
         }
+
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08) 0%, transparent 40%),
+                              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 0%, transparent 40%);
+            pointer-events: none;
+            animation: pulse-bg 10s infinite alternate;
+        }
+        @keyframes pulse-bg { 0% { opacity: 0.5; } 100% { opacity: 1; } }
 
         .fair-badge {
-            background: var(--accent);
-            padding: 6px 14px;
+            background: rgba(8, 182, 8, 0.2);
+            border: 1px solid rgba(8, 182, 8, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 8px 18px;
             border-radius: 100px;
             font-weight: 800;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(255, 159, 28, 0.4);
+            gap: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(8, 182, 8, 0.3);
+            animation: float 3s ease-in-out infinite;
         }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
         .live-dot {
-            width: 7px;
-            height: 7px;
-            background: white;
-            border-radius: 50%;
+            width: 8px; height: 8px; background: var(--accent-hover); border-radius: 50%;
             animation: blink 1s infinite;
         }
-
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        @keyframes blink { 0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accent-hover); } 50% { opacity: 0.3; box-shadow: none;} }
 
         .hero h1 {
-            font-size: clamp(1.8rem, 8vw, 3.2rem);
+            font-size: clamp(2rem, 8vw, 3.8rem);
             font-weight: 800;
             line-height: 1.2;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: clamp(0.9rem, 3.5vw, 1.15rem);
-            color: rgba(255,255,255,0.85);
-            max-width: 600px;
+            font-size: clamp(1rem, 3.5vw, 1.25rem);
+            color: rgba(255,255,255,0.95);
+            max-width: 650px;
             margin: 0 auto 35px;
             padding: 0 10px;
         }
 
-        /* --- Buttons --- */
-        .btn-group { 
-            display: flex; 
-            gap: 12px; 
-            justify-content: center; 
-            flex-wrap: wrap; 
-            margin-bottom: 10px; 
+        /* --- Countdown Timer (Glassmorphism) --- */
+        .countdown-container {
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 45px;
         }
+        .time-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 15px 20px;
+            border-radius: 16px;
+            min-width: 90px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .time-box:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.15); }
+        .time-box span { display: block; font-size: 2.2rem; font-weight: 800; line-height: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .time-box label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.9; margin-top: 5px; display: block; }
 
+        /* --- Buttons (Advanced Micro-interactions) --- */
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
+        
         .btn {
-            padding: 14px 28px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            cursor: pointer;
-            width: auto;
-            border: none;
+            padding: 16px 32px; border-radius: 14px; font-weight: 700; font-size: 1.05rem;
+            text-decoration: none; transition: var(--transition);
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            cursor: pointer; border: none; position: relative; overflow: hidden;
+            z-index: 1;
         }
+        
+        .btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease; z-index: -1;
+        }
+        .btn:hover::before { left: 100%; }
 
-        .btn-primary { 
-            background: var(--accent); 
-            color: var(--white); 
-            box-shadow: 0 8px 20px rgba(255, 159, 28, 0.3); 
-        }
+        .btn-primary { background: var(--accent); color: var(--white); box-shadow: 0 8px 25px rgba(8, 182, 8, 0.4); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 30px rgba(8, 182, 8, 0.5); }
+        .btn-primary i { transition: transform 0.3s ease; }
+        .btn-primary:hover i { transform: translateX(5px) scale(1.1); }
         
         .btn-secondary { 
-            background: rgba(255,255,255,0.12); 
-            color: var(--white); 
-            border: 1px solid rgba(255,255,255,0.25); 
-            backdrop-filter: blur(5px);
+            background: rgba(255,255,255,0.1); color: var(--white); 
+            border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(8px);
         }
+        .btn-secondary:hover { background: rgba(255,255,255,0.25); transform: translateY(-4px); }
 
-        .btn-whatsapp {
-            background: var(--success);
-            color: white;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-        }
+        .btn-whatsapp { background: var(--success); color: white; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); }
+        .btn-whatsapp:hover { background: #20bd5a; transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4); }
 
-        .btn:active { transform: scale(0.96); }
+        .btn:active { transform: scale(0.95); }
 
-        /* --- Stats Bar --- */
+        /* --- Stats Bar (Glassmorphism) --- */
         .stats-bar {
-            background: var(--white);
-            max-width: 850px;
-            margin: -60px auto 40px;
-            padding: 20px;
-            border-radius: 20px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-            position: relative;
-            z-index: 10;
+            max-width: 900px; margin: -90px auto 60px; padding: 30px;
+            border-radius: 24px; display: grid; grid-template-columns: repeat(3, 1fr);
+            text-align: center; position: relative; z-index: 10;
             width: calc(100% - 32px);
-            border: 1px solid #f1f5f9;
         }
-
-        .stat-item h3 { font-size: clamp(1.4rem, 5vw, 1.8rem); color: var(--primary); font-weight: 800; line-height: 1; margin-bottom: 4px; }
-        .stat-item p { color: var(--text-light); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-item { border-right: 1px solid rgba(0,0,0,0.05); }
+        .stat-item:last-child { border-right: none; }
+        .stat-item h3 { font-size: clamp(2rem, 5vw, 2.8rem); color: var(--primary); font-weight: 800; line-height: 1; margin-bottom: 8px; }
+        .stat-item p { color: var(--text-light); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
 
         /* --- Sections --- */
-        .section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .section-header h2 { font-size: clamp(1.6rem, 7vw, 2.4rem); font-weight: 800; color: var(--primary); margin-bottom: 8px; line-height: 1.2; }
-        .section-header p { color: var(--text-light); font-size: 0.95rem; }
+        .section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: clamp(2rem, 7vw, 2.8rem); font-weight: 800; color: var(--primary); margin-bottom: 12px; line-height: 1.2; position: relative; display: inline-block;}
+        .section-header h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--accent); border-radius: 2px; }
+        .section-header p { color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: 20px auto 0; font-weight: 500;}
 
-        /* --- Benefits & Checklist Sections --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        /* --- Timeline Process --- */
+        .process-wrapper { display: flex; flex-direction: column; gap: 25px; max-width: 800px; margin: 0 auto; }
+        .process-step {
+            display: flex; border-radius: 20px; padding: 25px;
+            align-items: center; gap: 25px; transition: var(--transition);
         }
+        .process-step:hover { transform: translateX(15px) translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.9); }
+        .step-number {
+            width: 70px; height: 70px; background: var(--primary); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; flex-shrink: 0;
+            box-shadow: 0 10px 20px rgba(0, 40, 85, 0.2); transition: transform 0.3s ease;
+        }
+        .process-step:hover .step-number { transform: scale(1.1) rotate(10deg); }
+        .step-content h4 { color: var(--primary); font-size: 1.3rem; margin-bottom: 8px; font-weight: 800; }
+        .step-content p { color: var(--text-light); font-size: 0.95rem; margin: 0; }
 
+        /* --- Benefits Grid (Glassmorphism) --- */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        
         .card-item {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-            text-align: center;
-            transition: var(--transition);
+            padding: 35px 25px; border-radius: 24px; text-align: center; transition: var(--transition); position: relative; overflow: hidden;
         }
-
-        .card-item:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .card-item::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--primary); transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left;
+        }
+        .card-item:hover { transform: translateY(-12px); box-shadow: var(--shadow-lg); background: rgba(255,255,255,0.95); }
+        .card-item:hover::before { transform: scaleX(1); }
 
         .card-icon {
-            width: 60px;
-            height: 60px;
-            background: #f0f7ff;
-            color: var(--primary);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin: 0 auto 15px;
+            width: 80px; height: 80px; background: rgba(0, 40, 85, 0.05); color: var(--primary); border-radius: 22px;
+            display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 25px;
+            transition: var(--transition);
         }
+        .card-item:hover .card-icon { background: var(--primary); color: white; transform: rotate(10deg) scale(1.1); box-shadow: 0 15px 25px rgba(0, 40, 85, 0.2);}
+        .card-item h4 { color: var(--primary); margin-bottom: 12px; font-weight: 800; font-size: 1.3rem; }
+        .card-item p { font-size: 0.95rem; color: var(--text-light); }
 
-        .card-item h4 { color: var(--primary); margin-bottom: 8px; font-weight: 700; }
-        .card-item p { font-size: 0.85rem; color: var(--text-light); }
-
-        .checklist-box {
-            background: #fff;
-            border-radius: 24px;
-            padding: 30px;
-            border: 2px dashed #e2e8f0;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 12px 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
+        /* --- Document Checklist --- */
+        .checklist-box { padding: 40px; border-radius: 30px; border: 2px dashed rgba(0, 40, 85, 0.2); max-width: 750px; margin: 0 auto; }
+        .checklist-item { display: flex; align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid rgba(0,0,0,0.05); transition: var(--transition); }
+        .checklist-item:hover { background: rgba(255,255,255,0.5); padding-left: 15px; border-radius: 12px; transform: scale(1.02); box-shadow: var(--shadow-sm);}
         .checklist-item:last-child { border-bottom: none; }
-        
-        .check-circle {
-            color: var(--success);
-            font-size: 1.2rem;
-        }
+        .check-circle { color: var(--success); font-size: 1.8rem; background: rgba(37, 211, 102, 0.1); border-radius: 50%; padding: 5px; }
 
         /* --- Video Section --- */
-        .video-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
+        .video-container { max-width: 800px; margin: 0 auto; position: relative; perspective: 1000px; }
         .video-wrapper {
-            width: 100%;
-            max-width: 320px;
-            margin: 0 auto;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            background: #000;
-            aspect-ratio: 9/16;
-            border: 8px solid white;
-            position: relative;
+            width: 100%; max-width: 340px; margin: 0 auto; border-radius: 30px; overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2); background: #000; aspect-ratio: 9/16; border: 8px solid rgba(255,255,255,0.8); position: relative;
+            transform: rotateY(0deg); transition: transform 0.5s ease;
         }
+        .video-wrapper:hover { transform: translateY(-10px) rotateY(5deg); box-shadow: 0 40px 70px rgba(0,0,0,0.3); }
+        .video-wrapper video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        .video-wrapper video { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block;
-        }
-
-        /* --- Venue Grid --- */
-        .venue-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
+        /* --- Venue Grid & Live Tracking --- */
+        .venue-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .venue-card {
-            background: var(--white);
-            border-radius: 20px;
-            transition: var(--transition);
-            border: 1px solid #f1f5f9;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 24px; transition: var(--transition); text-align: center; display: flex; flex-direction: column; overflow: hidden;
         }
-
-        .venue-img-container {
-            width: 100%;
-            height: 180px;
-            background: #f1f5f9;
-        }
-
-        .venue-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .venue-info {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-grow: 1;
-        }
-
-        .venue-info h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; color: var(--primary); }
+        .venue-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); background: rgba(255,255,255,0.9); border-color: white;}
+        .venue-img-container { width: 100%; height: 200px; background: #e2e8f0; position: relative; overflow: hidden; }
+        .venue-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .venue-card:hover .venue-img-container img { transform: scale(1.1); filter: brightness(1.1); }
         
-        .venue-date { 
-            color: #ef4444; 
-            font-weight: 800; 
-            margin-bottom: 12px; 
-            background: #fee2e2;
-            padding: 5px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-        }
+        .venue-info { padding: 30px 25px; display: flex; flex-direction: column; align-items: center; flex-grow: 1; position: relative;}
+        .venue-info h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; color: var(--primary); }
+        .venue-date { color: #ef4444; font-weight: 800; margin-bottom: 5px; background: #fee2e2; padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; display: inline-block;}
+        
+        /* Individual Venue Countdown */
+        .venue-timer { font-size: 0.85rem; font-weight: 700; color: var(--accent); margin-bottom: 15px; background: rgba(8, 182, 8, 0.1); padding: 5px 12px; border-radius: 50px; display: inline-flex; align-items: center; gap: 5px; }
+        .venue-timer i { animation: pulse-icon 1.5s infinite; }
+        @keyframes pulse-icon { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
 
         .map-btn {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary);
-            border-radius: 10px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.95rem;
+            width: 100%; padding: 14px; background: rgba(255,255,255,0.5); border-radius: 12px; text-decoration: none;
+            color: var(--primary); font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px;
+            font-size: 1rem; transition: var(--transition); border: 1px solid rgba(0,40,85,0.1); margin-top: auto;
         }
+        .map-btn:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,40,85,0.2);}
 
-        /* --- Roles Grid --- */
-        .roles-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 20px; 
+        /* --- Interactive Job Filter & Roles --- */
+        .filter-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 10px 25px; border-radius: 50px; border: 2px solid var(--primary); background: transparent; 
+            color: var(--primary); font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition);
+            backdrop-filter: blur(5px);
         }
+        .filter-btn:hover { background: rgba(0,40,85,0.1); transform: translateY(-2px); }
+        .filter-btn.active { background: var(--primary); color: white; box-shadow: 0 8px 20px rgba(0,40,85,0.2); transform: translateY(-2px); }
 
-        .role-group { 
-            background: var(--white); 
-            border-radius: 20px; 
-            padding: 25px; 
-            border: 1px solid #f1f5f9; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-        }
-
-        .role-group h4 { 
-            font-size: 1.2rem; 
-            margin-bottom: 15px; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            color: var(--primary); 
-            border-bottom: 2px solid #f8fafc; 
-            padding-bottom: 12px;
-            font-weight: 800;
-        }
-
-        .role-item { padding: 12px 0; border-bottom: 1px solid #f8fafc; }
-        .role-title { font-weight: 700; font-size: 1rem; display: block; color: var(--text-dark); }
+        .roles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .role-group { padding: 35px; border-radius: 24px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform: scale(1); opacity: 1; transform-origin: top; }
+        .role-group.hide { display: none; transform: scale(0.9); opacity: 0; position: absolute; } 
         
-        .fresher-badge { 
-            display: inline-block; 
-            background: #f0fdf4; 
-            color: #16a34a; 
-            font-size: 0.7rem; 
-            padding: 3px 10px; 
-            border-radius: 50px; 
-            font-weight: 700; 
-            margin-top: 6px; 
+        .role-group:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); background: rgba(255,255,255,0.9); border-color: white; }
+        .role-group h4 { font-size: 1.4rem; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; color: var(--primary); border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 15px; font-weight: 800; }
+        .role-group h4 i { background: rgba(8, 182, 8, 0.1); padding: 12px; border-radius: 12px; color: var(--accent); transition: transform 0.3s;}
+        .role-group:hover h4 i { transform: rotate(15deg) scale(1.1); }
+        .role-item { padding: 18px 0; border-bottom: 1px solid rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .role-item:hover { transform: translateX(10px); }
+        .role-title { font-weight: 700; font-size: 1.1rem; display: block; color: var(--text-dark); margin-bottom: 5px; }
+        .fresher-badge { display: inline-block; background: #f0fdf4; color: #16a34a; font-size: 0.75rem; padding: 5px 14px; border-radius: 50px; font-weight: 700; margin-top: 5px; border: 1px solid #bbf7d0; box-shadow: 0 2px 5px rgba(22,163,74,0.1);}
+        .btn-role-apply {
+            display: flex; align-items: center; justify-content: center; background: var(--primary); color: var(--white);
+            text-decoration: none; padding: 15px; border-radius: 14px; font-size: 1.05rem; font-weight: 700; margin-top: 25px; transition: var(--transition);
         }
+        .btn-role-apply:hover { background: var(--primary-light); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,40,85,0.2); }
 
-        .btn-role-apply { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            background: var(--primary); 
-            color: var(--white); 
-            text-decoration: none; 
-            padding: 14px; 
-            border-radius: 10px; 
-            font-size: 0.95rem; 
-            font-weight: 700; 
-            margin-top: 20px; 
+        /* --- FAQ Section --- */
+        .faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        details { background: transparent; border-radius: 16px; overflow: hidden; transition: var(--transition); }
+        details[open] { box-shadow: var(--shadow-md); border-color: var(--primary); background: rgba(255,255,255,0.9); transform: scale(1.02);}
+        summary {
+            padding: 22px; font-weight: 700; cursor: pointer; color: var(--primary); font-size: 1.1rem;
+            list-style: none; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s;
         }
+        summary:hover { background: rgba(255,255,255,0.5); }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: transform 0.4s ease; color: var(--text-light); }
+        details[open] summary::after { transform: rotate(180deg); color: var(--primary); }
+        .faq-content { padding: 0 22px 22px; color: var(--text-light); font-size: 1rem; line-height: 1.7; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 5px; padding-top: 15px;}
 
-        /* --- WhatsApp Floating --- */
+        /* --- Floating Actions --- */
+        .action-floats { position: fixed; bottom: 95px; right: 25px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
+        
         .whatsapp-float {
-            position: fixed;
-            bottom: 95px;
-            right: 20px;
-            background: var(--success);
-            color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            text-decoration: none;
-            transition: var(--transition);
+            background: var(--success); color: white; width: 65px; height: 65px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 35px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); text-decoration: none; transition: var(--transition);
+            position: relative;
         }
+        .whatsapp-float::after {
+            content: ''; position: absolute; width: 100%; height: 100%; background: inherit; border-radius: inherit; z-index: -1; animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes ping { 75%, 100% { transform: scale(1.5); opacity: 0; } }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); }
+
+        .back-to-top {
+            background: var(--primary); color: white; width: 55px; height: 55px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer;
+            box-shadow: var(--shadow-md); opacity: 0; visibility: hidden; transition: var(--transition); transform: translateY(30px) scale(0.5); border: none;
+        }
+        .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+        .back-to-top:hover { background: var(--primary-light); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,40,85,0.3);}
 
         /* --- Mobile CTA --- */
         .mobile-cta {
-            position: fixed;
-            bottom: 0; left: 0; width: 100%;
-            background: rgba(255,255,255,0.95);
-            padding: 12px 16px;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            backdrop-filter: blur(10px);
-            border-top: 1px solid #f1f5f9;
+            position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.85);
+            padding: 15px 20px; box-shadow: 0 -10px 30px rgba(0,0,0,0.1); display: flex; justify-content: center;
+            align-items: center; z-index: 999; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-top: 1px solid rgba(255,255,255,0.5);
         }
 
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 40px 20px 110px;
-            text-align: center;
-        }
+        footer { background: var(--primary); color: white; padding: 80px 20px 140px; text-align: center; position: relative; overflow: hidden; transition: background 0.5s;}
+        footer::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%); pointer-events: none;}
 
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all cubic-bezier(0.4, 0, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* --- Smooth Reveal Animation (Enhanced) --- */
+        .reveal { opacity: 0; transform: translateY(60px) scale(0.95); transition: all 1s cubic-bezier(0.5, 0, 0, 1); filter: blur(5px); }
+        .reveal.active { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 
         @media (max-width: 768px) {
-            .hero { padding-bottom: 90px; }
-            .hero h1 { font-size: 1.8rem; }
-            .stats-bar { grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: -50px; padding: 15px 10px; }
-            .stat-item h3 { font-size: 1.3rem; }
-            .stat-item p { font-size: 0.55rem; }
-            .section { padding: 40px 15px; }
+            .hero { padding: 60px 15px 150px; }
+            .hero h1 { font-size: 2.3rem; }
+            .countdown-container { gap: 10px; }
+            .time-box { min-width: 65px; padding: 10px; }
+            .time-box span { font-size: 1.5rem; }
+            .stats-bar { grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: -60px; padding: 20px 10px; }
+            .stat-item h3 { font-size: 1.5rem; }
+            .stat-item p { font-size: 0.65rem; }
+            .section { padding: 60px 15px; }
             .btn { width: 100%; }
+            .process-step { flex-direction: column; text-align: center; }
+            .step-number { margin: 0 auto; }
+            .action-floats { bottom: 90px; right: 15px;}
+            .whatsapp-float { width: 55px; height: 55px; font-size: 30px;}
         }
 
         @media (min-width: 1024px) {
             .mobile-cta { display: none; }
             body { padding-bottom: 0; }
-            footer { padding-bottom: 40px; }
+            footer { padding-bottom: 80px; }
+            .action-floats { bottom: 30px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Notification Ticker -->
+    <div class="top-ticker" id="topTicker">
+        <div class="ticker-text-wrapper">
+            <span class="ticker-text">🚀 MEGA JOB FAIR 2026: Registration is Open! Walk-in Interviews from March 4 to March 10. Bring 2 copies of your updated CV. Freshers are highly encouraged to apply! ✨</span>
+        </div>
+        <button class="close-ticker" onclick="document.getElementById('topTicker').style.display='none'" title="Close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
     <header>
         <div class="logo-slider">
             <div class="logo-track">
-                <!-- Duplicate logos for seamless loop -->
+                <!-- Logos -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -498,7 +519,7 @@
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
                 <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
                 <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
-                <!-- Copy 2 -->
+                <!-- Copy 2 for infinite loop -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -513,6 +534,7 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="fair-badge">
             <div class="live-dot"></div>
@@ -521,51 +543,93 @@
         <h1>START YOUR JOURNEY WITH SARATHY</h1>
         <p>Join South Kerala's No. 1 Automotive Group. Explore careers with India's most loved brands.</p>
         
+        <!-- Countdown Timer (Glassmorphism) -->
+        <div class="countdown-container" id="countdown">
+            <div class="time-box"><span id="days">00</span><label>Days</label></div>
+            <div class="time-box"><span id="hours">00</span><label>Hours</label></div>
+            <div class="time-box"><span id="mins">00</span><label>Mins</label></div>
+            <div class="time-box"><span id="secs">00</span><label>Secs</label></div>
+        </div>
+
         <div class="btn-group">
             <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-primary">
                 <i class="fas fa-paper-plane"></i> Apply Online Now
             </a>
-            <a href="#vacancies" class="btn btn-secondary">Explore Roles</a>
+            <a href="#vacancies" class="btn btn-secondary">
+                <i class="fas fa-briefcase"></i> Explore Roles
+            </a>
         </div>
     </section>
 
-    <div class="stats-bar">
+    <!-- Stats (Glassmorphism) -->
+    <div class="stats-bar glass-panel">
         <div class="stat-item"><h3>50+</h3><p>Openings</p></div>
         <div class="stat-item"><h3>6</h3><p>Venues</p></div>
         <div class="stat-item"><h3>7+</h3><p>Brands</p></div>
     </div>
 
-    <!-- NEW: EMPLOYEE BENEFITS SECTION -->
+    <!-- Hiring Process Timeline -->
+    <section class="section reveal">
+        <div class="section-header">
+            <h2>How to Join Us?</h2>
+            <p>ജോലി നേടാനുള്ള ലളിതമായ 3 ഘട്ടങ്ങൾ</p>
+        </div>
+        <div class="process-wrapper">
+            <div class="process-step glass-panel">
+                <div class="step-number"><i class="fas fa-mobile-screen"></i></div>
+                <div class="step-content">
+                    <h4>1. Apply Online</h4>
+                    <p>താഴെ നൽകിയിട്ടുള്ള ലിങ്ക് വഴി നിങ്ങളുടെ വിവരങ്ങൾ നൽകുക. മുൻകൂട്ടി രജിസ്റ്റർ ചെയ്യുന്നത് ഇന്റർവ്യൂ എളുപ്പമാക്കും.</p>
+                </div>
+            </div>
+            <div class="process-step glass-panel">
+                <div class="step-number" style="background: var(--accent);"><i class="fas fa-building"></i></div>
+                <div class="step-content">
+                    <h4>2. Attend Walk-in Interview</h4>
+                    <p>നിങ്ങൾക്ക് ഏറ്റവും അടുത്തുള്ള വേദിയിൽ കൃത്യസമയത്ത് രേഖകളുമായി നേരിട്ടെത്തുക.</p>
+                </div>
+            </div>
+            <div class="process-step glass-panel">
+                <div class="step-number" style="background: var(--success);"><i class="fas fa-handshake"></i></div>
+                <div class="step-content">
+                    <h4>3. Get Offer Letter</h4>
+                    <p>സെലക്ഷൻ ലഭിക്കുന്നവർക്ക് മികച്ച ശമ്പളത്തിൽ സാരഥി ഗ്രൂപ്പിൽ കരിയർ ആരംഭിക്കാം.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Employee Benefits -->
     <section class="section reveal">
         <div class="section-header">
             <h2>Employee Benefits</h2>
-            <p>ജോലിയിലെ നേട്ടങ്ങൾ - സാരഥി ഫാമിലിയുടെ ഭാഗമാകൂ!</p>
+            <p>സാരഥി ഫാമിലിയുടെ ഭാഗമാകൂ, മികച്ച ആനുകൂല്യങ്ങൾ നേടൂ!</p>
         </div>
         <div class="grid-container">
-            <div class="card-item">
+            <div class="card-item glass-panel">
                 <div class="card-icon"><i class="fas fa-users-gear"></i></div>
                 <h4>PF & ESI</h4>
                 <p>സാമ്പത്തിക സുരക്ഷയും ആരോഗ്യ ഇൻഷുറൻസും ഉറപ്പാക്കുന്നു.</p>
             </div>
-            <div class="card-item">
+            <div class="card-item glass-panel">
                 <div class="card-icon"><i class="fas fa-heart-pulse"></i></div>
-                <h4>Insurance</h4>
+                <h4>Medical Insurance</h4>
                 <p>നിങ്ങൾക്കും കുടുംബത്തിനും മെഡിക്കൽ ഇൻഷുറൻസ് പരിരക്ഷ.</p>
             </div>
-            <div class="card-item">
+            <div class="card-item glass-panel">
                 <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
                 <h4>Expert Training</h4>
                 <p>മികച്ച കരിയർ വളർച്ചയ്ക്കായി പ്രൊഫഷണൽ ട്രെയിനിംഗ്.</p>
             </div>
-            <div class="card-item">
+            <div class="card-item glass-panel">
                 <div class="card-icon"><i class="fas fa-coins"></i></div>
-                <h4>Incentives</h4>
+                <h4>High Incentives</h4>
                 <p>മികച്ച പ്രകടനത്തിന് ആകർഷകമായ ഇൻസെന്റീവ് പാക്കേജുകൾ.</p>
             </div>
         </div>
     </section>
 
-    <!-- EXPERIENCE VIDEO SECTION -->
+    <!-- Experience Video -->
     <section class="section reveal">
         <div class="section-header">
             <h2>Experience Our Culture</h2>
@@ -581,136 +645,172 @@
         </div>
     </section>
 
-    <!-- NEW: DOCUMENT CHECKLIST SECTION -->
-    <section class="section reveal" style="background: #f1f5f9; border-radius: 40px; margin: 20px;">
-        <div class="section-header">
-            <h2>Document Checklist</h2>
-            <p>ഇന്റർവ്യൂവിന് വരുമ്പോൾ താഴെ പറയുന്നവ കരുതുക</p>
-        </div>
-        <div class="checklist-box">
+    <!-- Document Checklist -->
+    <section class="section reveal" style="padding-top: 20px;">
+        <div class="checklist-box glass-panel">
+            <div class="section-header" style="margin-bottom: 40px;">
+                <h2>Document Checklist</h2>
+                <p>ഇന്റർവ്യൂവിന് വരുമ്പോൾ താഴെ പറയുന്നവ നിർബന്ധമായും കരുതുക</p>
+            </div>
             <div class="checklist-item">
                 <i class="fas fa-check-circle check-circle"></i>
                 <div>
-                    <strong style="display:block">Updated Resume</strong>
-                    <span style="font-size:0.8rem; color:var(--text-light)">രണ്ട് കോപ്പികൾ (1 Nos)</span>
+                    <strong style="display:block">Updated Resume / CV</strong>
+                    <span style="font-size:0.9rem; color:var(--text-light)">രണ്ട് കോപ്പികൾ (2 Copies)</span>
                 </div>
             </div>
             <div class="checklist-item">
                 <i class="fas fa-check-circle check-circle"></i>
                 <div>
                     <strong style="display:block">Passport Size Photos</strong>
-                    <span style="font-size:0.8rem; color:var(--text-light)">രണ്ട് എണ്ണം (2 Nos)</span>
+                    <span style="font-size:0.9rem; color:var(--text-light)">രണ്ട് എണ്ണം (2 Nos)</span>
                 </div>
             </div>
             <div class="checklist-item">
                 <i class="fas fa-check-circle check-circle"></i>
                 <div>
                     <strong style="display:block">Educational Certificates</strong>
-                    <span style="font-size:0.8rem; color:var(--text-light)">Copies</span>
+                    <span style="font-size:0.9rem; color:var(--text-light)">ഒറിജിനലും പകർപ്പുകളും (Originals & Copies)</span>
                 </div>
             </div>
             <div class="checklist-item">
                 <i class="fas fa-check-circle check-circle"></i>
                 <div>
                     <strong style="display:block">Identity Proof</strong>
-                    <span style="font-size:0.8rem; color:var(--text-light)">Aadhar Card / Voter ID / License</span>
+                    <span style="font-size:0.9rem; color:var(--text-light)">Aadhar Card / Voter ID / Driving License</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- VENUES SECTION -->
+    <!-- Venues (Live Location Tracking) -->
     <section class="section reveal" id="venues">
         <div class="section-header">
             <h2>Venues & Dates</h2>
-            <p>Walk-in Interviews | 09:30 AM - 04:30 PM</p>
+            <p>Walk-in Interviews | 09:30 AM to 04:30 PM</p>
         </div>
         <div class="venue-grid">
-            <div class="venue-card">
+            <!-- Venue 1 -->
+            <div class="venue-card glass-panel">
                 <div class="venue-img-container"><img src="sn college kollam.jpeg" alt="SN College Kollam" onerror="this.src='https://placehold.co/600x400?text=Kollam+Venue'"></div>
                 <div class="venue-info">
                     <h3>KOLLAM</h3>
-                    <span class="venue-date">MARCH 04, 2026</span>
-                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">SN College, Kollam</p>
+                    <span class="venue-date"><i class="far fa-calendar-alt"></i> MARCH 04, 2026</span>
+                    <div class="venue-timer" data-date="March 4, 2026 09:30:00"><i class="fas fa-stopwatch"></i> <span class="v-time">Loading...</span></div>
+                    <p style="color:var(--text-light); font-size:1rem; margin-bottom:20px; font-weight: 600;">SN College, Kollam</p>
                     <a href="https://share.google/5hroGRiugavuW76tC" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
-            
-            <div class="venue-card">
+            <!-- Venue 2 -->
+            <div class="venue-card glass-panel">
                 <div class="venue-img-container"><img src="Baby_John_Memorial_Govt_Clg_BANNER._2.jpg" alt="Baby John Memorial College" onerror="this.src='https://placehold.co/600x400?text=Chavara+Venue'"></div>
                 <div class="venue-info">
                     <h3>CHAVARA</h3>
-                    <span class="venue-date">MARCH 05, 2026</span>
-                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">Baby John Memorial Govt College</p>
+                    <span class="venue-date"><i class="far fa-calendar-alt"></i> MARCH 05, 2026</span>
+                    <div class="venue-timer" data-date="March 5, 2026 09:30:00"><i class="fas fa-stopwatch"></i> <span class="v-time">Loading...</span></div>
+                    <p style="color:var(--text-light); font-size:1rem; margin-bottom:20px; font-weight: 600;">Baby John Memorial Govt College</p>
                     <a href="https://share.google/Zc91Bi8l6in8girk7" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
-
-            <div class="venue-card">
+            <!-- Venue 3 -->
+            <div class="venue-card glass-panel">
                 <div class="venue-img-container"><img src="devaswom-board-college-kollam-ho-kollam-mechanical-engineering-colleges-9dn4vcnch6.jpeg" alt="DB College Sasthamcotta" onerror="this.src='https://placehold.co/600x400?text=Sasthamcotta+Venue'"></div>
                 <div class="venue-info">
                     <h3>SASTHAMCOTTA</h3>
-                    <span class="venue-date">MARCH 06, 2026</span>
-                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">DB College, Sasthamcotta</p>
+                    <span class="venue-date"><i class="far fa-calendar-alt"></i> MARCH 06, 2026</span>
+                    <div class="venue-timer" data-date="March 6, 2026 09:30:00"><i class="fas fa-stopwatch"></i> <span class="v-time">Loading...</span></div>
+                    <p style="color:var(--text-light); font-size:1rem; margin-bottom:20px; font-weight: 600;">DB College, Sasthamcotta</p>
                     <a href="https://share.google/HPGYCj5g3lHVp7ooM" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
-
-            <div class="venue-card">
+            <!-- Venue 4 -->
+            <div class="venue-card glass-panel">
                 <div class="venue-img-container"><img src="St._Gregorios_Clg_ KTR.JPG" alt="St. Gregorios College" onerror="this.src='https://placehold.co/600x400?text=Kottarakkara+Venue'"></div>
                 <div class="venue-info">
                     <h3>KOTTARAKKARA</h3>
-                    <span class="venue-date">MARCH 07, 2026</span>
-                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">St. Gregorios College</p>
+                    <span class="venue-date"><i class="far fa-calendar-alt"></i> MARCH 07, 2026</span>
+                    <div class="venue-timer" data-date="March 7, 2026 09:30:00"><i class="fas fa-stopwatch"></i> <span class="v-time">Loading...</span></div>
+                    <p style="color:var(--text-light); font-size:1rem; margin-bottom:20px; font-weight: 600;">St. Gregorios College</p>
                     <a href="https://share.google/4VZdTDU9pYUKcZSci" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
-
-            <div class="venue-card">
+            <!-- Venue 5 -->
+            <div class="venue-card glass-panel">
                 <div class="venue-img-container"><img src="IHRD COLLEGE KALANJOOR.jpg" alt="IHRD College Kalanjoor" onerror="this.src='https://placehold.co/600x400?text=Kalanjoor+Venue'"></div>
                 <div class="venue-info">
                     <h3>KALANJOOR</h3>
-                    <span class="venue-date">MARCH 09, 2026</span>
-                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">IHRD College, Kalanjoor</p>
+                    <span class="venue-date"><i class="far fa-calendar-alt"></i> MARCH 09, 2026</span>
+                    <div class="venue-timer" data-date="March 9, 2026 09:30:00"><i class="fas fa-stopwatch"></i> <span class="v-time">Loading...</span></div>
+                    <p style="color:var(--text-light); font-size:1rem; margin-bottom:20px; font-weight: 600;">IHRD College, Kalanjoor</p>
                     <a href="https://share.google/LbBZ8F0KSeD6wjxDq" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
-
-            <div class="venue-card">
+            <!-- Venue 6 -->
+            <div class="venue-card glass-panel">
                 <div class="venue-img-container"><img src="plrunnamed.jpg" alt="SN College Punalur" onerror="this.src='https://placehold.co/600x400?text=Punalur+Venue'"></div>
                 <div class="venue-info">
                     <h3>PUNALUR</h3>
-                    <span class="venue-date">MARCH 10, 2026</span>
-                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">SN College, Punalur</p>
+                    <span class="venue-date"><i class="far fa-calendar-alt"></i> MARCH 10, 2026</span>
+                    <div class="venue-timer" data-date="March 10, 2026 09:30:00"><i class="fas fa-stopwatch"></i> <span class="v-time">Loading...</span></div>
+                    <p style="color:var(--text-light); font-size:1rem; margin-bottom:20px; font-weight: 600;">SN College, Punalur</p>
                     <a href="https://share.google/r9pkBzg7Rfpb6kFHX" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- REFER A FRIEND SECTION UPDATED -->
-    <section class="section reveal" style="text-align: center;">
-        <div class="card-item" style="max-width: 600px; margin: 0 auto; background: #fffcf0; border: 1px solid #ffeeba;">
-            <i class="fas fa-bullhorn" style="font-size: 2rem; color: var(--accent); margin-bottom: 15px;"></i>
-            <h3>Refer a Friend</h3>
-            <p>ഈ അവസരം നിങ്ങളുടെ സുഹൃത്തുക്കളിലേക്കും എത്തിക്കൂ. താഴെ കാണുന്ന ബട്ടണിൽ ക്ലിക്ക് ചെയ്ത് വാട്സാപ്പിൽ അയക്കാം!</p>
-            <p style="margin: 10px 0 20px; font-weight: 700; color: var(--primary);">
-                <i class="fas fa-phone-volume" style="margin-right: 5px;"></i> കൂടുതൽ വിവരങ്ങൾക്ക്: 9037223665
-            </p>
-            <a href="https://wa.me/?text=Hi! Sarathy Group is conducting a Mega Job Fair 2026. 50+ Openings at 6 locations in South Kerala. Contact: 9037833865. Apply here: https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> സുഹൃത്തിന് അയക്കാം
-            </a>
+    <!-- FAQ Section -->
+    <section class="section reveal">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>പതിവായി ചോദിക്കുന്ന ചോദ്യങ്ങൾ</p>
+        </div>
+        <div class="faq-container">
+            <details class="glass-panel">
+                <summary>മുൻപരിചയം ഇല്ലാത്തവർക്ക് (Freshers) പങ്കെടുക്കാമോ?</summary>
+                <div class="faq-content">
+                    തീർച്ചയായും! ഫ്രഷേഴ്‌സിനും എക്സ്പീരിയൻസ് ഉള്ളവർക്കും ഒരുപോലെ അപേക്ഷിക്കാൻ കഴിയുന്ന നിരവധി ഒഴിവുകൾ ഞങ്ങൾക്കുണ്ട്. ട്രെയിനിംഗ് ഞങ്ങൾ നൽകുന്നതാണ്.
+                </div>
+            </details>
+            <details class="glass-panel">
+                <summary>ഓൺലൈൻ ആയി അപേക്ഷിച്ചാൽ മതിയോ?</summary>
+                <div class="faq-content">
+                    ഓൺലൈൻ ആയി അപേക്ഷിക്കുന്നത് ഇന്റർവ്യൂ പ്രോസസ്സ് എളുപ്പമാക്കാൻ സഹായിക്കും. എന്നാൽ ഇന്റർവ്യൂവിനായി നിശ്ചയിച്ചിട്ടുള്ള ഏതെങ്കിലും വേദിയിൽ നേരിട്ട് ഹാജരാകേണ്ടത് നിർബന്ധമാണ്.
+                </div>
+            </details>
+            <details class="glass-panel">
+                <summary>രജിസ്ട്രേഷൻ ഫീസ് വല്ലതുമുണ്ടോ?</summary>
+                <div class="faq-content">
+                    ഇല്ല, സാരഥി ഗ്രൂപ്പിന്റെ ഈ മെഗാ തൊഴിൽ മേള തികച്ചും സൗജന്യമാണ്. ഉദ്യോഗാർത്ഥികളിൽ നിന്നും യാതൊരുവിധ ഫീസും ഈടാക്കുന്നില്ല.
+                </div>
+            </details>
+            <details class="glass-panel">
+                <summary>ഏത് ജില്ലയിലുള്ളവർക്കാണ് അവസരം?</summary>
+                <div class="faq-content">
+                    കേരളത്തിലുള്ള ആർക്കും പങ്കെടുക്കാം. കൊല്ലം, തിരുവനന്തപുരം, പത്തനംതിട്ട, ആലപ്പുഴ ജില്ലകളിൽ നിന്നുള്ളവർക്ക് ഇത് ഒരു മികച്ച അവസരമാണ്.
+                </div>
+            </details>
         </div>
     </section>
 
-    <!-- VACANCIES SECTION -->
+    <!-- Vacancies (Interactive Filter) -->
     <section class="section reveal" id="vacancies">
         <div class="section-header">
             <h2>Available Positions</h2>
-            <p>We are looking for passionate individuals to join our team.</p>
+            <p>നിങ്ങൾക്ക് അനുയോജ്യമായ വിഭാഗം തിരഞ്ഞെടുക്കൂ</p>
         </div>
+        
+        <!-- Job Filter Buttons -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Roles</button>
+            <button class="filter-btn" data-filter="sales"><i class="fas fa-shopping-cart"></i> Sales</button>
+            <button class="filter-btn" data-filter="service"><i class="fas fa-tools"></i> Service</button>
+            <button class="filter-btn" data-filter="spare"><i class="fas fa-headset"></i> Spare & Office</button>
+        </div>
+
         <div class="roles-grid">
-            <div class="role-group">
+            <!-- Sales Role -->
+            <div class="role-group glass-panel" data-category="sales">
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
                 <div class="role-item">
                     <span class="role-title">Sales Executive / RM</span>
@@ -719,11 +819,12 @@
                 </div>
                 <div class="role-item">
                     <span class="role-title">Team Leaders</span>
-                    <p style="font-size: 0.8rem; color: var(--text-light);">Automotive Freshers & Experienced</p>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin-top:5px;">Automotive Experienced preferred</p>
                 </div>
-                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Sales</a>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Sales <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
             </div>
-            <div class="role-group">
+            <!-- Service Role -->
+            <div class="role-group glass-panel" data-category="service">
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
                 <div class="role-item">
                     <span class="role-title">Service Advisors</span>
@@ -733,73 +834,231 @@
                 </div>
                 <div class="role-item">
                     <span class="role-title">Expert Technicians</span>
-                    <p style="font-size: 0.8rem; color: var(--text-light);">ITI / Diploma holders</p>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin-top:5px;">ITI / Diploma holders</p>
                 </div>
-                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Service</a>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Service <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
             </div>
-            <div class="role-group">
-                <h4><i class="fas fa-headset"></i> Spare</h4>
+            <!-- Spare & Office Role -->
+            <div class="role-group glass-panel" data-category="spare">
+                <h4><i class="fas fa-headset"></i> Spare & Office</h4>
                 <div class="role-item">
                     <span class="role-title">Spare Executive</span>
                     <span class="role-title">Spare Assistant</span>
-                     <span class="role-title">Trainees</span>
+                    <span class="role-title">Trainees</span>
                     <span class="fresher-badge">Freshers & Experienced</span>
                 </div>
                 <div class="role-item">
                     <span class="role-title">Accounts Executive</span>
-                    <p style="font-size: 0.8rem; color: var(--text-light);">B.Com / M.Com (Tally)</p>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin-top:5px;">B.Com / M.Com (Tally Knowledge)</p>
                 </div>
-                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Spare</a>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Spare <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div style="font-weight: 800; font-size: 1.4rem; letter-spacing: 1px;">SARATHY GROUP</div>
-        <div style="margin: 15px 0;">
-            <p style="font-size: 1rem;"><i class="fas fa-phone-alt" style="margin-right: 8px;"></i> +91 9037 2236 65</p>
+    <!-- Refer a Friend -->
+    <section class="section reveal" style="text-align: center; padding-bottom: 90px;">
+        <div class="card-item glass-panel" style="max-width: 650px; margin: 0 auto; background: linear-gradient(135deg, rgba(255,252,240,0.8), rgba(255,255,255,0.6)); border: 1px solid rgba(255,238,186,0.8);">
+            <i class="fas fa-bullhorn" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px; animation: pulse-icon 2s infinite;"></i>
+            <h3 style="font-size: 2rem; margin-bottom: 10px; color: var(--primary); font-weight: 800;">Refer a Friend</h3>
+            <p style="font-size: 1.1rem; color: var(--text-dark);">ഈ അവസരം നിങ്ങളുടെ സുഹൃത്തുക്കളിലേക്കും എത്തിക്കൂ. താഴെ കാണുന്ന ബട്ടണിൽ ക്ലിക്ക് ചെയ്ത് വാട്സാപ്പിൽ പങ്കുവയ്ക്കാം!</p>
+            <p style="margin: 20px 0; font-weight: 800; color: var(--primary); font-size: 1.2rem;">
+                <i class="fas fa-phone-volume" style="margin-right: 8px;"></i> കൂടുതൽ വിവരങ്ങൾക്ക്: 9037223665
+            </p>
+            <a href="https://wa.me/?text=Hi! Sarathy Group is conducting a Mega Job Fair 2026. 50+ Openings at 6 locations in South Kerala. Contact: 9037833865. Apply here: https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-whatsapp" style="display: inline-flex; width: auto;">
+                <i class="fab fa-whatsapp"></i> സുഹൃത്തിന് അയക്കാം
+            </a>
         </div>
-        <p style="opacity: 0.5; font-size: 0.75rem;">© 2026 Sarathy Group. All rights reserved.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="font-weight: 800; font-size: 2rem; letter-spacing: 2px; margin-bottom: 10px;">SARATHY GROUP</div>
+        <p style="opacity: 0.9; margin-bottom: 25px; font-size: 1.1rem;">South Kerala's No.1 Automotive Dealer</p>
+        <div style="margin: 25px 0; display: flex; justify-content: center; gap: 25px;">
+            <a href="#" style="color: white; font-size: 1.8rem; transition: transform 0.3s; display: inline-block;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color: white; font-size: 1.8rem; transition: transform 0.3s; display: inline-block;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: white; font-size: 1.8rem; transition: transform 0.3s; display: inline-block;"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div style="margin: 25px 0;">
+            <p style="font-size: 1.2rem; font-weight: 600;"><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> +91 9037 2236 65</p>
+        </div>
+        <p style="opacity: 0.6; font-size: 0.9rem; margin-top: 40px;">© 2026 Sarathy Group. All rights reserved.</p>
     </footer>
 
-    <!-- MOBILE CTA -->
+    <!-- Mobile CTA -->
     <div class="mobile-cta">
-        <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-primary" style="width: 100%; max-width: 400px;">
+        <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-primary" style="width: 100%; max-width: 400px; padding: 14px; font-size: 1.05rem;">
             <i class="fas fa-paper-plane"></i> Apply Online Now
         </a>
     </div>
 
-    <!-- WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/919037223665?text=Hi, I am interested in Sarathy Job Fair 2026" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Floating Actions Container -->
+    <div class="action-floats">
+        <button id="backToTop" class="back-to-top" title="Go to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+        <a href="https://wa.me/919037223665?text=Hi, I am interested in Sarathy Job Fair 2026" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
     <script>
-        // Scroll Reveal Logic
+        // 1. Scroll Progress Bar Update
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        });
+
+        // 2. Preloader Logic
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
+        // 3. Smooth Reveal Logic (Enhanced)
         function reveal() {
             const reveals = document.querySelectorAll(".reveal");
+            const windowHeight = window.innerHeight;
+            
             reveals.forEach(r => {
-                const windowHeight = window.innerHeight;
                 const elementTop = r.getBoundingClientRect().top;
-                const elementVisible = 100;
+                const elementVisible = 80; // Triggers slightly earlier
                 if (elementTop < windowHeight - elementVisible) {
                     r.classList.add("active");
                 }
             });
         }
-        
         window.addEventListener("scroll", reveal);
         window.addEventListener("load", reveal);
 
-        // Video Autoplay Logic
-        window.onload = function() {
+        // 4. Global Countdown Timer (Target: March 04, 2026 09:30 AM)
+        const targetDate = new Date("March 4, 2026 09:30:00").getTime();
+        
+        const globalTimer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(globalTimer);
+                document.getElementById("countdown").innerHTML = "<div style='font-size:1.8rem; font-weight:800; color:var(--accent); background:rgba(255,255,255,0.8); backdrop-filter:blur(10px); padding:15px 30px; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.2);'>Job Fair is Live!</div>";
+                return;
+            }
+
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("mins").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("secs").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }, 1000);
+
+        // 5. Live Location Tracking (Individual Venue Countdowns)
+        function updateVenueTimers() {
+            const venueTimers = document.querySelectorAll('.venue-timer');
+            const now = new Date().getTime();
+
+            venueTimers.forEach(timer => {
+                const dateStr = timer.getAttribute('data-date');
+                const venueDate = new Date(dateStr).getTime();
+                const distance = venueDate - now;
+                const timeSpan = timer.querySelector('.v-time');
+
+                if (distance < 0) {
+                    // Event has passed or is today
+                    if (distance > -86400000) { // Within 24 hours
+                        timeSpan.innerText = "Happening Today!";
+                        timer.style.color = "white";
+                        timer.style.background = "var(--accent)";
+                    } else {
+                        timeSpan.innerText = "Event Completed";
+                        timer.style.color = "var(--text-light)";
+                        timer.style.background = "rgba(0,0,0,0.05)";
+                    }
+                } else {
+                    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    timeSpan.innerText = `${d} Days, ${h} Hrs Left`;
+                }
+            });
+        }
+        setInterval(updateVenueTimers, 60000); // Update every minute
+        updateVenueTimers(); // Initial call
+
+        // 6. Interactive Job Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const roleGroups = document.querySelectorAll('.role-group');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filterValue = btn.getAttribute('data-filter');
+
+                roleGroups.forEach(group => {
+                    if (filterValue === 'all' || group.getAttribute('data-category') === filterValue) {
+                        group.classList.remove('hide');
+                        // Small timeout to allow display block to apply before changing opacity/transform
+                        setTimeout(() => {
+                            group.style.opacity = '1';
+                            group.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        group.style.opacity = '0';
+                        group.style.transform = 'scale(0.9)';
+                        // Wait for transition before hiding
+                        setTimeout(() => {
+                            group.classList.add('hide');
+                        }, 400); // matches CSS transition time
+                    }
+                });
+            });
+        });
+
+        // 7. Back to Top Button
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add("visible");
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+        });
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // 8. Video Autoplay Fallback
+        window.addEventListener('load', function() {
             const v = document.getElementById('mainVideo');
             if (v) {
-                v.play().catch(error => {
-                    console.log("Autoplay blocked, waiting for interaction.");
-                });
+                let playPromise = v.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Autoplay prevented. User interaction required.");
+                    });
+                }
             }
-        }
+        });
+        
+        // Social Media Icon Hover fix (Micro-interaction)
+        const socialIcons = document.querySelectorAll('footer a');
+        socialIcons.forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'scale(1.3) translateY(-5px)';
+                icon.style.color = 'var(--accent-hover)';
+            });
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'scale(1) translateY(0)';
+                icon.style.color = 'white';
+            });
+        });
     </script>
 </body>
 </html>
