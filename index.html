@@ -9,8 +9,8 @@
     <style>
         :root {
             --primary: #002855;
-            --accent: #ff9f1c;
-            --accent-hover: #e68a00;
+            --accent: #08b608;
+            --accent-hover: #42e619;
             --success: #25D366;
             --text-dark: #0f172a;
             --text-light: #64748b;
@@ -61,7 +61,7 @@
         .logo-track {
             display: flex;
             width: max-content;
-            animation: scroll 10s linear infinite;
+            animation: scroll 15s linear infinite;
         }
 
         .logo-item {
@@ -81,7 +81,6 @@
             filter: grayscale(10%);
         }
 
-        /* Target specifically enlarged logos */
         .logo-enlarge {
             transform: scale(1.35);
         }
@@ -164,6 +163,7 @@
             gap: 8px;
             cursor: pointer;
             width: auto;
+            border: none;
         }
 
         .btn-primary { 
@@ -177,6 +177,12 @@
             color: var(--white); 
             border: 1px solid rgba(255,255,255,0.25); 
             backdrop-filter: blur(5px);
+        }
+
+        .btn-whatsapp {
+            background: var(--success);
+            color: white;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
         }
 
         .btn:active { transform: scale(0.96); }
@@ -198,18 +204,73 @@
             border: 1px solid #f1f5f9;
         }
 
-        .stat-item {
-            padding: 5px;
-        }
-
         .stat-item h3 { font-size: clamp(1.4rem, 5vw, 1.8rem); color: var(--primary); font-weight: 800; line-height: 1; margin-bottom: 4px; }
         .stat-item p { color: var(--text-light); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* --- Sections --- */
-        .section { padding: 50px 20px; max-width: 1400px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 35px; }
+        .section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 40px; }
         .section-header h2 { font-size: clamp(1.6rem, 7vw, 2.4rem); font-weight: 800; color: var(--primary); margin-bottom: 8px; line-height: 1.2; }
         .section-header p { color: var(--text-light); font-size: 0.95rem; }
+
+        /* --- Benefits & Checklist Sections --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card-item {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .card-item:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: #f0f7ff;
+            color: var(--primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 15px;
+        }
+
+        .card-item h4 { color: var(--primary); margin-bottom: 8px; font-weight: 700; }
+        .card-item p { font-size: 0.85rem; color: var(--text-light); }
+
+        .checklist-box {
+            background: #fff;
+            border-radius: 24px;
+            padding: 30px;
+            border: 2px dashed #e2e8f0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .checklist-item:last-child { border-bottom: none; }
+        
+        .check-circle {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
 
         /* --- Video Section --- */
         .video-container {
@@ -238,20 +299,6 @@
             display: block;
         }
 
-        .video-overlay-text {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-            z-index: 5;
-            pointer-events: none;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
         /* --- Venue Grid --- */
         .venue-grid {
             display: grid;
@@ -271,13 +318,9 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .venue-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
-        
         .venue-img-container {
             width: 100%;
             height: 180px;
-            overflow: hidden;
-            position: relative;
             background: #f1f5f9;
         }
 
@@ -285,7 +328,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
         }
 
         .venue-info {
@@ -308,13 +350,6 @@
             font-size: 0.85rem;
         }
 
-        .venue-loc {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 18px;
-            line-height: 1.4;
-        }
-        
         .map-btn {
             width: 100%;
             padding: 12px;
@@ -323,8 +358,6 @@
             text-decoration: none;
             color: white;
             font-weight: 700;
-            transition: var(--transition);
-            margin-top: auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -344,8 +377,6 @@
             border-radius: 20px; 
             padding: 25px; 
             border: 1px solid #f1f5f9; 
-            display: flex; 
-            flex-direction: column;
             box-shadow: 0 10px 25px rgba(0,0,0,0.03);
         }
 
@@ -387,29 +418,27 @@
             font-size: 0.95rem; 
             font-weight: 700; 
             margin-top: 20px; 
-            transition: var(--transition);
         }
 
-        /* --- WhatsApp --- */
+        /* --- WhatsApp Floating --- */
         .whatsapp-float {
             position: fixed;
             bottom: 95px;
             right: 20px;
             background: var(--success);
             color: white;
-            width: 52px;
-            height: 52px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
+            font-size: 28px;
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
             z-index: 1000;
             text-decoration: none;
             transition: var(--transition);
         }
-        .whatsapp-float:active { transform: scale(0.9); }
 
         /* --- Mobile CTA --- */
         .mobile-cta {
@@ -429,30 +458,25 @@
         footer {
             background: var(--primary);
             color: white;
-            padding: 40px 20px 100px;
+            padding: 40px 20px 110px;
             text-align: center;
         }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s all ease-out; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 768px) {
-            .section { padding: 40px 15px; }
-            .stats-bar { grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: -50px; padding: 15px 10px; }
-            .stat-item h3 { font-size: 1.3rem; }
-            .stat-item p { font-size: 0.6rem; }
             .hero { padding-bottom: 90px; }
             .hero h1 { font-size: 1.8rem; }
-            .venue-grid { grid-template-columns: 1fr; }
-            .venue-img-container { height: 180px; }
-            .btn-group { gap: 10px; margin-top: 20px; }
-            .btn { width: 100%; max-width: 280px; }
+            .stats-bar { grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: -50px; padding: 15px 10px; }
+            .stat-item h3 { font-size: 1.3rem; }
+            .stat-item p { font-size: 0.55rem; }
+            .section { padding: 40px 15px; }
+            .btn { width: 100%; }
         }
 
         @media (min-width: 1024px) {
             .mobile-cta { display: none; }
-            .btn-group { display: flex; }
-            .section { padding: 60px 40px; }
             body { padding-bottom: 0; }
             footer { padding-bottom: 40px; }
         }
@@ -463,7 +487,7 @@
     <header>
         <div class="logo-slider">
             <div class="logo-track">
-                <!-- Original Set -->
+                <!-- Duplicate logos for seamless loop -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
@@ -474,12 +498,11 @@
                 <div class="logo-item"><img src="Triumph-Logo.png" alt="Triumph" class="logo-img"></div>
                 <div class="logo-item"><img src="ather123.png" alt="Ather" class="logo-img"></div>
                 <div class="logo-item"><img src="Chetak-logo-5.png" alt="Chetak" class="logo-img"></div>
-                
-                <!-- Duplicate for Loop -->
+                <!-- Copy 2 -->
                 <div class="logo-item"><img src="sarathy-group-logo.png" alt="Sarathy" class="logo-img"></div>
                 <div class="logo-item"><img src="n2.png" alt="Nexa" class="logo-img"></div>
                 <div class="logo-item"><img src="arena-logo.webp" alt="Arena" class="logo-img"></div>
-                <div class="logo-item"><img src="OIP (1).webp" alt="True Value" class="logo-img logo-enlarge"></div>
+                <div class="logo-item"><img src="OIP.webp" alt="True Value" class="logo-img logo-enlarge"></div>
                 <div class="logo-item"><img src="OIP (1).webp" alt="Commercial" class="logo-img"></div>
                 <div class="logo-item"><img src="bajaj.png" alt="Bajaj" class="logo-img"></div>
                 <div class="logo-item"><img src="KTM-logo.png" alt="KTM" class="logo-img"></div>
@@ -512,7 +535,37 @@
         <div class="stat-item"><h3>7+</h3><p>Brands</p></div>
     </div>
 
-    <!-- EXPERIENCE SECTION -->
+    <!-- NEW: EMPLOYEE BENEFITS SECTION -->
+    <section class="section reveal">
+        <div class="section-header">
+            <h2>Employee Benefits</h2>
+            <p>ജോലിയിലെ നേട്ടങ്ങൾ - സാരഥി ഫാമിലിയുടെ ഭാഗമാകൂ!</p>
+        </div>
+        <div class="grid-container">
+            <div class="card-item">
+                <div class="card-icon"><i class="fas fa-users-gear"></i></div>
+                <h4>PF & ESI</h4>
+                <p>സാമ്പത്തിക സുരക്ഷയും ആരോഗ്യ ഇൻഷുറൻസും ഉറപ്പാക്കുന്നു.</p>
+            </div>
+            <div class="card-item">
+                <div class="card-icon"><i class="fas fa-heart-pulse"></i></div>
+                <h4>Insurance</h4>
+                <p>നിങ്ങൾക്കും കുടുംബത്തിനും മെഡിക്കൽ ഇൻഷുറൻസ് പരിരക്ഷ.</p>
+            </div>
+            <div class="card-item">
+                <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h4>Expert Training</h4>
+                <p>മികച്ച കരിയർ വളർച്ചയ്ക്കായി പ്രൊഫഷണൽ ട്രെയിനിംഗ്.</p>
+            </div>
+            <div class="card-item">
+                <div class="card-icon"><i class="fas fa-coins"></i></div>
+                <h4>Incentives</h4>
+                <p>മികച്ച പ്രകടനത്തിന് ആകർഷകമായ ഇൻസെന്റീവ് പാക്കേജുകൾ.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE VIDEO SECTION -->
     <section class="section reveal">
         <div class="section-header">
             <h2>Experience Our Culture</h2>
@@ -524,7 +577,44 @@
                     <source src="video_2026-02-24_14-20-30.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <div class="video-overlay-text">Sarathy Group Highlights</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: DOCUMENT CHECKLIST SECTION -->
+    <section class="section reveal" style="background: #f1f5f9; border-radius: 40px; margin: 20px;">
+        <div class="section-header">
+            <h2>Document Checklist</h2>
+            <p>ഇന്റർവ്യൂവിന് വരുമ്പോൾ താഴെ പറയുന്നവ കരുതുക</p>
+        </div>
+        <div class="checklist-box">
+            <div class="checklist-item">
+                <i class="fas fa-check-circle check-circle"></i>
+                <div>
+                    <strong style="display:block">Updated Resume</strong>
+                    <span style="font-size:0.8rem; color:var(--text-light)">രണ്ട് കോപ്പികൾ (1 Nos)</span>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <i class="fas fa-check-circle check-circle"></i>
+                <div>
+                    <strong style="display:block">Passport Size Photos</strong>
+                    <span style="font-size:0.8rem; color:var(--text-light)">രണ്ട് എണ്ണം (2 Nos)</span>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <i class="fas fa-check-circle check-circle"></i>
+                <div>
+                    <strong style="display:block">Educational Certificates</strong>
+                    <span style="font-size:0.8rem; color:var(--text-light)">Copies</span>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <i class="fas fa-check-circle check-circle"></i>
+                <div>
+                    <strong style="display:block">Identity Proof</strong>
+                    <span style="font-size:0.8rem; color:var(--text-light)">Aadhar Card / Voter ID / License</span>
+                </div>
             </div>
         </div>
     </section>
@@ -541,7 +631,7 @@
                 <div class="venue-info">
                     <h3>KOLLAM</h3>
                     <span class="venue-date">MARCH 04, 2026</span>
-                    <p class="venue-loc">SN College, Kollam</p>
+                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">SN College, Kollam</p>
                     <a href="https://share.google/5hroGRiugavuW76tC" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
@@ -551,7 +641,7 @@
                 <div class="venue-info">
                     <h3>CHAVARA</h3>
                     <span class="venue-date">MARCH 05, 2026</span>
-                    <p class="venue-loc">Baby John Memorial Gov College</p>
+                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">Baby John Memorial Govt College</p>
                     <a href="https://share.google/Zc91Bi8l6in8girk7" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
@@ -561,7 +651,7 @@
                 <div class="venue-info">
                     <h3>SASTHAMCOTTA</h3>
                     <span class="venue-date">MARCH 06, 2026</span>
-                    <p class="venue-loc">DB College, Sasthamcotta</p>
+                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">DB College, Sasthamcotta</p>
                     <a href="https://share.google/HPGYCj5g3lHVp7ooM" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
@@ -571,7 +661,7 @@
                 <div class="venue-info">
                     <h3>KOTTARAKKARA</h3>
                     <span class="venue-date">MARCH 07, 2026</span>
-                    <p class="venue-loc">St. Gregorios College</p>
+                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">St. Gregorios College</p>
                     <a href="https://share.google/4VZdTDU9pYUKcZSci" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
@@ -581,7 +671,7 @@
                 <div class="venue-info">
                     <h3>KALANJOOR</h3>
                     <span class="venue-date">MARCH 09, 2026</span>
-                    <p class="venue-loc">IHRD College, Kalanjoor</p>
+                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">IHRD College, Kalanjoor</p>
                     <a href="https://share.google/LbBZ8F0KSeD6wjxDq" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
@@ -591,10 +681,25 @@
                 <div class="venue-info">
                     <h3>PUNALUR</h3>
                     <span class="venue-date">MARCH 10, 2026</span>
-                    <p class="venue-loc">SN College, Punalur</p>
+                    <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:15px">SN College, Punalur</p>
                     <a href="https://share.google/r9pkBzg7Rfpb6kFHX" class="map-btn" target="_blank"><i class="fas fa-location-dot"></i> View Map</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- REFER A FRIEND SECTION UPDATED -->
+    <section class="section reveal" style="text-align: center;">
+        <div class="card-item" style="max-width: 600px; margin: 0 auto; background: #fffcf0; border: 1px solid #ffeeba;">
+            <i class="fas fa-bullhorn" style="font-size: 2rem; color: var(--accent); margin-bottom: 15px;"></i>
+            <h3>Refer a Friend</h3>
+            <p>ഈ അവസരം നിങ്ങളുടെ സുഹൃത്തുക്കളിലേക്കും എത്തിക്കൂ. താഴെ കാണുന്ന ബട്ടണിൽ ക്ലിക്ക് ചെയ്ത് വാട്സാപ്പിൽ അയക്കാം!</p>
+            <p style="margin: 10px 0 20px; font-weight: 700; color: var(--primary);">
+                <i class="fas fa-phone-volume" style="margin-right: 5px;"></i> കൂടുതൽ വിവരങ്ങൾക്ക്: 9037223665
+            </p>
+            <a href="https://wa.me/?text=Hi! Sarathy Group is conducting a Mega Job Fair 2026. 50+ Openings at 6 locations in South Kerala. Contact: 9037833865. Apply here: https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> സുഹൃത്തിന് അയക്കാം
+            </a>
         </div>
     </section>
 
@@ -609,11 +714,12 @@
                 <h4><i class="fas fa-shopping-cart"></i> Sales Roles</h4>
                 <div class="role-item">
                     <span class="role-title">Sales Executive / RM</span>
+                    <span class="role-title">Relationship Manager</span>
                     <span class="fresher-badge">Freshers & Experienced</span>
                 </div>
                 <div class="role-item">
                     <span class="role-title">Team Leaders</span>
-                    <p style="font-size: 0.8rem; color: #64748b;">Automotive Exp. Preferred</p>
+                    <p style="font-size: 0.8rem; color: var(--text-light);">Automotive Freshers & Experienced</p>
                 </div>
                 <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Sales</a>
             </div>
@@ -621,25 +727,29 @@
                 <h4><i class="fas fa-tools"></i> Service Roles</h4>
                 <div class="role-item">
                     <span class="role-title">Service Advisors</span>
+                    <span class="role-title">Technicians</span>
+                    <span class="role-title">EV Technicians</span>
                     <span class="fresher-badge">Freshers & Experienced</span>
                 </div>
                 <div class="role-item">
                     <span class="role-title">Expert Technicians</span>
-                    <p style="font-size: 0.8rem; color: #64748b;">ITI / Diploma holders</p>
+                    <p style="font-size: 0.8rem; color: var(--text-light);">ITI / Diploma holders</p>
                 </div>
                 <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Service</a>
             </div>
             <div class="role-group">
-                <h4><i class="fas fa-headset"></i> Support & Admin</h4>
+                <h4><i class="fas fa-headset"></i> Spare</h4>
                 <div class="role-item">
-                    <span class="role-title">Customer Relationship Executive</span>
-                    <span class="fresher-badge">Female Candidates Preferred</span>
+                    <span class="role-title">Spare Executive</span>
+                    <span class="role-title">Spare Assistant</span>
+                     <span class="role-title">Trainees</span>
+                    <span class="fresher-badge">Freshers & Experienced</span>
                 </div>
                 <div class="role-item">
                     <span class="role-title">Accounts Executive</span>
-                    <p style="font-size: 0.8rem; color: #64748b;">B.Com / M.Com (Tally)</p>
+                    <p style="font-size: 0.8rem; color: var(--text-light);">B.Com / M.Com (Tally)</p>
                 </div>
-                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Admin</a>
+                <a href="https://forms.gle/vyEMCiJ2XcJ2sfEaA" target="_blank" class="btn-role-apply">Apply for Spare</a>
             </div>
         </div>
     </section>
@@ -660,7 +770,7 @@
     </div>
 
     <!-- WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/919037833865?text=Hi, Interested in Sarathy Job Fair 2026" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/919037223665?text=Hi, I am interested in Sarathy Job Fair 2026" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -681,17 +791,14 @@
         window.addEventListener("scroll", reveal);
         window.addEventListener("load", reveal);
 
-        // Video Handling
-        const v = document.getElementById('mainVideo');
-        if (v) {
-            v.addEventListener('error', function() {
-                console.error("Video failed to load.");
-            });
-            
-            // Attempt autoplay
-            v.play().catch(error => {
-                console.log("Autoplay blocked, user interaction needed.");
-            });
+        // Video Autoplay Logic
+        window.onload = function() {
+            const v = document.getElementById('mainVideo');
+            if (v) {
+                v.play().catch(error => {
+                    console.log("Autoplay blocked, waiting for interaction.");
+                });
+            }
         }
     </script>
 </body>
